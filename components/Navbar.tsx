@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { ChevronDown, Menu, X, Heart, Laptop } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 
 const navItems = [
   {
@@ -52,10 +53,20 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900">
-            <Laptop className="w-6 h-6 text-emerald-500" />
-            LaptopPintar
-          </Link>
+<div className="flex items-center gap-2">
+  <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900">
+    <Laptop className="w-6 h-6 text-emerald-500" />
+    LaptopPintar
+  </Link>
+  <Link
+    href="/about"
+    title="Tentang Kami"
+    aria-label="Tentang Kami"
+    className="flex items-center justify-center w-6 h-6 rounded-full text-gray-400 hover:text-emerald-500 hover:bg-emerald-50 transition-colors"
+  >
+    <HelpCircle className="w-4 h-4" />
+  </Link>
+</div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
