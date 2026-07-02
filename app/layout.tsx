@@ -1,12 +1,11 @@
-import Navbar from "@/components/Navbar";
+import ClientLayout from "@/components/ClientLayout";
 import "./globals.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id">
-      <body>
-        <Navbar />
-        <main>{children}</main>
+    <html lang="id" suppressHydrationWarning>
+      <body className="antialiased">
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

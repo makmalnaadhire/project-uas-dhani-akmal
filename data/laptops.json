@@ -1,0 +1,274 @@
+[
+  {
+    "id": "lenovo-ideapad-slim-3",
+    "name": "Lenovo IdeaPad Slim 3",
+    "brand": "Lenovo",
+    "price": 7,
+    "condition": "baru",
+    "needs": ["office", "multimedia"],
+    "specs": {
+      "processor": "AMD Ryzen 5 7520U",
+      "ram": "8GB DDR5",
+      "storage": "512GB SSD",
+      "gpu": "AMD Radeon 610M"
+    },
+    "screen": "14\" FHD IPS",
+    "rating": 4.3,
+    "description": "Laptop ringan untuk kerja kantoran dan kuliah. Layar IPS tajam, baterai tahan lama, cocok untuk produktivitas harian."
+  },
+  {
+    "id": "asus-vivobook-15",
+    "name": "ASUS VivoBook 15",
+    "brand": "ASUS",
+    "price": 9,
+    "condition": "baru",
+    "needs": ["office", "programming", "multimedia"],
+    "specs": {
+      "processor": "Intel Core i5-1335U",
+      "ram": "16GB DDR4",
+      "storage": "512GB SSD",
+      "gpu": "Intel Iris Xe"
+    },
+    "screen": "15.6\" FHD IPS",
+    "rating": 4.5,
+    "description": "Laptop serbaguna untuk coding ringan hingga menengah. Layar besar, performa handal untuk multitasking."
+  },
+  {
+    "id": "macbook-air-m2",
+    "name": "MacBook Air M2",
+    "brand": "Apple",
+    "price": 17,
+    "condition": "baru",
+    "needs": ["desain", "programming", "multimedia"],
+    "specs": {
+      "processor": "Apple M2",
+      "ram": "8GB Unified",
+      "storage": "256GB SSD",
+      "gpu": "Apple M2 GPU"
+    },
+    "screen": "13.6\" Liquid Retina",
+    "rating": 4.8,
+    "description": "Laptop tipis dan bertenaga untuk desainer dan developer. Baterai tahan seharian, performa konsisten tanpa fan noise."
+  },
+  {
+    "id": "asus-rog-strix-g16",
+    "name": "ASUS ROG Strix G16",
+    "brand": "ASUS",
+    "price": 19,
+    "condition": "baru",
+    "needs": ["gaming"],
+    "specs": {
+      "processor": "Intel Core i7-14650HX",
+      "ram": "16GB DDR5",
+      "storage": "1TB SSD",
+      "gpu": "NVIDIA RTX 4060"
+    },
+    "screen": "16\" QHD 165Hz",
+    "rating": 4.7,
+    "description": "Laptop gaming performa tinggi. RTX 4060 mampu menjalankan game AAA dengan frame rate tinggi, layar 165Hz responsif."
+  },
+  {
+    "id": "acer-aspire-5",
+    "name": "Acer Aspire 5",
+    "brand": "Acer",
+    "price": 6,
+    "condition": "baru",
+    "needs": ["office", "multimedia"],
+    "specs": {
+      "processor": "Intel Core i3-1315U",
+      "ram": "8GB DDR4",
+      "storage": "512GB SSD",
+      "gpu": "Intel UHD Graphics"
+    },
+    "screen": "15.6\" FHD",
+    "rating": 4.1,
+    "description": "Laptop budget untuk kebutuhan dasar. Cocok untuk browsing, Office, dan hiburan ringan dengan harga terjangkau."
+  },
+  {
+    "id": "lenovo-loq-15",
+    "name": "Lenovo LOQ 15",
+    "brand": "Lenovo",
+    "price": 14,
+    "condition": "baru",
+    "needs": ["gaming", "desain", "programming"],
+    "specs": {
+      "processor": "AMD Ryzen 7 7840HS",
+      "ram": "16GB DDR5",
+      "storage": "512GB SSD",
+      "gpu": "NVIDIA RTX 4050"
+    },
+    "screen": "15.6\" FHD 144Hz",
+    "rating": 4.6,
+    "description": "Laptop gaming kelas menengah yang juga mumpuni untuk editing video dan programming. Harga kompetitif."
+  },
+  {
+    "id": "dell-inspiron-14",
+    "name": "Dell Inspiron 14",
+    "brand": "Dell",
+    "price": 11,
+    "condition": "baru",
+    "needs": ["office", "programming"],
+    "specs": {
+      "processor": "Intel Core i5-1340P",
+      "ram": "16GB DDR5",
+      "storage": "512GB SSD",
+      "gpu": "Intel Iris Xe"
+    },
+    "screen": "14\" FHD+",
+    "rating": 4.4,
+    "description": "Laptop bisnis yang solid dan reliable. Build quality Dell yang terkenal, cocok untuk profesional dan developer."
+  },
+  {
+    "id": "hp-pavilion-14",
+    "name": "HP Pavilion 14",
+    "brand": "HP",
+    "price": 10,
+    "condition": "baru",
+    "needs": ["office", "multimedia"],
+    "specs": {
+      "processor": "AMD Ryzen 5 7535U",
+      "ram": "8GB DDR5",
+      "storage": "512GB SSD",
+      "gpu": "AMD Radeon 660M"
+    },
+    "screen": "14\" FHD IPS",
+    "rating": 4.2,
+    "description": "Laptop premium dengan harga menengah. Desain elegan, performa cukup untuk kerja dan hiburan."
+  },
+  {
+    "id": "asus-tuf-a15",
+    "name": "ASUS TUF Gaming A15",
+    "brand": "ASUS",
+    "price": 15,
+    "condition": "baru",
+    "needs": ["gaming", "programming"],
+    "specs": {
+      "processor": "AMD Ryzen 7 7735HS",
+      "ram": "16GB DDR5",
+      "storage": "512GB SSD",
+      "gpu": "NVIDIA RTX 4050"
+    },
+    "screen": "15.6\" FHD 144Hz",
+    "rating": 4.5,
+    "description": "Laptop gaming tahan banting dengan sertifikasi MIL-STD. Performa gaming solid untuk kelas menengah."
+  },
+  {
+    "id": "macbook-pro-m3",
+    "name": "MacBook Pro 14\" M3",
+    "brand": "Apple",
+    "price": 27,
+    "condition": "baru",
+    "needs": ["desain", "programming", "multimedia"],
+    "specs": {
+      "processor": "Apple M3",
+      "ram": "18GB Unified",
+      "storage": "512GB SSD",
+      "gpu": "Apple M3 GPU"
+    },
+    "screen": "14.2\" Liquid Retina XDR",
+    "rating": 4.9,
+    "description": "Laptop profesional untuk kreator konten dan developer. Layar XDR terbaik di kelasnya, performa luar biasa."
+  },
+  {
+    "id": "lenovo-thinkpad-e14",
+    "name": "Lenovo ThinkPad E14",
+    "brand": "Lenovo",
+    "price": 12,
+    "condition": "baru",
+    "needs": ["office", "programming"],
+    "specs": {
+      "processor": "Intel Core i5-1335U",
+      "ram": "16GB DDR4",
+      "storage": "512GB SSD",
+      "gpu": "Intel Iris Xe"
+    },
+    "screen": "14\" FHD IPS",
+    "rating": 4.6,
+    "description": "Laptop bisnis legendaris dari ThinkPad. Keyboard nyaman, build quality kokoh, cocok untuk programmer."
+  },
+  {
+    "id": "msi-katana-15",
+    "name": "MSI Katana 15",
+    "brand": "MSI",
+    "price": 16,
+    "condition": "baru",
+    "needs": ["gaming"],
+    "specs": {
+      "processor": "Intel Core i7-13620H",
+      "ram": "16GB DDR5",
+      "storage": "1TB SSD",
+      "gpu": "NVIDIA RTX 4060"
+    },
+    "screen": "15.6\" FHD 144Hz",
+    "rating": 4.4,
+    "description": "Laptop gaming dengan RTX 4060 yang powerful. Desain simpel, cocok untuk gamer yang ingin performa tanpa ribet."
+  },
+  {
+    "id": "acer-swift-3",
+    "name": "Acer Swift 3",
+    "brand": "Acer",
+    "price": 8,
+    "condition": "baru",
+    "needs": ["office", "multimedia"],
+    "specs": {
+      "processor": "AMD Ryzen 5 5500U",
+      "ram": "8GB DDR4",
+      "storage": "512GB SSD",
+      "gpu": "AMD Radeon Graphics"
+    },
+    "screen": "14\" FHD IPS",
+    "rating": 4.2,
+    "description": "Ultrabook ringan untuk mobilitas tinggi. Cocok untuk mahasiswa dan profesional yang sering bepergian."
+  },
+  {
+    "id": "lenovo-ideapad-gaming-3",
+    "name": "Lenovo IdeaPad Gaming 3",
+    "brand": "Lenovo",
+    "price": 11,
+    "condition": "second",
+    "needs": ["gaming", "multimedia"],
+    "specs": {
+      "processor": "AMD Ryzen 5 5600H",
+      "ram": "8GB DDR4",
+      "storage": "512GB SSD",
+      "gpu": "NVIDIA GTX 1650"
+    },
+    "screen": "15.6\" FHD 120Hz",
+    "rating": 4.0,
+    "description": "Laptop gaming second yang masih layak pakai. GTX 1650 cukup untuk game ringan hingga menengah."
+  },
+  {
+    "id": "asus-vivobook-14-second",
+    "name": "ASUS VivoBook 14",
+    "brand": "ASUS",
+    "price": 5,
+    "condition": "second",
+    "needs": ["office", "multimedia"],
+    "specs": {
+      "processor": "AMD Ryzen 3 5300U",
+      "ram": "8GB DDR4",
+      "storage": "256GB SSD",
+      "gpu": "AMD Radeon Vega 8"
+    },
+    "screen": "14\" FHD",
+    "rating": 3.9,
+    "description": "Laptop bekas untuk kebutuhan dasar. Cocok untuk pelajar dan penggunaan ringan sehari-hari."
+  },
+  {
+    "id": "hp-15-second",
+    "name": "HP 15-fd",
+    "brand": "HP",
+    "price": 4,
+    "condition": "second",
+    "needs": ["office"],
+    "specs": {
+      "processor": "Intel Core i3-1215U",
+      "ram": "4GB DDR4",
+      "storage": "256GB SSD",
+      "gpu": "Intel UHD Graphics"
+    },
+    "screen": "15.6\" HD",
+    "rating": 3.7,
+    "description": "Laptop budget second untuk pekerjaan ringan. Cukup untuk dokumen dan browsing."
+  }
+]

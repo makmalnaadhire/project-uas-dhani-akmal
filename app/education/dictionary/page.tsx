@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Search } from "lucide-react";
 
 type Term = {
@@ -380,14 +381,14 @@ export default function DictionaryPage() {
           <p className="text-sm text-emerald-600 mt-1">
             Gunakan fitur rekomendasi cerdas kami — cukup jawab beberapa pertanyaan.
           </p>
-          
+          <Link
             href="/recommendations"
             className="mt-4 inline-block bg-emerald-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-emerald-600 transition-colors"
-          
+          >
             Mulai Rekomendasi →
-          </div>
+          </Link>
         </div>
       </div>
-    
+    </div>
   );
 }

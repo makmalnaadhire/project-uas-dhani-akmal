@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
@@ -83,6 +83,27 @@ const conditionOptions: { id: ConditionId; label: string; desc: string; icon: ty
 
 const STORAGE_KEY = "laptoppintar_recommendation";
 
+let cachedAnswers: Answers = { need: null, budget: null, condition: null };
+let recListeners: Array<() => void> = [];
+
+function emitRecChange() {
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    cachedAnswers = raw ? JSON.parse(raw) : { need: null, budget: null, condition: null };
+  } catch {
+    cachedAnswers = { need: null, budget: null, condition: null };
+  }
+  for (const l of recListeners) l();
+}
+
+function subscribeRec(listener: () => void) {
+  recListeners = [...recListeners, listener];
+  return () => { recListeners = recListeners.filter((l) => l !== listener); };
+}
+
+function getRecSnapshot(): Answers { return cachedAnswers; }
+function getRecServerSnapshot(): Answers { return { need: null, budget: null, condition: null }; }
+
 /* --------------------------------- Scoring ---------------------------------- */
 
 function scoreLaptop(laptop: Laptop, answers: Answers, budgetRange: { min: number; max: number } | null) {
@@ -120,27 +141,27 @@ function RecommendationsWizard() {
   const stepParam = searchParams.get("step") ?? "kebutuhan";
   const currentStep = STEPS.some((s) => s.id === stepParam) ? stepParam : "kebutuhan";
 
-  const [answers, setAnswers] = useState<Answers>({ need: null, budget: null, condition: null });
-  const [hydrated, setHydrated] = useState(false);
+  const answers = useSyncExternalStore(subscribeRec, getRecSnapshot, getRecServerSnapshot);
 
   useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) setAnswers(JSON.parse(raw));
-    } catch {
-      /* ignore */
-    }
-    setHydrated(true);
+    emitRecChange();
   }, []);
 
   useEffect(() => {
-    if (!hydrated) return;
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
     } catch {
       /* ignore */
     }
-  }, [answers, hydrated]);
+  }, [answers]);
+
+  const updateAnswers = (patch: Partial<Answers> | ((prev: Answers) => Answers)) => {
+    const next = typeof patch === "function" ? patch(answers) : { ...answers, ...patch };
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    } catch { /* ignore */ }
+    emitRecChange();
+  };
 
   const goToStep = (id: string) => router.push(`/recommendations?step=${id}`);
 
@@ -154,7 +175,7 @@ function RecommendationsWizard() {
   };
 
   const resetAll = () => {
-    setAnswers({ need: null, budget: null, condition: null });
+    updateAnswers({ need: null, budget: null, condition: null });
     goToStep("kebutuhan");
   };
 
@@ -229,7 +250,7 @@ function RecommendationsWizard() {
           <StepKebutuhan
             selected={answers.need}
             onSelect={(need) => {
-              setAnswers((a) => ({ ...a, need }));
+              updateAnswers((a) => ({ ...a, need }));
               goToStep("budget");
             }}
           />
@@ -239,7 +260,7 @@ function RecommendationsWizard() {
           <StepBudget
             selected={answers.budget}
             onSelect={(budget) => {
-              setAnswers((a) => ({ ...a, budget }));
+              updateAnswers((a) => ({ ...a, budget }));
               goToStep("kondisi");
             }}
             onBack={() => goToStep("kebutuhan")}
@@ -250,7 +271,7 @@ function RecommendationsWizard() {
           <StepKondisi
             selected={answers.condition}
             onSelect={(condition) => {
-              setAnswers((a) => ({ ...a, condition }));
+              updateAnswers((a) => ({ ...a, condition }));
               goToStep("hasil");
             }}
             onBack={() => goToStep("budget")}
