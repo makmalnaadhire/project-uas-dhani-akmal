@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
+import { useLanguage } from "@/lib/LanguageContext";
 
 function WaveSVG({ dark }: { dark: boolean }) {
   const fill = dark ? "#030712" : "white";
@@ -62,6 +63,7 @@ function WaveSVG({ dark }: { dark: boolean }) {
 
 export default function Hero() {
   const { theme } = useTheme();
+  const { t } = useLanguage();
   const isDark = theme === "dark";
 
   return (
@@ -87,14 +89,13 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <span className="inline-block bg-white/20 backdrop-blur-sm text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
-            #1 Laptop Catalog Platform
+            {t("heroBadge")}
           </span>
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight">
-            Laptop Catalog
+            {t("heroTitle")}
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-            Temukan laptop impianmu dari ribuan pilihan. Bandingkan spesifikasi,
-            baca review, dan dapatkan rekomendasi terbaik sesuai kebutuhanmu.
+            {t("heroSubtitle")}
           </p>
         </motion.div>
 
@@ -106,16 +107,16 @@ export default function Hero() {
         >
           <Link
             href="/catalog"
-            className="group inline-flex items-center gap-2 bg-white text-emerald-600 font-bold px-8 py-4 rounded-xl text-lg transition-all duration-300 shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 hover:scale-105 hover:glow-white"
+            className="group inline-flex items-center gap-2 bg-white text-emerald-600 font-bold px-8 py-4 rounded-xl text-lg transition-all duration-300 shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 hover:scale-105"
           >
-            Explore Now
+            {t("heroCta")}
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
           <Link
             href="/recommendations"
             className="inline-flex items-center gap-2 border-2 border-white/40 text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:bg-white/10 hover:border-white/60"
           >
-            Get Recommendations
+            {t("heroSecondary")}
           </Link>
         </motion.div>
       </div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Star, ArrowRight, Cpu, MemoryStick, HardDrive, MonitorSmartphone } from "lucide-react";
 import Link from "next/link";
 import { staggerContainer, fadeInUp, hoverZoomWiggle } from "@/lib/motion";
+import { useLanguage } from "@/lib/LanguageContext";
 
 const products = [
   {
@@ -93,6 +94,8 @@ const products = [
 ];
 
 export default function FeaturedSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900 py-20 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,10 +107,10 @@ export default function FeaturedSection() {
           className="text-center mb-14"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
-            Laptop Pilihan
+            {t("featuredTitle")}
           </h2>
           <p className="mt-4 text-gray-500 dark:text-gray-400 text-lg">
-            Rekomendasi laptop terbaik untuk Anda
+            {t("featuredSubtitle")}
           </p>
         </motion.div>
 
@@ -166,7 +169,7 @@ export default function FeaturedSection() {
                     href={`/catalog/${product.id}`}
                     className="text-sm font-medium text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 flex items-center gap-1 group-hover:gap-2 transition-all"
                   >
-                    Detail <ArrowRight className="w-3.5 h-3.5" />
+                    {t("detail")} <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
@@ -185,7 +188,7 @@ export default function FeaturedSection() {
             href="/catalog"
             className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/30"
           >
-            Lihat Semua Laptop
+            {t("featuredCta")}
             <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>

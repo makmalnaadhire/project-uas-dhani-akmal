@@ -7,19 +7,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Laptop } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSelector from "./LanguageSelector";
-
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Catalog", href: "/catalog" },
-  { label: "Compare", href: "/catalog/compare" },
-  { label: "Education", href: "/education" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navItems = [
+    { label: t("navHome"), href: "/" },
+    { label: t("navCatalog"), href: "/catalog" },
+    { label: t("navCompare"), href: "/catalog/compare" },
+    { label: t("navEducation"), href: "/education" },
+    { label: t("navAbout"), href: "/about" },
+    { label: t("navContact"), href: "/contact" },
+  ];
 
   return (
     <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50">
@@ -56,7 +58,7 @@ export default function Navbar() {
               href="/recommendations"
               className="hidden md:block bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
             >
-              Mulai Cari &rarr;
+              {t("navCta")} &rarr;
             </Link>
             <button
               className="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -100,7 +102,7 @@ export default function Navbar() {
                   className="block text-center bg-emerald-500 text-white text-sm font-semibold px-4 py-2.5 rounded-lg mt-2"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Mulai Cari &rarr;
+                  {t("navCta")} &rarr;
                 </Link>
               </div>
             </div>

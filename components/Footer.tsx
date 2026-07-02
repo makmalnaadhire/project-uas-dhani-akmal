@@ -4,14 +4,17 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Laptop } from "lucide-react";
 import { fadeIn } from "@/lib/motion";
-
-const links = [
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-  { label: "Privacy", href: "#" },
-];
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
+  const links = [
+    { label: t("footerAbout"), href: "/about" },
+    { label: t("footerContact"), href: "/contact" },
+    { label: t("footerPrivacy"), href: "#" },
+  ];
+
   return (
     <footer className="bg-gray-900 dark:bg-gray-950 text-gray-400 border-t border-gray-800">
       <motion.div
@@ -30,7 +33,7 @@ export default function Footer() {
           <div className="flex items-center gap-6">
             {links.map((link) => (
               <Link
-                key={link.label}
+                key={link.href}
                 href={link.href}
                 className="text-sm hover:text-white transition-colors"
               >
@@ -40,7 +43,7 @@ export default function Footer() {
           </div>
 
           <p className="text-sm">
-            &copy; {new Date().getFullYear()} LaptopPintar. All rights reserved.
+            &copy; {new Date().getFullYear()} LaptopPintar. {t("footerRights")}
           </p>
         </div>
       </motion.div>

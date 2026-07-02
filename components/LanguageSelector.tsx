@@ -3,8 +3,10 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/lib/LanguageContext";
+import type { Locale } from "@/lib/i18n";
 
-const languages = [
+const languages: { code: Locale; label: string; flag: string }[] = [
   { code: "en", label: "English", flag: "🇺🇸" },
   { code: "id", label: "Indonesian", flag: "🇮🇩" },
   { code: "ms", label: "Malay", flag: "🇲🇾" },
@@ -13,9 +15,11 @@ const languages = [
 ];
 
 export default function LanguageSelector() {
+  const { locale, setLocale } = useLanguage();
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(languages[0]);
   const ref = useRef<HTMLDivElement>(null);
+
+  const selected = languages.find((l) => l.code === locale) || languages[0];
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -52,7 +56,7 @@ export default function LanguageSelector() {
               <button
                 key={lang.code}
                 onClick={() => {
-                  setSelected(lang);
+                  setLocale(lang.code);
                   setOpen(false);
                 }}
                 className={`w-full flex items-center gap-2.5 px-4 py-2 text-sm transition-colors ${
