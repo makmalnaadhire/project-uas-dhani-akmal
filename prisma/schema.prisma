@@ -7,10 +7,13 @@ datasource db {
 }
 
 model Laptop {
-  id     Int    @id @default(autoincrement())
-  name   String
-  rating Float
-  specs  String
-  price  String
-  image  String
+  id          String  @id @db.VarChar(30)
+  nama        String
+  merek       String  @db.VarChar(50)
+  harga       Int
+  kondisi     String  @db.VarChar(20)
+  spesifikasi String?
+  kategori    String?
+  rating      Float?
+  sumber      String?
 }
