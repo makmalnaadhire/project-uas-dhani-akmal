@@ -46,7 +46,7 @@ export default function Navbar({ activeTab, switchTab, wishlistCount, compareCou
               D
             </div>
             <span className="text-lg font-bold font-[family-name:var(--font-display)] tracking-tight hidden sm:block">
-              <span className="text-gradient-hero">Dharian</span>
+              <span className="text-gradient-hero">LaptopPintar.id</span>
             </span>
           </button>
 

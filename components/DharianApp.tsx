@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import Navbar from "./Navbar";
 import HeroSection from "./sections/HeroSection";
 import CatalogSection from "./sections/CatalogSection";
@@ -27,6 +27,12 @@ export interface Laptop {
   category: string;
 }
 
+interface Message {
+  id: string;
+  role: "user" | "assistant";
+  content: string;
+}
+
 export default function DharianApp() {
   const [activeTab, setActiveTab] = useState<Tab>("home");
   const [selectedLaptop, setSelectedLaptop] = useState<Laptop | null>(null);
@@ -34,6 +40,76 @@ export default function DharianApp() {
   const [wishlist, setWishlist] = useState<number[]>([]);
   const [transitioning, setTransitioning] = useState(false);
   const [transitionDir, setTransitionDir] = useState<"left" | "right">("right");
+
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false); 
+  const chatEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isChatOpen) {
+      chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages, isChatOpen]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: "user",
+      content: input,
+    };
+
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
+    setInput("");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: updatedMessages.map(({ role, content }) => ({ role, content })),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || `Server returned ${response.status}`);
+      }
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          role: "assistant",
+          content: data.content,
+        },
+      ]);
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : String(error);
+      console.error("Error AI Chat:", msg);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          role: "assistant",
+          content: "Maaf kakak, sistem AI lagi dalam pengembangan. Maaf ya! 😊😘",
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const laptops = useMemo(() => laptopsData as Laptop[], []);
 
@@ -90,7 +166,7 @@ export default function DharianApp() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-[#0f172a] relative">
       <Navbar
         activeTab={activeTab}
         switchTab={switchTab}
@@ -109,6 +185,97 @@ export default function DharianApp() {
       </main>
 
       <Footer switchTab={switchTab} />
+
+      {/* ========================================================
+          🚀 FLOATING AI CHAT WINDOW (KANAN BAWAH GLOBAL)
+          ======================================================== */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
+        
+        {/* Box Chat Box Jendela */}
+        {isChatOpen ? (
+          <div className="w-[340px] sm:w-[380px] h-[480px] bg-zinc-950/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl flex flex-col mb-4 overflow-hidden transition-all duration-300">
+            
+            {/* Header Box */}
+            <div className="p-4 bg-gradient-to-r from-orange-500 to-amber-500 flex justify-between items-center shadow-md">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                <span className="font-bold text-white text-sm tracking-wide">Yanyan AI Assistant</span>
+              </div>
+              <button 
+                onClick={() => setIsChatOpen(false)}
+                className="text-white/80 hover:text-white transition-colors text-xs font-semibold px-2 py-1 bg-black/20 rounded-md"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* List Pesan Chat */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {messages.length === 0 && (
+                <div className="text-center text-zinc-500 mt-16 space-y-2 px-4">
+                  <p className="text-2xl">🤖</p>
+                  <p className="text-sm font-medium text-zinc-400">Halo! Ada yang bisa dibantu?</p>
+                  <p className="text-xs text-zinc-500">Tanyakan rekomendasi laptop, spesifikasi hardware, atau kecocokan budget kuliah/gaming kamu!</p>
+                </div>
+              )}
+
+              {messages.map((m) => (
+                <div key={m.id} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
+                  <div className={`max-w-[85%] p-3 rounded-xl text-xs leading-relaxed ${
+                    m.role === "user"
+                      ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-br-none shadow-md"
+                      : "bg-zinc-900 text-zinc-100 border border-white/5 rounded-bl-none"
+                  }`}>
+                    <span className="block font-bold text-[10px] opacity-60 mb-1">
+                      {m.role === "user" ? "Kamu" : "Yanyan AI"}
+                    </span>
+                    {m.content}
+                  </div>
+                </div>
+              ))}
+              
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="bg-zinc-900 text-zinc-400 border border-white/5 p-3 rounded-xl rounded-bl-none text-xs flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></span>
+                    <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></span>
+                    <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></span>
+                  </div>
+                </div>
+              )}
+              <div ref={chatEndRef} />
+            </div>
+
+            {/* Input Form Box */}
+            <form onSubmit={handleSubmit} className="p-3 bg-zinc-950/50 border-t border-white/10 flex gap-2">
+              <input
+                value={input}
+                onChange={handleInputChange}
+                className="flex-1 p-2.5 bg-zinc-900 border border-white/10 rounded-xl text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-orange-500 transition-all"
+                placeholder="Tanya rekomendasi laptop..."
+                disabled={isLoading}
+              />
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-4 rounded-xl text-xs font-semibold transition-all active:scale-95 disabled:opacity-50"
+              >
+                Kirim
+              </button>
+            </form>
+          </div>
+        ) : (
+          <button
+            onClick={() => setIsChatOpen(true)}
+            className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 active:scale-95 group relative"
+          >
+            <span className="text-xl">💬</span>
+            <span className="absolute right-14 bg-zinc-900 border border-white/10 text-white text-[10px] px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">
+              Tanya AI
+            </span>
+          </button>
+        )}
+      </div>
 
       <LaptopModal
         laptop={selectedLaptop}

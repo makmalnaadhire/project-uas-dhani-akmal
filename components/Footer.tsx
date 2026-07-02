@@ -15,10 +15,10 @@ export default function Footer({ switchTab }: Props) {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2dd4bf] via-[#d946ef] to-[#f97316] flex items-center justify-center font-bold text-white text-xs font-[family-name:var(--font-display)]">
-                D
+                LP
               </div>
               <span className="text-base font-bold font-[family-name:var(--font-display)] text-gradient-hero">
-                Dharian
+                LaptopPintar
               </span>
             </div>
             <p className="text-xs text-slate-500 leading-relaxed max-w-xs">
@@ -59,10 +59,7 @@ export default function Footer({ switchTab }: Props) {
 
         <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-[10px] text-slate-600">
-            &copy; 2025 Dharian. Hak cipta dilindungi.
-          </p>
-          <p className="text-[10px] text-slate-600 flex items-center gap-1">
-            Dibuat dengan <Heart size={10} className="text-[#ec4899]" fill="currentColor" /> oleh Dhani &amp; Akmal
+            &copy; 2026 LaptopPintar. Hak cipta dilindungi.
           </p>
         </div>
       </div>
