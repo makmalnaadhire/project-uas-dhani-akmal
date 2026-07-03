@@ -32,17 +32,17 @@ const budgetRanges = [
 ];
 
 const conditions = [
-  { id: "New", label: "Baru Saja", desc: "Laptop baru bergaransi resmi" },
-  { id: "Used", label: "Bekas / Second", desc: "Laptop bekas dengan harga lebih terjangkau" },
+  { id: "Baru", label: "Baru Saja", desc: "Laptop baru bergaransi resmi" },
+  { id: "Bekas", label: "Bekas / Second", desc: "Laptop bekas dengan harga lebih terjangkau" },
   { id: "All", label: "Semua Kondisi", desc: "Termasuk baru dan bekas" },
 ];
 
 function matchCategory(need: string, laptop: Laptop): boolean {
-  const cat = laptop.category.toLowerCase();
+  const cats = laptop.kategori.map(k => k.toLowerCase());
   switch (need) {
-    case "kuliah": return cat.includes("college") || cat.includes("work");
-    case "gaming": return cat.includes("gaming");
-    case "editing": return cat.includes("editing");
+    case "kuliah": return cats.some(c => c.includes("pelajar") || c.includes("pekerja"));
+    case "gaming": return cats.some(c => c.includes("gaming"));
+    case "editing": return cats.some(c => c.includes("editing") || c.includes("kreator") || c.includes("desain"));
     default: return true;
   }
 }
@@ -60,16 +60,16 @@ export default function RecommendSection({ laptops, setSelectedLaptop }: Props) 
     const budget = budgetRanges[budgetRange];
     return laptops.filter(l => {
       const matchN = matchCategory(selectedNeed, l);
-      const matchB = l.price >= budget.min && l.price <= budget.max;
-      const matchC = selectedCondition === "All" || l.condition === selectedCondition;
+      const matchB = l.harga >= budget.min && l.harga <= budget.max;
+      const matchC = selectedCondition === "All" || l.kondisi === selectedCondition;
       return matchN && matchB && matchC;
     }).sort((a, b) => {
       let sa = 0, sb = 0;
-      if (a.condition === "New") sa += 10;
-      if (b.condition === "New") sb += 10;
-      sa += parseInt(a.ram);
-      sb += parseInt(b.ram);
-      return sb - sa || a.price - b.price;
+      if (a.kondisi === "Baru") sa += 10;
+      if (b.kondisi === "Baru") sb += 10;
+      sa += parseInt(a.spesifikasi.ram);
+      sb += parseInt(b.spesifikasi.ram);
+      return sb - sa || a.harga - b.harga;
     });
   }, [laptops, selectedNeed, budgetRange, selectedCondition]);
 
@@ -181,12 +181,12 @@ export default function RecommendSection({ laptops, setSelectedLaptop }: Props) 
                   <button key={l.id} onClick={() => setSelectedLaptop(l)} className="w-full flex items-center gap-4 p-4 rounded-xl bg-white/3 border border-white/10 hover:border-[#f97316]/30 text-left transition-all group">
                     <div className="w-8 h-8 rounded-lg bg-[#f97316]/10 text-[#f97316] flex items-center justify-center text-sm font-bold flex-shrink-0">{i + 1}</div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-sm font-medium text-white group-hover:text-[#f97316] transition-colors truncate">{l.name}</div>
-                      <div className="text-xs text-slate-500">{l.cpu} · {l.ram} · {l.gpu}</div>
+                      <div className="text-sm font-medium text-white group-hover:text-[#f97316] transition-colors truncate">{l.nama}</div>
+                      <div className="text-xs text-slate-500">{l.spesifikasi.processor} · {l.spesifikasi.ram}</div>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <div className="text-sm font-bold font-[family-name:var(--font-display)]">{formatRupiah(l.price)}</div>
-                      <div className={`text-[10px] ${l.condition === "New" ? "text-[#2dd4bf]" : "text-[#f97316]"}`}>{l.condition === "New" ? "Baru" : "Bekas"}</div>
+                      <div className="text-sm font-bold font-[family-name:var(--font-display)]">{formatRupiah(l.harga)}</div>
+                      <div className={`text-[10px] ${l.kondisi === "Baru" ? "text-[#2dd4bf]" : "text-[#f97316]"}`}>{l.kondisi}</div>
                     </div>
                     <ArrowRight size={14} className="text-slate-600 group-hover:text-[#f97316] transition-colors flex-shrink-0" />
                   </button>

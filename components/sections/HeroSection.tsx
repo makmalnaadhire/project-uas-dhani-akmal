@@ -17,8 +17,8 @@ export default function HeroSection() {
   const { laptops } = useApp();
   const { t } = useTranslation();
   const totalLaptops = laptops.length;
-  const brands = [...new Set(laptops.map((l) => l.brand))].length;
-  const avgPrice = laptops.reduce((s, l) => s + l.price, 0) / laptops.length;
+  const brands = [...new Set(laptops.map((l) => l.merek))].length;
+  const avgPrice = laptops.reduce((s, l) => s + l.harga, 0) / laptops.length;
 
   const stats = [
     { icon: <Laptop2 size={22} />, value: totalLaptops, label: t.statLaptops, color: "text-[#2dd4bf]", bg: "bg-[#2dd4bf]/10" },

@@ -95,7 +95,7 @@ export default function EducationSection({ laptops }: Props) {
     return Math.round(estOrigPrice * retention / 100);
   };
 
-  const brands = [...new Set(laptops.map(l => l.brand))].sort();
+  const brands = [...new Set(laptops.map(l => l.merek))].sort();
 
   return (
     <div className="pt-24 pb-20 max-w-5xl mx-auto px-4 sm:px-6 min-h-screen">

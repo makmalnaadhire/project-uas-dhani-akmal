@@ -1,6 +1,8 @@
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { generateText } from "ai";
 import { NextResponse } from "next/server";
+import laptopsData from "@/data/laptops.json";
+import type { Laptop } from "@/lib/types";
 
 export async function POST(req: Request) {
   try {
@@ -22,13 +24,26 @@ export async function POST(req: Request) {
       );
     }
 
+    const laptops = laptopsData as Laptop[];
+
+    const laptopCatalog = laptops.map(l => {
+      const isu = l.isu_diketahui ?? "Tidak ada isu yang dilaporkan";
+      return `- ${l.nama} (${l.merek}, ${l.tahun}) | Harga: Rp ${l.harga.toLocaleString("id-ID")} | Kondisi: ${l.kondisi} | Kategori: ${l.kategori.join(", ")} | CPU: ${l.spesifikasi.processor} | RAM: ${l.spesifikasi.ram} | Storage: ${l.spesifikasi.storage} | GPU: ${l.spesifikasi.gpu} | Display: ${l.spesifikasi.display} | OS: ${l.spesifikasi.os} | Status: ${l.status} | Catatan: ${l.catatan ?? "Tidak ada catatan"} | Isu: ${isu}`;
+    }).join("\n");
+
     const google = createGoogleGenerativeAI({ apiKey });
 
     const { text } = await generateText({
-      model: google("gemini-3.5-flash"),
+      model: google("gemini-1.5-flash"),
       system:
         "You are Ling AI, a friendly, smart, and helpful laptop consultant assistant for LaptopPintar. " +
-        "Help users choose the best laptop based on their technical needs, specs, and budget dynamically.",
+        "Help users choose the best laptop based on their technical needs, specs, and budget dynamically. " +
+        "Always refer to the platform as LaptopPintar when relevant. " +
+        "You have access to the following laptop database:\n\n" +
+        laptopCatalog + "\n\n" +
+        "When recommending laptops, use the actual data above. Mention specific model names, prices in Rupiah, and key specs. " +
+        "If a user asks about a specific brand or category, filter from this database. " +
+        "Always respond in the same language the user writes in (Indonesian or English).",
       messages,
     });
 

@@ -8,8 +8,8 @@ import { Search, SlidersHorizontal, X, Heart } from "lucide-react";
 
 interface Props {
   laptops: Laptop[];
-  wishlist: number[];
-  toggleWishlist: (id: number) => void;
+  wishlist: string[];
+  toggleWishlist: (id: string) => void;
   compareList: Laptop[];
   toggleCompare: (laptop: Laptop) => void;
   setSelectedLaptop: (l: Laptop | null) => void;
@@ -17,13 +17,15 @@ interface Props {
 
 const formatRupiah = (n: number) => "Rp " + n.toLocaleString("id-ID");
 
-const categoryColors: Record<string, string> = {
-  "College/Work": "text-[#2dd4bf] bg-[#2dd4bf]/10 border-[#2dd4bf]/20",
-  "Gaming": "text-[#ef4444] bg-[#ef4444]/10 border-[#ef4444]/20",
-  "Gaming/Editing": "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/20",
-  "Editing/College": "text-[#d946ef] bg-[#d946ef]/10 border-[#d946ef]/20",
-  "Editing": "text-[#a855f7] bg-[#a855f7]/10 border-[#a855f7]/20",
-  "Editing/Gaming": "text-[#ec4899] bg-[#ec4899]/10 border-[#ec4899]/20",
+const kategoriColors: Record<string, string> = {
+  pelajar: "text-[#2dd4bf] bg-[#2dd4bf]/10 border-[#2dd4bf]/20",
+  pekerja: "text-[#3b82f6] bg-[#3b82f6]/10 border-[#3b82f6]/20",
+  gaming: "text-[#ef4444] bg-[#ef4444]/10 border-[#ef4444]/20",
+  kreator: "text-[#d946ef] bg-[#d946ef]/10 border-[#d946ef]/20",
+  desain: "text-[#a855f7] bg-[#a855f7]/10 border-[#a855f7]/20",
+  editing: "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/20",
+  bisnis: "text-[#06b6d4] bg-[#06b6d4]/10 border-[#06b6d4]/20",
+  premium: "text-[#ec4899] bg-[#ec4899]/10 border-[#ec4899]/20",
 };
 
 export default function CatalogSection({
@@ -34,31 +36,33 @@ export default function CatalogSection({
   const [brandFilter, setBrandFilter] = useState("All");
   const [conditionFilter, setConditionFilter] = useState("All");
   const [categoryFilter, setCategoryFilter] = useState("All");
-  const [sortBy, setSortBy] = useState("name");
+  const [sortBy, setSortBy] = useState("nama");
   const [showFilters, setShowFilters] = useState(false);
 
-  const brands = useMemo(() => ["All", ...Array.from(new Set(laptops.map(l => l.brand)))].sort(), [laptops]);
-  const categories = useMemo(() => ["All", ...Array.from(new Set(laptops.map(l => l.category)))].sort(), [laptops]);
+  const brands = useMemo(() => ["All", ...Array.from(new Set(laptops.map(l => l.merek)))].sort(), [laptops]);
+  const allKategori = useMemo(() => ["All", ...Array.from(new Set(laptops.flatMap(l => l.kategori)))].sort(), [laptops]);
 
   const filtered = useMemo(() => {
     let list = [...laptops];
     if (search) {
       const q = search.toLowerCase();
       list = list.filter(l =>
-        l.name.toLowerCase().includes(q) ||
-        l.brand.toLowerCase().includes(q) ||
-        l.cpu.toLowerCase().includes(q) ||
-        l.gpu.toLowerCase().includes(q)
+        l.nama.toLowerCase().includes(q) ||
+        l.merek.toLowerCase().includes(q) ||
+        l.seri.toLowerCase().includes(q) ||
+        l.spesifikasi.processor.toLowerCase().includes(q) ||
+        l.spesifikasi.gpu.toLowerCase().includes(q)
       );
     }
-    if (brandFilter !== "All") list = list.filter(l => l.brand === brandFilter);
-    if (conditionFilter !== "All") list = list.filter(l => l.condition === conditionFilter);
-    if (categoryFilter !== "All") list = list.filter(l => l.category === categoryFilter);
+    if (brandFilter !== "All") list = list.filter(l => l.merek === brandFilter);
+    if (conditionFilter !== "All") list = list.filter(l => l.kondisi === conditionFilter);
+    if (categoryFilter !== "All") list = list.filter(l => l.kategori.includes(categoryFilter));
 
     switch (sortBy) {
-      case "price-low": list.sort((a, b) => a.price - b.price); break;
-      case "price-high": list.sort((a, b) => b.price - a.price); break;
-      case "name": list.sort((a, b) => a.name.localeCompare(b.name)); break;
+      case "harga-low": list.sort((a, b) => a.harga - b.harga); break;
+      case "harga-high": list.sort((a, b) => b.harga - a.harga); break;
+      case "nama": list.sort((a, b) => a.nama.localeCompare(b.nama)); break;
+      case "tahun": list.sort((a, b) => b.tahun - a.tahun); break;
     }
     return list;
   }, [laptops, search, brandFilter, conditionFilter, categoryFilter, sortBy]);
@@ -114,22 +118,23 @@ export default function CatalogSection({
               <label className="text-xs text-slate-500 mb-1 block">{t.catalogCondition}</label>
               <select value={conditionFilter} onChange={e => setConditionFilter(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#2dd4bf]/50">
                 <option value="All">{t.catalogAll}</option>
-                <option value="New">{t.catalogNew}</option>
-                <option value="Used">{t.catalogUsed}</option>
+                <option value="Baru">{t.catalogNew}</option>
+                <option value="Bekas">{t.catalogUsed}</option>
               </select>
             </div>
             <div>
               <label className="text-xs text-slate-500 mb-1 block">{t.catalogCategory}</label>
               <select value={categoryFilter} onChange={e => setCategoryFilter(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#2dd4bf]/50">
-                {categories.map(c => <option key={c} value={c}>{c}</option>)}
+                {allKategori.map(c => <option key={c} value={c}>{c === "All" ? t.catalogAll : c}</option>)}
               </select>
             </div>
             <div>
               <label className="text-xs text-slate-500 mb-1 block">{t.catalogSort}</label>
               <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#2dd4bf]/50">
-                <option value="name">{t.catalogSortName}</option>
-                <option value="price-low">{t.catalogSortLow}</option>
-                <option value="price-high">{t.catalogSortHigh}</option>
+                <option value="nama">{t.catalogSortName}</option>
+                <option value="harga-low">{t.catalogSortLow}</option>
+                <option value="harga-high">{t.catalogSortHigh}</option>
+                <option value="tahun">Terbaru</option>
               </select>
             </div>
           </div>
@@ -144,7 +149,7 @@ export default function CatalogSection({
           <div className="flex gap-2">
             {compareList.map(l => (
               <span key={l.id} className="px-2 py-1 rounded bg-[#2dd4bf]/10 text-[#2dd4bf] text-xs">
-                {l.name}
+                {l.nama}
               </span>
             ))}
           </div>
@@ -173,45 +178,60 @@ export default function CatalogSection({
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1 min-w-0">
                       <h3 className="text-sm font-semibold text-white truncate group-hover:text-[#2dd4bf] transition-colors">
-                        {laptop.name}
+                        {laptop.nama}
                       </h3>
-                      <p className="text-xs text-slate-500 mt-0.5">{laptop.brand}</p>
+                      <p className="text-xs text-slate-500 mt-0.5">{laptop.merek} &middot; {laptop.tahun}</p>
                     </div>
                     <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ml-2 whitespace-nowrap ${
-                      laptop.condition === "New"
+                      laptop.kondisi === "Baru"
                         ? "text-[#2dd4bf] bg-[#2dd4bf]/10 border-[#2dd4bf]/20"
                         : "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/20"
                     }`}>
-                      {laptop.condition === "New" ? t.catalogNew : t.catalogUsed}
+                      {laptop.kondisi}
                     </span>
                   </div>
 
                   <div className="space-y-1.5 mb-4">
                     <div className="flex items-center gap-2 text-xs text-slate-400">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#2dd4bf]/60" />
-                      {laptop.cpu}
+                      {laptop.spesifikasi.processor}
                     </div>
                     <div className="flex items-center gap-2 text-xs text-slate-400">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#d946ef]/60" />
-                      {laptop.ram} RAM · {laptop.storage}
+                      {laptop.spesifikasi.ram} &middot; {laptop.spesifikasi.storage}
                     </div>
                     <div className="flex items-center gap-2 text-xs text-slate-400">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#f97316]/60" />
-                      {laptop.gpu}
+                      {laptop.spesifikasi.gpu}
                     </div>
                   </div>
 
-                  <span className={`inline-block text-[10px] font-medium px-2 py-0.5 rounded-md border mb-4 ${
-                    categoryColors[laptop.category] || "text-slate-400 bg-white/5 border-white/10"
-                  }`}>
-                    {laptop.category}
-                  </span>
+                  <div className="flex flex-wrap gap-1 mb-4">
+                    {laptop.kategori.slice(0, 3).map(kat => (
+                      <span key={kat} className={`inline-block text-[10px] font-medium px-2 py-0.5 rounded-md border ${
+                        kategoriColors[kat] || "text-slate-400 bg-white/5 border-white/10"
+                      }`}>
+                        {kat}
+                      </span>
+                    ))}
+                  </div>
 
-                  <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                    <span className="text-lg font-bold font-[family-name:var(--font-display)] text-white">
-                      {formatRupiah(laptop.price)}
-                    </span>
-                    <div className="flex items-center gap-1.5">
+                  {laptop.isu_diketahui && (
+                    <p className="text-[10px] text-slate-500 mb-3 line-clamp-2 leading-relaxed">
+                      &#x26A0; {laptop.isu_diketahui}
+                    </p>
+                  )}
+
+                  <div className="flex justify-between items-start pt-3 border-t border-white/5 gap-3">
+                    <div className="flex-1 min-w-0">
+                      <span className="text-lg font-bold font-[family-name:var(--font-display)] text-white block leading-tight">
+                        {formatRupiah(laptop.harga)}
+                      </span>
+                      <span className="text-[10px] italic text-slate-500 mt-0.4 block leading-tight">
+                        *Harga kisaran, dapat berubah sewaktu-waktu
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1.5 flex-shrink-0">
                       <button
                         onClick={(e) => { e.stopPropagation(); e.preventDefault(); toggleWishlist(laptop.id); }}
                         className={`p-2 rounded-lg transition-all ${

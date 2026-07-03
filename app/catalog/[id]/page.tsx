@@ -22,7 +22,7 @@ const formatRupiah = (n: number) => "Rp " + n.toLocaleString("id-ID");
 export default function LaptopDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const laptops = laptopsData as Laptop[];
-  const laptop = laptops.find((l) => l.id === Number(id));
+  const laptop = laptops.find((l) => l.id === id);
 
   if (!laptop) notFound();
 
@@ -31,10 +31,10 @@ export default function LaptopDetailPage({ params }: { params: Promise<{ id: str
   const inCompare = compareList.some((c) => c.id === laptop.id);
 
   const specs = [
-    { icon: <Cpu size={18} />, label: "Processor", value: laptop.cpu, color: "text-[#2dd4bf]" },
-    { icon: <MemoryStick size={18} />, label: "RAM", value: laptop.ram, color: "text-[#d946ef]" },
-    { icon: <HardDrive size={18} />, label: "Storage", value: laptop.storage, color: "text-[#f97316]" },
-    { icon: <Monitor size={18} />, label: "GPU", value: laptop.gpu, color: "text-[#06b6d4]" },
+    { icon: <Cpu size={18} />, label: "Processor", value: laptop.spesifikasi.processor, color: "text-[#2dd4bf]" },
+    { icon: <MemoryStick size={18} />, label: "RAM", value: laptop.spesifikasi.ram, color: "text-[#d946ef]" },
+    { icon: <HardDrive size={18} />, label: "Storage", value: laptop.spesifikasi.storage, color: "text-[#f97316]" },
+    { icon: <Monitor size={18} />, label: "GPU", value: laptop.spesifikasi.gpu, color: "text-[#06b6d4]" },
   ];
 
   return (
@@ -54,20 +54,20 @@ export default function LaptopDetailPage({ params }: { params: Promise<{ id: str
           <div className="flex items-start justify-between mb-6">
             <div>
               <span className={`text-xs font-medium px-3 py-1 rounded-full border ${
-                laptop.condition === "New"
+                laptop.kondisi === "Baru"
                   ? "text-[#2dd4bf] bg-[#2dd4bf]/10 border-[#2dd4bf]/20"
                   : "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/20"
               }`}>
-                {laptop.condition === "New" ? "Baru" : "Bekas"}
+                {laptop.kondisi}
               </span>
               <h1 className="text-3xl font-bold text-white mt-3 font-[family-name:var(--font-display)]">
-                {laptop.name}
+                {laptop.nama}
               </h1>
-              <p className="text-slate-400 mt-1">{laptop.brand} &middot; {laptop.category}</p>
+              <p className="text-slate-400 mt-1">{laptop.merek} &middot; {laptop.seri} &middot; {laptop.tahun}</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
             {specs.map((s, i) => (
               <div key={i} className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
                 <div className="flex items-center gap-2 mb-2">
@@ -79,13 +79,36 @@ export default function LaptopDetailPage({ params }: { params: Promise<{ id: str
             ))}
           </div>
 
+          <div className="flex flex-wrap gap-1 mb-5">
+            {laptop.kategori.map(kat => (
+              <span key={kat} className="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-400">
+                {kat}
+              </span>
+            ))}
+            <span className="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-500">
+              {laptop.status}
+            </span>
+          </div>
+
+          {laptop.catatan && (
+            <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 mb-4">
+              <p className="text-sm text-slate-400 leading-relaxed">{laptop.catatan}</p>
+            </div>
+          )}
+
+          {laptop.isu_diketahui && (
+            <div className="p-4 rounded-xl bg-amber-500/5 border border-amber-500/10 mb-6">
+              <p className="text-sm text-amber-400/80 leading-relaxed">&#x26A0; {laptop.isu_diketahui}</p>
+            </div>
+          )}
+
           <div className="p-5 rounded-xl bg-gradient-to-r from-[#2dd4bf]/5 to-[#d946ef]/5 border border-white/5 mb-8">
             <div className="flex items-center gap-2 mb-1">
               <Tag size={16} className="text-[#2dd4bf]" />
               <span className="text-xs text-slate-500">Harga</span>
             </div>
             <p className="text-3xl font-bold font-[family-name:var(--font-display)] text-white">
-              {formatRupiah(laptop.price)}
+              {formatRupiah(laptop.harga)}
             </p>
           </div>
 

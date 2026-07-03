@@ -11,8 +11,8 @@ interface AppContextType {
   compareList: Laptop[];
   toggleCompare: (laptop: Laptop) => void;
   clearCompare: () => void;
-  wishlist: number[];
-  toggleWishlist: (id: number) => void;
+  wishlist: string[];
+  toggleWishlist: (id: string) => void;
   selectedLaptop: Laptop | null;
   setSelectedLaptop: (laptop: Laptop | null) => void;
 }
@@ -28,7 +28,7 @@ export function useApp() {
 export default function AppProvider({ children }: { children: ReactNode }) {
   const laptops = laptopsData as Laptop[];
   const [compareList, setCompareList] = useState<Laptop[]>([]);
-  const [wishlist, setWishlist] = useState<number[]>([]);
+  const [wishlist, setWishlist] = useState<string[]>([]);
   const [selectedLaptop, setSelectedLaptop] = useState<Laptop | null>(null);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function AppProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("laptoppintar-wishlist", JSON.stringify(wishlist));
   }, [wishlist]);
 
-  const toggleWishlist = useCallback((id: number) => {
+  const toggleWishlist = useCallback((id: string) => {
     setWishlist(prev =>
       prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
     );
