@@ -97,13 +97,10 @@ export default function ChatWidget() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
       {isChatOpen ? (
-        <div className="w-[380px] sm:w-[440px] max-h-[70vh] bg-zinc-950/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl flex flex-col mb-4 overflow-hidden transition-all duration-300">
+        <div className="w-[380px] sm:w-[440px] max-h-[82vh] bg-zinc-950/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl flex flex-col mb-4 overflow-hidden transition-all duration-300">
           {/* Header */}
           <div className="p-4 bg-gradient-to-r from-indigo-600 to-violet-600 flex justify-between items-center shadow-md">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-white/15 flex items-center justify-center text-white text-xs font-bold">
-                LP
-              </div>
               <div>
                 <span className="font-bold text-white text-sm tracking-wide block">{t.chatTitle}</span>
                 <span className="text-[10px] text-white/60 flex items-center gap-1">

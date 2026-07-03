@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { useApp } from "@/components/providers/AppProvider";
 import { useUser } from "@/components/providers/UserProvider";
@@ -27,6 +28,7 @@ import {
 interface NavItem {
   href: string;
   labelKey: "navHome" | "navCatalog" | "navRecommend" | "navEducation" | "navAbout" | "navContact";
+  label: string;
   icon: React.ReactNode;
   color: string;
 }
@@ -86,9 +88,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#2dd4bf] via-[#d946ef] to-[#f97316] flex items-center justify-center font-bold text-white text-sm font-[family-name:var(--font-display)]">
-              LP
-            </div>
+            <Image
+              src="/Logo.png"
+              alt="LaptopPintar Logo"
+              width={40}
+              height={40}
+              className="rounded-lg object-cover"
+              priority
+            />
             <span className="text-lg font-bold font-[family-name:var(--font-display)] tracking-tight hidden sm:block">
               <span className="text-gradient-hero">LaptopPintar.id</span>
             </span>

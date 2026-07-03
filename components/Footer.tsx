@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslation } from "@/components/providers/LanguageProvider";
 
 export default function Footer() {
@@ -12,9 +13,13 @@ export default function Footer() {
         <div className="grid sm:grid-cols-3 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2dd4bf] via-[#d946ef] to-[#f97316] flex items-center justify-center font-bold text-white text-xs font-[family-name:var(--font-display)]">
-                LP
-              </div>
+              <Image
+                src="/Logo.png"
+                alt="LaptopPintar Logo"
+                width={32}
+                height={32}
+                className="rounded-lg object-cover"
+              />
               <span className="text-base font-bold font-[family-name:var(--font-display)] text-gradient-hero">
                 LaptopPintar.id
               </span>

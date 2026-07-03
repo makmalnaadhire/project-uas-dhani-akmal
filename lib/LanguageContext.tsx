@@ -1,7 +1,9 @@
 "use client";
 
 import { createContext, useContext, useState, useCallback } from "react";
-import { type Locale, translations } from "./i18n";
+import translations from "./i18n";
+
+type Locale = "id" | "en";
 
 type LanguageContextType = {
   locale: Locale;
@@ -24,7 +26,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   const t = useCallback(
     (key: string, vars?: Record<string, string | number>) => {
-      let text = translations[locale][key] || translations.en[key] || key;
+      const lang = translations[locale] as Record<string, string>;
+      const fallback = translations.en as Record<string, string>;
+      let text = lang[key] || fallback[key] || key;
       if (vars) {
         Object.entries(vars).forEach(([k, v]) => {
           text = text.replace(`{${k}}`, String(v));
