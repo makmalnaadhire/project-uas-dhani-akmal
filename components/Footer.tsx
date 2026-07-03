@@ -16,7 +16,7 @@ export default function Footer() {
                 LP
               </div>
               <span className="text-base font-bold font-[family-name:var(--font-display)] text-gradient-hero">
-                LaptopPintar
+                LaptopPintar.id
               </span>
             </div>
             <p className="text-xs text-slate-500 leading-relaxed max-w-xs">
@@ -48,7 +48,7 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-3">{t.footerProject}</h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              UAS Pemrograman Web Lanjut
+              UAS Pemrograman Web
               <br />
               Dhani &amp; Akmal &middot; 2026
             </p>

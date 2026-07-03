@@ -19,8 +19,6 @@ import {
   X,
   LogIn,
   LogOut,
-  Sun,
-  Moon,
   Globe,
   ChevronDown,
   User as UserIcon,
@@ -49,7 +47,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const { wishlist, compareList } = useApp();
-  const { user, isLoggedIn, login, logout, theme, toggleTheme, language, setLanguage } = useUser();
+  const { user, isLoggedIn, login, logout, language, setLanguage } = useUser();
   const { t } = useTranslation();
 
   const navItems: NavItem[] = navItemDefs.map((item) => ({
@@ -115,14 +113,17 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2">
             {compareList.length > 0 && (
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#2dd4bf]/10 border border-[#2dd4bf]/30 text-[#2dd4bf] text-xs font-medium">
+              <Link
+                href="/catalog"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#2dd4bf]/10 border border-[#2dd4bf]/30 text-[#2dd4bf] text-xs font-medium cursor-pointer hover:bg-[#2dd4bf]/20 hover:border-[#2dd4bf]/50 transition-all"
+              >
                 <GitCompareArrows size={14} />
                 <span>{compareList.length}</span>
-              </div>
+              </Link>
             )}
             <Link
-              href="/catalog"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#ec4899]/10 border border-[#ec4899]/30 text-[#ec4899] text-xs font-medium"
+              href="/wishlist"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#ec4899]/10 border border-[#ec4899]/30 text-[#ec4899] text-xs font-medium cursor-pointer hover:bg-[#ec4899]/20 hover:border-[#ec4899]/50 transition-all"
             >
               <Heart size={14} />
               <span>{wishlist.length}</span>
@@ -174,19 +175,6 @@ export default function Navbar() {
                     </button>
 
                     <div className="my-1 border-t border-white/5" />
-
-                    <button
-                      onClick={toggleTheme}
-                      className="w-full flex items-center justify-between px-5 py-2.5 text-sm text-slate-300 hover:bg-white/5 hover:text-white transition-colors"
-                    >
-                      <span className="flex items-center gap-3">
-                        {theme === "dark" ? <Moon size={16} className="text-[#d946ef]" /> : <Sun size={16} className="text-[#f97316]" />}
-                        {t.navTheme}
-                      </span>
-                      <span className="text-xs text-slate-500 bg-white/5 px-2.5 py-1 rounded-md">
-                        {theme === "dark" ? t.navDark : t.navLight}
-                      </span>
-                    </button>
 
                     <button
                       onClick={() => setLanguage(language === "id" ? "en" : "id")}

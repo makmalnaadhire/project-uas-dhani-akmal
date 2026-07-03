@@ -171,16 +171,16 @@ export default function CatalogSection({
               <Link
                 key={laptop.id}
                 href={`/catalog/${laptop.id}`}
-                className="card-glow glass rounded-xl overflow-hidden group"
+                className="card-glow rounded-xl overflow-hidden group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
               >
                 <div className="h-1 bg-gradient-to-r from-[#2dd4bf] via-[#d946ef] to-[#f97316] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="p-5">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-semibold text-white truncate group-hover:text-[#2dd4bf] transition-colors">
+                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white truncate group-hover:text-[#2dd4bf] transition-colors">
                         {laptop.nama}
                       </h3>
-                      <p className="text-xs text-slate-500 mt-0.5">{laptop.merek} &middot; {laptop.tahun}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{laptop.merek} &middot; {laptop.tahun}</p>
                     </div>
                     <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ml-2 whitespace-nowrap ${
                       laptop.kondisi === "Baru"
@@ -191,17 +191,17 @@ export default function CatalogSection({
                     </span>
                   </div>
 
-                  <div className="space-y-1.5 mb-4">
-                    <div className="flex items-center gap-2 text-xs text-slate-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#2dd4bf]/60" />
+                  <div className="space-y-1.5 mb-4 p-3 rounded-lg bg-slate-900">
+                    <div className="flex items-center gap-2 text-xs text-slate-200">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#2dd4bf]" />
                       {laptop.spesifikasi.processor}
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-slate-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#d946ef]/60" />
+                    <div className="flex items-center gap-2 text-xs text-slate-200">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#d946ef]" />
                       {laptop.spesifikasi.ram} &middot; {laptop.spesifikasi.storage}
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-slate-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#f97316]/60" />
+                    <div className="flex items-center gap-2 text-xs text-slate-200">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#f97316]" />
                       {laptop.spesifikasi.gpu}
                     </div>
                   </div>
@@ -209,7 +209,7 @@ export default function CatalogSection({
                   <div className="flex flex-wrap gap-1 mb-4">
                     {laptop.kategori.slice(0, 3).map(kat => (
                       <span key={kat} className={`inline-block text-[10px] font-medium px-2 py-0.5 rounded-md border ${
-                        kategoriColors[kat] || "text-slate-400 bg-white/5 border-white/10"
+                        kategoriColors[kat] || "text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-white/5 border-slate-200 dark:border-white/10"
                       }`}>
                         {kat}
                       </span>
@@ -217,17 +217,17 @@ export default function CatalogSection({
                   </div>
 
                   {laptop.isu_diketahui && (
-                    <p className="text-[10px] text-slate-500 mb-3 line-clamp-2 leading-relaxed">
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400 mb-3 line-clamp-2 leading-relaxed">
                       &#x26A0; {laptop.isu_diketahui}
                     </p>
                   )}
 
-                  <div className="flex justify-between items-start pt-3 border-t border-white/5 gap-3">
+                  <div className="flex justify-between items-start pt-3 border-t border-slate-200 dark:border-white/5 gap-3">
                     <div className="flex-1 min-w-0">
-                      <span className="text-lg font-bold font-[family-name:var(--font-display)] text-white block leading-tight">
+                      <span className="text-lg font-bold font-[family-name:var(--font-display)] text-slate-900 dark:text-white block leading-tight">
                         {formatRupiah(laptop.harga)}
                       </span>
-                      <span className="text-[10px] italic text-slate-500 mt-0.4 block leading-tight">
+                      <span className="text-[10px] italic text-slate-500 dark:text-slate-400 mt-0.4 block leading-tight">
                         *Harga kisaran, dapat berubah sewaktu-waktu
                       </span>
                     </div>
@@ -235,7 +235,7 @@ export default function CatalogSection({
                       <button
                         onClick={(e) => { e.stopPropagation(); e.preventDefault(); toggleWishlist(laptop.id); }}
                         className={`p-2 rounded-lg transition-all ${
-                          isWished ? "bg-[#ec4899]/15 text-[#ec4899]" : "bg-white/5 text-slate-500 hover:text-[#ec4899] hover:bg-[#ec4899]/10"
+                          isWished ? "bg-[#ec4899]/15 text-[#ec4899]" : "bg-slate-100 dark:bg-white/5 text-slate-500 hover:text-[#ec4899] hover:bg-[#ec4899]/10"
                         }`}
                       >
                         <Heart size={14} fill={isWished ? "currentColor" : "none"} />
@@ -243,7 +243,7 @@ export default function CatalogSection({
                       <button
                         onClick={(e) => { e.stopPropagation(); e.preventDefault(); toggleCompare(laptop); }}
                         className={`px-2.5 py-1.5 rounded-lg text-[10px] font-medium transition-all ${
-                          inCompare ? "bg-[#2dd4bf]/15 text-[#2dd4bf] border border-[#2dd4bf]/30" : "bg-white/5 text-slate-500 border border-white/10 hover:text-[#2dd4bf] hover:border-[#2dd4bf]/30"
+                          inCompare ? "bg-[#2dd4bf]/15 text-[#2dd4bf] border border-[#2dd4bf]/30" : "bg-slate-100 dark:bg-white/5 text-slate-500 border border-slate-200 dark:border-white/10 hover:text-[#2dd4bf] hover:border-[#2dd4bf]/30"
                         }`}
                       >
                         {inCompare ? t.catalogCompareChosen : t.catalogCompareBtn}

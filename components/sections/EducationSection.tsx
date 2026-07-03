@@ -60,13 +60,13 @@ const yearThresholds = [
 function Accordion({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="glass rounded-xl overflow-hidden">
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left">
-        <span className="text-sm font-medium text-white pr-4">{q}</span>
+        <span className="text-sm font-medium text-slate-900 dark:text-white pr-4">{q}</span>
         <ChevronDown size={16} className={`text-[#d946ef] flex-shrink-0 chevron-rotate ${open ? "open" : ""}`} />
       </button>
       {open && (
-        <div className="px-5 pb-5 text-sm text-slate-400 leading-relaxed border-t border-white/5 pt-4 slide-up">{a}</div>
+        <div className="px-5 pb-5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-white/5 pt-4 slide-up">{a}</div>
       )}
     </div>
   );
@@ -120,13 +120,13 @@ export default function EducationSection({ laptops }: Props) {
       {activeSubTab === "blog" && (
         <div className="grid sm:grid-cols-2 gap-5 stagger">
           {blogArticles.map((a, i) => (
-            <div key={i} className="glass rounded-xl p-5 group hover:border-white/15 transition-all">
+            <div key={i} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 rounded-xl p-5 group transition-all">
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-[10px] font-medium px-2 py-0.5 rounded-md border" style={{ color: a.color, borderColor: `${a.color}30`, backgroundColor: `${a.color}10` }}>{a.category}</span>
-                <span className="text-[10px] text-slate-600 flex items-center gap-1"><Clock size={10} />{a.readTime}</span>
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1"><Clock size={10} />{a.readTime}</span>
               </div>
-              <h3 className="text-base font-semibold text-white mb-2 group-hover:text-[#d946ef] transition-colors font-[family-name:var(--font-display)]">{a.title}</h3>
-              <p className="text-xs text-slate-400 leading-relaxed mb-4">{a.excerpt}</p>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-[#d946ef] transition-colors font-[family-name:var(--font-display)]">{a.title}</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">{a.excerpt}</p>
               <button className="flex items-center gap-1 text-xs text-[#d946ef] hover:underline">Baca selengkapnya <ArrowRight size={12} /></button>
             </div>
           ))}

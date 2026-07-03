@@ -7,6 +7,7 @@ const translations = {
     navEducation: "Edukasi",
     navAbout: "Tentang",
     navContact: "Kontak",
+    navWishlist: "Wishlist",
     navLogin: "Masuk",
     navLogout: "Keluar",
     navProfile: "Profil Saya",
@@ -50,7 +51,7 @@ const translations = {
     footerEducation: "Edukasi",
     footerAbout: "Tentang Kami",
     footerContact: "Kontak",
-    footerProject: "Proyek Akhir",
+    footerProject: "Proyek Ujian Akhir Semester",
     footerCopyright: "Hak cipta dilindungi.",
 
     // Chat widget
@@ -150,6 +151,7 @@ const translations = {
     navEducation: "Education",
     navAbout: "About",
     navContact: "Contact",
+    navWishlist: "Wishlist",
     navLogin: "Login",
     navLogout: "Logout",
     navProfile: "My Profile",
