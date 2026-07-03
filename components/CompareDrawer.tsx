@@ -1,6 +1,6 @@
 "use client";
 
-import type { Laptop } from "./DharianApp";
+import type { Laptop } from "@/lib/types";
 import { X, Trash2, ChevronUp, ChevronDown, Cpu, MemoryStick, HardDrive, Monitor, Tag } from "lucide-react";
 import { useState } from "react";
 

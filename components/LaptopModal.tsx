@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import type { Laptop } from "./DharianApp";
+import type { Laptop } from "@/lib/types";
 import {
   X,
   Cpu,

@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     const { text } = await generateText({
       model: google("gemini-3.5-flash"),
       system:
-        "You are Ling AI, a friendly, smart, and helpful laptop consultant assistant. " +
+        "You are Ling AI, a friendly, smart, and helpful laptop consultant assistant for LaptopPintar. " +
         "Help users choose the best laptop based on their technical needs, specs, and budget dynamically.",
       messages,
     });

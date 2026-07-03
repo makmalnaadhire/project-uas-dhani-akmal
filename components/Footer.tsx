@@ -1,13 +1,11 @@
 "use client";
 
-import type { Tab } from "./DharianApp";
-import { Heart } from "lucide-react";
+import Link from "next/link";
+import { useTranslation } from "@/components/providers/LanguageProvider";
 
-interface Props {
-  switchTab: (tab: Tab) => void;
-}
+export default function Footer() {
+  const { t } = useTranslation();
 
-export default function Footer({ switchTab }: Props) {
   return (
     <footer className="border-t border-white/5 bg-[#0f172a]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -22,44 +20,44 @@ export default function Footer({ switchTab }: Props) {
               </span>
             </div>
             <p className="text-xs text-slate-500 leading-relaxed max-w-xs">
-              Platform cerdas untuk pencarian, perbandingan, dan rekomendasi laptop
-              yang membantu Anda membuat keputusan tepat.
+              {t.footerDesc}
             </p>
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-3">Menu</h4>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-3">{t.footerMenu}</h4>
             <div className="space-y-2">
               {[
-                { label: "Katalog", tab: "catalog" as Tab },
-                { label: "Rekomendasi", tab: "recommend" as Tab },
-                { label: "Edukasi", tab: "education" as Tab },
-                { label: "Tentang Kami", tab: "other" as Tab },
+                { label: t.footerCatalog, href: "/catalog" },
+                { label: t.footerRecommend, href: "/recommendations" },
+                { label: t.footerEducation, href: "/education" },
+                { label: t.footerAbout, href: "/about" },
+                { label: t.footerContact, href: "/contact" },
               ].map((l, i) => (
-                <button
+                <Link
                   key={i}
-                  onClick={() => switchTab(l.tab)}
+                  href={l.href}
                   className="block text-xs text-slate-500 hover:text-[#2dd4bf] transition-colors"
                 >
                   {l.label}
-                </button>
+                </Link>
               ))}
             </div>
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-3">Proyek Akhir</h4>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-3">{t.footerProject}</h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              UAS Pemrograman Web Lanjut.
+              UAS Pemrograman Web Lanjut
               <br />
-              Dhani &amp; Akmal · 2025
+              Dhani &amp; Akmal &middot; 2026
             </p>
           </div>
         </div>
 
         <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-[10px] text-slate-600">
-            &copy; 2026 LaptopPintar. Hak cipta dilindungi.
+            &copy; 2026 LaptopPintar. {t.footerCopyright}
           </p>
         </div>
       </div>

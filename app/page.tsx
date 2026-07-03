@@ -1,5 +1,7 @@
-import DharianApp from "@/components/DharianApp";
+"use client";
 
-export default function Home() {
-  return <DharianApp />;
+import HeroSection from "@/components/sections/HeroSection";
+
+export default function HomePage() {
+  return <HeroSection />;
 }
