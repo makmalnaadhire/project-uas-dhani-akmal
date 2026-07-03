@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import ReactMarkdown from "react-markdown";
 import Navbar from "./Navbar";
 import HeroSection from "./sections/HeroSection";
 import CatalogSection from "./sections/CatalogSection";
@@ -186,16 +187,11 @@ export default function DharianApp() {
 
       <Footer switchTab={switchTab} />
 
-      {/* ========================================================
-          🚀 FLOATING AI CHAT WINDOW (KANAN BAWAH GLOBAL)
-          ======================================================== */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
         
-        {/* Box Chat Box Jendela */}
         {isChatOpen ? (
           <div className="w-[340px] sm:w-[380px] h-[480px] bg-zinc-950/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl flex flex-col mb-4 overflow-hidden transition-all duration-300">
             
-            {/* Header Box */}
             <div className="p-4 bg-gradient-to-r from-orange-500 to-amber-500 flex justify-between items-center shadow-md">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
@@ -209,7 +205,6 @@ export default function DharianApp() {
               </button>
             </div>
 
-            {/* List Pesan Chat */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {messages.length === 0 && (
                 <div className="text-center text-zinc-500 mt-16 space-y-2 px-4">
@@ -221,16 +216,26 @@ export default function DharianApp() {
 
               {messages.map((m) => (
                 <div key={m.id} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[85%] p-3 rounded-xl text-xs leading-relaxed ${
-                    m.role === "user"
-                      ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-br-none shadow-md"
-                      : "bg-zinc-900 text-zinc-100 border border-white/5 rounded-bl-none"
-                  }`}>
-                    <span className="block font-bold text-[10px] opacity-60 mb-1">
-                      {m.role === "user" ? "Kamu" : "Yanyan AI"}
-                    </span>
-                    {m.content}
-                  </div>
+                 <div
+                  className={`max-w-[85%] p-3 rounded-xl text-xs leading-relaxed ${
+                   m.role === "user"
+                    ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-br-none shadow-md"
+                    : "bg-zinc-900 text-zinc-100 border border-white/5 rounded-bl-none"
+                  }`}
+                 >
+                  <span className="block font-bold text-[10px] opacity-60 mb-1">
+                    {m.role === "user" ? "Kamu" : "Yanyan AI"}
+                  </span>
+
+                  {m.role === "assistant" ? (
+                    <div className="prose prose-invert prose-sm max-w-none break-words">
+                      <ReactMarkdown>{m.content}</ReactMarkdown>
+                    </div>
+                  ) : (
+                    <p className="whitespace-pre-wrap break-words">{m.content}</p>
+                  )}
+
+                 </div>
                 </div>
               ))}
               
@@ -246,7 +251,6 @@ export default function DharianApp() {
               <div ref={chatEndRef} />
             </div>
 
-            {/* Input Form Box */}
             <form onSubmit={handleSubmit} className="p-3 bg-zinc-950/50 border-t border-white/10 flex gap-2">
               <input
                 value={input}

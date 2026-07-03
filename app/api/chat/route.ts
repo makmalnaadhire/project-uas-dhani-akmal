@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     const google = createGoogleGenerativeAI({ apiKey });
 
     const { text } = await generateText({
-      model: google("gemini-1.5-flash"),
+      model: google("gemini-3.5-flash"),
       system:
         "You are Ling AI, a friendly, smart, and helpful laptop consultant assistant. " +
         "Help users choose the best laptop based on their technical needs, specs, and budget dynamically.",
