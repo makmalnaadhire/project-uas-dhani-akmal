@@ -51,7 +51,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-xs text-slate-500 mb-0.5">{t.contactLocation}</p>
-                  <p className="text-sm text-white font-medium">Indonesia</p>
+                  <p className="text-sm text-white font-medium">Balikpapan, Kalimantan Timur, Indonesia</p>
                 </div>
               </div>
 

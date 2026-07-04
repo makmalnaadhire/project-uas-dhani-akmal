@@ -1,10 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslation } from "@/components/providers/LanguageProvider";
 
 const teamMembers = [
-  { name: "Dhani", role: "Anggota 1", desc: "Ramadhani Reyhan Dwi Syahputra 2413037.." },
-  { name: "Akmal", role: "Anggota 2", desc: "Muhammad Akmal Naadhir Efriandi 2413045." },
+  { name: "Dhani", role: "Anggota 1", desc: "Ramadhani Reyhan Dwi Syahputra 2413037..", image: "/PP-Dhani.png" },
+  { name: "Akmal", role: "Anggota 2", desc: "Muhammad Akmal Naadhir Efriandi 2413045.", image: "/avatar1.jpg" },
 ];
 
 export default function AboutPage() {
@@ -32,9 +33,15 @@ export default function AboutPage() {
           <h3 className="text-lg font-semibold font-[family-name:var(--font-display)] mb-4">{t.aboutTeam}</h3>
           <div className="grid sm:grid-cols-2 gap-4 stagger">
             {teamMembers.map((m, i) => (
-              <div key={i} className="glass rounded-xl p-6 hover:border-[#06b6d4]/20 transition-all group">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#06b6d4] to-[#3b82f6] flex items-center justify-center text-white font-bold text-lg mb-3 group-hover:scale-110 transition-transform">
-                  {m.name[0]}
+              <div key={i} className="glass rounded-xl p-6 hover:border-[#06b6d4]/20 transition-all group text-center">
+                <div className="relative mx-auto mb-4 w-24 h-24 md:w-28 md:h-28">
+                  <Image
+                    src={m.image}
+                    alt={m.name}
+                    fill
+                    className="rounded-full object-cover border-2 border-slate-700 shadow-lg group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 6rem, 7rem"
+                  />
                 </div>
                 <h4 className="text-base font-semibold text-white font-[family-name:var(--font-display)]">{m.name}</h4>
                 <p className="text-xs text-[#06b6d4] font-medium mb-2">{m.role}</p>
