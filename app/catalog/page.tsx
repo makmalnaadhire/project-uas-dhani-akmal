@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback, useEffect } from "react";
 import type { Laptop } from "@/lib/types";
+import Markdown from "react-markdown";
 import { useApp } from "@/components/providers/AppProvider";
 import { useTranslation } from "@/components/providers/LanguageProvider";
 import {
@@ -18,7 +19,8 @@ import {
   Tag,
   AlertTriangle,
   StickyNote,
-  ChevronRight,
+  ChevronDown,
+  Sparkles,
 } from "lucide-react";
 
 const formatRupiah = (n: number) => "Rp " + n.toLocaleString("id-ID");
@@ -106,30 +108,75 @@ function LaptopModal({
   laptop,
   onClose,
   onToggleWishlist,
-  onToggleCompare,
   isWished,
-  inCompare,
+  allLaptops,
 }: {
   laptop: Laptop;
   onClose: () => void;
   onToggleWishlist: (id: string) => void;
-  onToggleCompare: (l: Laptop) => void;
   isWished: boolean;
-  inCompare: boolean;
+  allLaptops: Laptop[];
 }) {
+  const [compareId, setCompareId] = useState<string>("");
+  const [aiAnalysis, setAiAnalysis] = useState<string | null>(null);
+  const [aiLoading, setAiLoading] = useState(false);
+
+  const compareLaptop = useMemo(
+    () => allLaptops.find(l => l.id === compareId) || null,
+    [allLaptops, compareId]
+  );
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
   }, []);
 
+  // Reset AI state when comparison changes
+  useEffect(() => {
+    setAiAnalysis(null);
+    setAiLoading(false);
+  }, [compareId]);
+
+  // Fetch AI analysis when a comparison laptop is selected
+  useEffect(() => {
+    if (!compareLaptop) return;
+
+    const controller = new AbortController();
+    setAiLoading(true);
+    setAiAnalysis(null);
+
+    const prompt = `Berikan analisis perbandingan singkat dan objektif antara dua laptop ini untuk membantu pengguna memilih: Laptop A (${laptop.nama} - ${laptop.spesifikasi.processor}) vs Laptop B (${compareLaptop.nama} - ${compareLaptop.spesifikasi.processor}). Fokus pada kelebihan masing-masing.`;
+
+    fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }),
+      signal: controller.signal,
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.content) setAiAnalysis(data.content);
+        else setAiAnalysis("Maaf, analisis tidak tersedia saat ini.");
+      })
+      .catch(() => {
+        if (!controller.signal.aborted) setAiAnalysis("Gagal memuat analisis AI. Silakan coba lagi.");
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setAiLoading(false);
+      });
+
+    return () => controller.abort();
+  }, [laptop, compareLaptop]);
+
   const specs = [
-    { icon: <Cpu size={16} />, label: "Processor", value: laptop.spesifikasi.processor, color: "text-[#2dd4bf]" },
-    { icon: <MemoryStick size={16} />, label: "RAM", value: laptop.spesifikasi.ram, color: "text-[#d946ef]" },
-    { icon: <HardDrive size={16} />, label: "Storage", value: laptop.spesifikasi.storage, color: "text-[#f97316]" },
-    { icon: <Monitor size={16} />, label: "GPU", value: laptop.spesifikasi.gpu, color: "text-[#06b6d4]" },
-    { icon: <Monitor size={16} />, label: "Display", value: laptop.spesifikasi.display, color: "text-[#eab308]" },
-    { icon: null, label: "OS", value: laptop.spesifikasi.os, color: "text-slate-400" },
+    { icon: <Cpu size={16} />, label: "Processor", key: "processor" as const, color: "text-[#2dd4bf]" },
+    { icon: <MemoryStick size={16} />, label: "RAM", key: "ram" as const, color: "text-[#d946ef]" },
+    { icon: <HardDrive size={16} />, label: "Storage", key: "storage" as const, color: "text-[#f97316]" },
+    { icon: <Monitor size={16} />, label: "GPU", key: "gpu" as const, color: "text-[#06b6d4]" },
+    { icon: <Monitor size={16} />, label: "Display", key: "display" as const, color: "text-[#eab308]" },
   ];
+
+  const availableLaptops = allLaptops.filter(l => l.id !== laptop.id);
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4" onClick={onClose}>
@@ -138,7 +185,9 @@ function LaptopModal({
 
       {/* Modal content */}
       <div
-        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.5)]"
+        className={`relative max-h-[90vh] overflow-y-auto rounded-2xl border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.5)] transition-all duration-300 ${
+          compareLaptop ? "w-full max-w-3xl" : "w-full max-w-lg"
+        }`}
         style={{ background: "linear-gradient(180deg, #111827 0%, #0b1120 100%)" }}
         onClick={e => e.stopPropagation()}
       >
@@ -204,7 +253,7 @@ function LaptopModal({
                     <span className={s.color}>{s.icon}</span>
                     <span className="text-[10px] text-slate-500 uppercase tracking-wider">{s.label}</span>
                   </div>
-                  <p className="text-[13px] font-medium text-white leading-snug">{s.value}</p>
+                  <p className="text-[13px] font-medium text-white leading-snug">{laptop.spesifikasi[s.key]}</p>
                 </div>
               ))}
             </div>
@@ -232,6 +281,100 @@ function LaptopModal({
             </div>
           )}
 
+          {/* Comparison Dropdown */}
+          <div>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block">Bandingkan dengan Laptop Lain</label>
+            <div className="relative">
+              <select
+                value={compareId}
+                onChange={e => setCompareId(e.target.value)}
+                className="w-full appearance-none px-4 py-2.5 pr-10 rounded-xl bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#6366f1]/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.1)] transition-all cursor-pointer"
+              >
+                <option value="">-- Pilih laptop untuk dibandingkan --</option>
+                {availableLaptops.map(l => (
+                  <option key={l.id} value={l.id}>{l.nama} ({l.merek})</option>
+                ))}
+              </select>
+              <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+            </div>
+          </div>
+
+          {/* Side-by-Side Comparison View */}
+          {compareLaptop && (
+            <div className="space-y-4 slide-up">
+              {/* Comparison Header */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="p-3 rounded-xl bg-[#2dd4bf]/5 border border-[#2dd4bf]/15">
+                  <p className="text-[10px] text-[#2dd4bf] uppercase tracking-wider font-semibold mb-1">Laptop A</p>
+                  <p className="text-sm font-semibold text-white truncate">{laptop.nama}</p>
+                </div>
+                <div className="p-3 rounded-xl bg-[#d946ef]/5 border border-[#d946ef]/15">
+                  <p className="text-[10px] text-[#d946ef] uppercase tracking-wider font-semibold mb-1">Laptop B</p>
+                  <p className="text-sm font-semibold text-white truncate">{compareLaptop.nama}</p>
+                </div>
+              </div>
+
+              {/* Comparison Table */}
+              <div className="rounded-xl border border-white/5 overflow-hidden">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-white/5">
+                      <th className="text-left text-[10px] text-slate-500 uppercase tracking-wider font-semibold px-4 py-2.5 w-1/3">Spesifikasi</th>
+                      <th className="text-left text-[10px] text-[#2dd4bf] uppercase tracking-wider font-semibold px-4 py-2.5 w-1/3">{laptop.nama.split(" ").slice(0, 2).join(" ")}</th>
+                      <th className="text-left text-[10px] text-[#d946ef] uppercase tracking-wider font-semibold px-4 py-2.5 w-1/3">{compareLaptop.nama.split(" ").slice(0, 2).join(" ")}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { label: "Harga", a: `${formatRupiah(laptop.harga_min)} - ${formatRupiah(laptop.harga_max)}`, b: `${formatRupiah(compareLaptop.harga_min)} - ${formatRupiah(compareLaptop.harga_max)}` },
+                      { label: "Processor", a: laptop.spesifikasi.processor, b: compareLaptop.spesifikasi.processor },
+                      { label: "RAM", a: laptop.spesifikasi.ram, b: compareLaptop.spesifikasi.ram },
+                      { label: "Storage", a: laptop.spesifikasi.storage, b: compareLaptop.spesifikasi.storage },
+                      { label: "GPU", a: laptop.spesifikasi.gpu, b: compareLaptop.spesifikasi.gpu },
+                      { label: "Display", a: laptop.spesifikasi.display, b: compareLaptop.spesifikasi.display },
+                      { label: "OS", a: laptop.spesifikasi.os, b: compareLaptop.spesifikasi.os },
+                    ].map((row, i) => (
+                      <tr key={i} className="border-b border-white/5 last:border-b-0">
+                        <td className="px-4 py-3 text-[11px] text-slate-500 font-medium">{row.label}</td>
+                        <td className="px-4 py-3 text-[12px] text-slate-300">{row.a}</td>
+                        <td className="px-4 py-3 text-[12px] text-slate-300">{row.b}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* AI Analysis Section */}
+              <div className="p-4 rounded-xl bg-indigo-950/20 border border-indigo-500/20">
+                <div className="flex items-center gap-2 mb-3">
+                  <Sparkles size={14} className="text-indigo-400" />
+                  <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Analisis Asisten AI</span>
+                </div>
+                {aiLoading ? (
+                  <div className="space-y-2">
+                    <div className="h-3 bg-indigo-500/10 rounded-full w-full animate-pulse" />
+                    <div className="h-3 bg-indigo-500/10 rounded-full w-4/5 animate-pulse" />
+                    <div className="h-3 bg-indigo-500/10 rounded-full w-3/5 animate-pulse" />
+                    <p className="text-[11px] text-indigo-400/60 mt-2 italic">Ling AI sedang menganalisis...</p>
+                  </div>
+                ) : aiAnalysis ? (
+                  <div className="text-[13px] text-slate-300 leading-relaxed prose prose-invert prose-sm max-w-none
+                    prose-headings:text-indigo-400 prose-headings:font-semibold prose-headings:my-2
+                    prose-strong:text-slate-100 prose-strong:font-bold
+                    prose-p:text-slate-300 prose-p:my-1
+                    prose-ul:list-disc prose-ul:pl-5 prose-ul:space-y-1
+                    prose-li:text-slate-300
+                    prose-code:text-indigo-300 prose-code:bg-indigo-500/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+                  ">
+                    <Markdown>{aiAnalysis}</Markdown>
+                  </div>
+                ) : (
+                  <p className="text-[11px] text-slate-500 italic">Pilih laptop di atas untuk melihat analisis AI.</p>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* Action buttons */}
           <div className="flex gap-3 pt-1">
             <button
@@ -245,17 +388,6 @@ function LaptopModal({
               <Heart size={15} fill={isWished ? "currentColor" : "none"} />
               {isWished ? "Tersimpan" : "Wishlist"}
             </button>
-            <button
-              onClick={() => onToggleCompare(laptop)}
-              className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                inCompare
-                  ? "bg-[#2dd4bf]/15 text-[#2dd4bf] border border-[#2dd4bf]/30"
-                  : "bg-white/5 text-slate-400 border border-white/10 hover:text-[#2dd4bf] hover:border-[#2dd4bf]/30"
-              }`}
-            >
-              <ChevronRight size={15} />
-              {inCompare ? "Dipilih" : "Bandingkan"}
-            </button>
           </div>
         </div>
       </div>
@@ -266,7 +398,7 @@ function LaptopModal({
 /* ── Catalog Page ───────────────────────────────────────── */
 
 export default function CatalogPage() {
-  const { laptops, wishlist, toggleWishlist, compareList, toggleCompare } = useApp();
+  const { laptops, wishlist, toggleWishlist } = useApp();
   const { t } = useTranslation();
   const [search, setSearch] = useState("");
   const [brandFilter, setBrandFilter] = useState("All");
@@ -368,9 +500,8 @@ export default function CatalogPage() {
           laptop={selectedLaptop}
           onClose={() => setSelectedLaptop(null)}
           onToggleWishlist={toggleWishlist}
-          onToggleCompare={toggleCompare}
           isWished={wishlist.includes(selectedLaptop.id)}
-          inCompare={compareList.some(c => c.id === selectedLaptop.id)}
+          allLaptops={laptops}
         />
       )}
 
@@ -468,22 +599,6 @@ export default function CatalogPage() {
         )}
       </div>
 
-      {/* Compare drawer */}
-      {compareList.length > 0 && (
-        <div className="glass rounded-xl p-4 mb-6 flex items-center justify-between border-[#2dd4bf]/20">
-          <span className="text-sm text-[#2dd4bf] font-medium">
-            {compareList.length}/3 {t.catalogCompare}
-          </span>
-          <div className="flex gap-2">
-            {compareList.map(l => (
-              <span key={l.id} className="px-2 py-1 rounded bg-[#2dd4bf]/10 text-[#2dd4bf] text-xs">
-                {l.nama}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Empty state */}
       {filtered.length === 0 ? (
         <div className="text-center py-20">
@@ -497,7 +612,6 @@ export default function CatalogPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
             {paginatedItems.map(laptop => {
               const isWished = wishlist.includes(laptop.id);
-              const inCompare = compareList.some(c => c.id === laptop.id);
               return (
                 <div
                   key={laptop.id}
@@ -576,14 +690,6 @@ export default function CatalogPage() {
                         }`}
                       >
                         <Heart size={14} fill={isWished ? "currentColor" : "none"} />
-                      </button>
-                      <button
-                        onClick={(e) => { e.stopPropagation(); e.preventDefault(); toggleCompare(laptop); }}
-                        className={`px-2.5 py-1.5 rounded-lg text-[10px] font-medium transition-all ${
-                          inCompare ? "bg-[#2dd4bf]/15 text-[#2dd4bf] border border-[#2dd4bf]/30" : "bg-slate-100 dark:bg-white/5 text-slate-500 border border-slate-200 dark:border-white/10 hover:text-[#2dd4bf] hover:border-[#2dd4bf]/30"
-                        }`}
-                      >
-                        {inCompare ? t.catalogCompareChosen : t.catalogCompareBtn}
                       </button>
                     </div>
                   </div>
