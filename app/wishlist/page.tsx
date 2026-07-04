@@ -137,8 +137,8 @@ export default function WishlistPage() {
 
                     <div className="flex justify-between items-start pt-3 border-t border-white/5 gap-3">
                       <div className="flex-1 min-w-0">
-                        <span className="text-lg font-bold font-[family-name:var(--font-display)] text-white block leading-tight">
-                          {formatRupiah(laptop.harga)}
+                        <span className="text-sm font-bold font-[family-name:var(--font-display)] text-white block leading-tight">
+                          {formatRupiah(laptop.harga_min)} - {formatRupiah(laptop.harga_max)}
                         </span>
                         <span className="text-[10px] italic text-slate-400 mt-0.4 block leading-tight">
                           *Harga kisaran, dapat berubah

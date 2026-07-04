@@ -28,7 +28,8 @@ export async function POST(req: Request) {
 
     const laptopCatalog = laptops.map(l => {
       const isu = l.isu_diketahui ?? "Tidak ada isu yang dilaporkan";
-      return `- ${l.nama} (${l.merek}, ${l.tahun}) | Harga: Rp ${l.harga.toLocaleString("id-ID")} | Kondisi: ${l.kondisi} | Kategori: ${l.kategori.join(", ")} | CPU: ${l.spesifikasi.processor} | RAM: ${l.spesifikasi.ram} | Storage: ${l.spesifikasi.storage} | GPU: ${l.spesifikasi.gpu} | Display: ${l.spesifikasi.display} | OS: ${l.spesifikasi.os} | Status: ${l.status} | Catatan: ${l.catatan ?? "Tidak ada catatan"} | Isu: ${isu}`;
+      const harga = `Rp ${l.harga_min.toLocaleString("id-ID")} - Rp ${l.harga_max.toLocaleString("id-ID")}`;
+      return `- ${l.nama} (${l.merek}, ${l.tahun}) | Harga: ${harga} | Kondisi: ${l.kondisi} | Kategori: ${l.kategori.join(", ")} | CPU: ${l.spesifikasi.processor} | RAM: ${l.spesifikasi.ram} | Storage: ${l.spesifikasi.storage} | GPU: ${l.spesifikasi.gpu} | Display: ${l.spesifikasi.display} | OS: ${l.spesifikasi.os} | Status: ${l.status} | Catatan: ${l.catatan ?? "Tidak ada catatan"} | Isu: ${isu}`;
     }).join("\n");
 
     const google = createGoogleGenerativeAI({ apiKey });

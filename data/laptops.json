@@ -5,7 +5,6 @@
     "merek": "Lenovo",
     "seri": "IdeaPad Slim 3",
     "tahun": 2020,
-    "harga": 6000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1035G1 (10th Gen, Ice Lake)",
@@ -22,7 +21,9 @@
     ],
     "catatan": "Laptop entry-level paling laris 2020. Baterai tahan ~7 jam pemakaian normal. Build plastik tapi cukup kokoh.",
     "isu_diketahui": "Layar redup (~220 nits), kurang ideal di outdoor. Speaker kualitas sangat minimal. RAM single-channel di varian base.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 5100000,
+    "harga_max": 6900000
   },
   {
     "id": "laptop-0002",
@@ -30,7 +31,6 @@
     "merek": "Lenovo",
     "seri": "IdeaPad Slim 3",
     "tahun": 2021,
-    "harga": 7000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5500U (Zen 3, 6C/12T)",
@@ -47,7 +47,9 @@
     ],
     "catatan": "Versi AMD jauh lebih kencang dari Intel sekelasnya. Ryzen 5 5500U salah satu chip efisien terbaik 2021 untuk harganya.",
     "isu_diketahui": "Panel layar TN — warna dan sudut pandang buruk dibanding IPS. Speaker sangat lemah. Tidak ada slot SD card.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 6000000,
+    "harga_max": 8000000
   },
   {
     "id": "laptop-0003",
@@ -55,7 +57,6 @@
     "merek": "Lenovo",
     "seri": "IdeaPad Slim 3",
     "tahun": 2022,
-    "harga": 7500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1235U (12th Gen, Alder Lake, 10C/12T)",
@@ -72,7 +73,9 @@
     ],
     "catatan": "Upgrade ke Intel 12th Gen. Iris Xe jauh lebih baik dari UHD lama untuk tugas multimedia ringan.",
     "isu_diketahui": "Engsel terasa agak kaku dan cheap. RAM single-channel di varian base (upgrade ke dual-channel drastis meningkatkan performa).",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 6400000,
+    "harga_max": 8600000
   },
   {
     "id": "laptop-0004",
@@ -80,7 +83,6 @@
     "merek": "Lenovo",
     "seri": "IdeaPad Slim 3",
     "tahun": 2023,
-    "harga": 8000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1335U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -97,7 +99,9 @@
     ],
     "catatan": "Rebrand dari IdeaPad 3 ke Slim 3. Desain sedikit lebih tipis. Performa hampir identik dengan 2022.",
     "isu_diketahui": "RAM masih soldered di sebagian varian — tidak bisa upgrade. Tidak ada slot Ethernet tanpa adaptor.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 6800000,
+    "harga_max": 9200000
   },
   {
     "id": "laptop-0005",
@@ -105,7 +109,6 @@
     "merek": "Lenovo",
     "seri": "IdeaPad Slim 3",
     "tahun": 2024,
-    "harga": 8500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 7530U (Zen 3, 6C/12T)",
@@ -122,7 +125,9 @@
     ],
     "catatan": "Form factor 14 inch lebih portable. Ryzen 7530U efisien dan reliable untuk tugas harian.",
     "isu_diketahui": null,
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 7200000,
+    "harga_max": 9800000
   },
   {
     "id": "laptop-0006",
@@ -130,7 +135,6 @@
     "merek": "Lenovo",
     "seri": "IdeaPad Slim 5",
     "tahun": 2021,
-    "harga": 9500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5500U (Zen 3, 6C/12T)",
@@ -148,7 +152,9 @@
     ],
     "catatan": "Salah satu laptop mid-range terbaik 2021. Build aluminium terasa premium. Layar IPS akurat dan cukup cerah.",
     "isu_diketahui": "Speaker tipis dan kurang keras. Tidak ada port Ethernet.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 8100000,
+    "harga_max": 10900000
   },
   {
     "id": "laptop-0007",
@@ -156,7 +162,6 @@
     "merek": "Lenovo",
     "seri": "IdeaPad Slim 5",
     "tahun": 2022,
-    "harga": 10500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5625U (Zen 3, 6C/12T)",
@@ -174,7 +179,9 @@
     ],
     "catatan": "Performa solid dan multitasking lancar. Build aluminium lebih premium dari Slim 3. Layar IPS nyaman dipakai seharian.",
     "isu_diketahui": "Tidak ada slot MicroSD. Webcam kualitas 720p saja.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 8900000,
+    "harga_max": 12100000
   },
   {
     "id": "laptop-0008",
@@ -182,7 +189,6 @@
     "merek": "Lenovo",
     "seri": "IdeaPad Slim 5",
     "tahun": 2023,
-    "harga": 12000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-13620H (13th Gen, 10C/16T)",
@@ -201,7 +207,9 @@
     ],
     "catatan": "Layar OLED 2.8K untuk harga ini sangat luar biasa. Intel Arc Graphics cukup untuk desain dan konten ringan. Salah satu laptop terbaik di kelasnya 2023.",
     "isu_diketahui": "Driver Intel Arc awal sering bug — perlu update rutin. Baterai agak boros karena layar OLED + Intel Arc. Tidak ada GPU Nvidia dedicated.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 10200000,
+    "harga_max": 13800000
   },
   {
     "id": "laptop-0009",
@@ -209,7 +217,6 @@
     "merek": "Lenovo",
     "seri": "IdeaPad Slim 5",
     "tahun": 2024,
-    "harga": 13500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 8845HS (Zen 4, 8C/16T)",
@@ -227,7 +234,9 @@
     ],
     "catatan": "Ryzen 8845HS sangat bertenaga untuk laptop tipis. Radeon 780M adalah iGPU terkuat 2024 — bisa gaming ringan. Layar 3.2K sangat tajam.",
     "isu_diketahui": "Refresh rate hanya 60Hz di resolusi penuh. Thermal bisa panas saat full load dalam waktu lama.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 11500000,
+    "harga_max": 15500000
   },
   {
     "id": "laptop-0010",
@@ -235,7 +244,6 @@
     "merek": "Lenovo",
     "seri": "IdeaPad Gaming 3",
     "tahun": 2020,
-    "harga": 10000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-10300H (10th Gen, Comet Lake-H, 4C/8T)",
@@ -252,7 +260,9 @@
     ],
     "catatan": "Budget gaming pertama seri IdeaPad Gaming. GTX 1650 cukup untuk 1080p gaming medium. Harga terjangkau untuk masuk gaming laptop.",
     "isu_diketahui": "RAM hanya 8GB single-channel — performa gaming berkurang. Layar 120Hz tapi responsivitas masih tertinggal dari laptop gaming kelas atas. Kipas sangat bising saat gaming.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 8500000,
+    "harga_max": 11500000
   },
   {
     "id": "laptop-0011",
@@ -260,7 +270,6 @@
     "merek": "Lenovo",
     "seri": "IdeaPad Gaming 3",
     "tahun": 2021,
-    "harga": 11000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5600H (Zen 3, 6C/12T)",
@@ -277,7 +286,9 @@
     ],
     "catatan": "Versi AMD 2021 jauh lebih kencang dari Intel sekelasnya. Ryzen 5600H sangat efisien. Value terbaik di kelas ini tahun 2021.",
     "isu_diketahui": "RAM single-channel 8GB sangat membatasi performa GPU. Sangat direkomendasikan tambah RAM ke 16GB dual-channel segera setelah beli. Thermal throttling ringan saat full load.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 9400000,
+    "harga_max": 12600000
   },
   {
     "id": "laptop-0012",
@@ -285,7 +296,6 @@
     "merek": "Lenovo",
     "seri": "IdeaPad Gaming 3",
     "tahun": 2022,
-    "harga": 13000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-12500H (12th Gen, Alder Lake-H, 12C/16T)",
@@ -302,7 +312,9 @@
     ],
     "catatan": "Tahun terakhir seri IdeaPad Gaming sebelum diganti LOQ. Upgrade ke layar 16:10 yang lebih lega. RTX 3050 cukup untuk 1080p gaming.",
     "isu_diketahui": "RTX 3050 TGP dibatasi 60W — performa GPU di bawah potensi penuh. 2022 adalah tahun terakhir produksi, digantikan Lenovo LOQ di 2023.",
-    "status": "Discontinued — Digantikan Lenovo LOQ"
+    "status": "Discontinued — Digantikan Lenovo LOQ",
+    "harga_min": 11100000,
+    "harga_max": 14900000
   },
   {
     "id": "laptop-0013",
@@ -310,7 +322,6 @@
     "merek": "Lenovo",
     "seri": "LOQ",
     "tahun": 2023,
-    "harga": 13500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-13420H (13th Gen, 8C/12T)",
@@ -327,7 +338,9 @@
     ],
     "catatan": "Penerus IdeaPad Gaming, lebih bertenaga di harga sama. RTX 4050 layak untuk 1080p gaming medium-high.",
     "isu_diketahui": "Varian i5 relatif aman dari isu motherboard yang melanda varian i7/i9. Thermal manageable. Fan agak bising saat full gaming.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 11500000,
+    "harga_max": 15500000
   },
   {
     "id": "laptop-0014",
@@ -335,7 +348,6 @@
     "merek": "Lenovo",
     "seri": "LOQ",
     "tahun": 2023,
-    "harga": 16000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-13650HX (13th Gen, 6P+8E/20T)",
@@ -352,7 +364,9 @@
     ],
     "catatan": "Performa gaming sangat baik di kelas harganya. RTX 4060 + i7-13650HX kombinasi kencang untuk 1080p-1440p.",
     "isu_diketahui": "PERINGATAN: Varian i7-13650HX batch produksi 2023 awal (sebelum Oktober 2023) dilaporkan banyak kasus motherboard mati mendadak saat CPU+GPU full load. Masalah berasal dari power delivery yang tidak stabil. Lenovo mengeluarkan BIOS patch, tapi tidak semua unit teratasi. Disarankan pastikan BIOS versi terbaru sebelum beli second. Isu ini tidak ada di varian AMD atau i5.",
-    "status": "Active (dengan catatan serius)"
+    "status": "Active (dengan catatan serius)",
+    "harga_min": 13600000,
+    "harga_max": 18400000
   },
   {
     "id": "laptop-0015",
@@ -360,7 +374,6 @@
     "merek": "Lenovo",
     "seri": "LOQ",
     "tahun": 2023,
-    "harga": 13000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 7640HS (Zen 4, 6C/12T)",
@@ -377,7 +390,9 @@
     ],
     "catatan": "Varian AMD 2023 paling direkomendasikan — bebas dari isu motherboard varian Intel. Ryzen 7640HS efisien dan kencang.",
     "isu_diketahui": "Thermal throttling ringan saat CPU+GPU full load bersamaan. Fan bisa bising. Tidak ada isu fatal seperti varian Intel i7.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 11100000,
+    "harga_max": 14900000
   },
   {
     "id": "laptop-0016",
@@ -385,7 +400,6 @@
     "merek": "Lenovo",
     "seri": "LOQ",
     "tahun": 2024,
-    "harga": 17000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-14700HX (14th Gen, 20C/28T)",
@@ -402,7 +416,9 @@
     ],
     "catatan": "Generasi 2024 sudah diperbaiki firmware dan power delivery. Isu motherboard berkurang drastis. RTX 4060 performa signifikan lebih baik dari 4050.",
     "isu_diketahui": "Masih ada laporan sporadis soal throttling saat full load. Pastikan BIOS selalu update. Unit produksi setelah Q2 2024 paling stabil.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 14500000,
+    "harga_max": 19600000
   },
   {
     "id": "laptop-0017",
@@ -410,7 +426,6 @@
     "merek": "Lenovo",
     "seri": "LOQ",
     "tahun": 2024,
-    "harga": 15500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 8645HS (Zen 4, 6C/12T)",
@@ -427,7 +442,9 @@
     ],
     "catatan": "Varian AMD 2024 paling stabil dan value terbaik di LOQ lineup. Ryzen 8645HS efisien dengan performa tinggi.",
     "isu_diketahui": null,
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 13200000,
+    "harga_max": 17800000
   },
   {
     "id": "laptop-0018",
@@ -435,7 +452,6 @@
     "merek": "Lenovo",
     "seri": "Legion 5",
     "tahun": 2020,
-    "harga": 13000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 4800H (Zen 2, 8C/16T)",
@@ -451,7 +467,9 @@
     ],
     "catatan": "Salah satu gaming laptop terbaik 2020. Ryzen 4800H pertama kali mengejutkan dunia dengan 8 core di harga ini. Menetapkan standar baru gaming laptop mid-range.",
     "isu_diketahui": "Webcam posisi di bawah layar (buruk untuk video call). Tidak ada Thunderbolt. GTX 1650 Ti mulai ketinggalan untuk game modern 2023+.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11100000,
+    "harga_max": 14900000
   },
   {
     "id": "laptop-0019",
@@ -459,7 +477,6 @@
     "merek": "Lenovo",
     "seri": "Legion 5",
     "tahun": 2021,
-    "harga": 15000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 5800H (Zen 3, 8C/16T)",
@@ -476,7 +493,9 @@
     ],
     "catatan": "Upgrade besar dari 2020. RTX 3060 + Ryzen 5800H kombinasi luar biasa untuk harganya. Refresh rate 165Hz sangat mulus. Salah satu gaming laptop legendaris.",
     "isu_diketahui": "BIOS update April 2022 menyebabkan penurunan performa GPU drastis (sudah diperbaiki dengan update berikutnya). Webcam masih di posisi buruk. Tidak ada webcam shutter.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 12800000,
+    "harga_max": 17300000
   },
   {
     "id": "laptop-0020",
@@ -484,7 +503,6 @@
     "merek": "Lenovo",
     "seri": "Legion 5",
     "tahun": 2022,
-    "harga": 17000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 6800H (Zen 3+, 8C/16T)",
@@ -501,7 +519,9 @@
     ],
     "catatan": "Upgrade ke DDR5 dan RTX 3070 Ti. Webcam dipindah ke posisi atas yang lebih wajar. Performa gaming 1080p sangat baik.",
     "isu_diketahui": "Harga naik cukup signifikan dari generasi 2021. Thermal butuh perhatian saat full load lama. Baterai tidak terlalu kuat untuk laptop gaming berat.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 14500000,
+    "harga_max": 19600000
   },
   {
     "id": "laptop-0021",
@@ -509,7 +529,6 @@
     "merek": "Lenovo",
     "seri": "Legion Pro 5",
     "tahun": 2023,
-    "harga": 22000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-13700HX (13th Gen, 16C/24T)",
@@ -526,7 +545,9 @@
     ],
     "catatan": "Layar QHD+ 16 inch 16:10 sangat memuaskan. Desain chassis baru dengan backlit keyboard lebih premium. RTX 4060 solid untuk 1440p gaming.",
     "isu_diketahui": "Fan noise terdengar nada tinggi (coil whine) di beberapa unit. Kualitas panel IPS bervariasi antar batch produksi — ada yang lebih baik ada yang lebih buruk.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 18700000,
+    "harga_max": 25300000
   },
   {
     "id": "laptop-0022",
@@ -534,7 +555,6 @@
     "merek": "Lenovo",
     "seri": "Legion Pro 5",
     "tahun": 2024,
-    "harga": 26000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-14900HX (14th Gen, 24C/32T)",
@@ -551,7 +571,9 @@
     ],
     "catatan": "Salah satu gaming laptop mid-high terbaik 2024. i9-14900HX + RTX 4070 untuk 1440p gaming ultra dan rendering.",
     "isu_diketahui": "i9-14900HX sangat panas saat full load — thermal throttling bisa terjadi. Disarankan pilih varian i7 untuk keseimbangan lebih baik jika budget terbatas.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 22100000,
+    "harga_max": 29900000
   },
   {
     "id": "laptop-0023",
@@ -559,7 +581,6 @@
     "merek": "Lenovo",
     "seri": "Legion Pro 5",
     "tahun": 2024,
-    "harga": 23000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 8845HS (Zen 4, 8C/16T)",
@@ -576,7 +597,9 @@
     ],
     "catatan": "Varian AMD 2024 lebih efisien dan cooler dari Intel. Ryzen 8845HS tahan panas lebih baik dari i9-14900HX.",
     "isu_diketahui": null,
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 19600000,
+    "harga_max": 26400000
   },
   {
     "id": "laptop-0024",
@@ -584,7 +607,6 @@
     "merek": "Lenovo",
     "seri": "Legion Pro 7",
     "tahun": 2023,
-    "harga": 36000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-13900HX (13th Gen, 24C/32T)",
@@ -601,7 +623,9 @@
     ],
     "catatan": "Flagship gaming Lenovo. MiniLED 240Hz adalah layar gaming laptop terbaik di kelasnya. RTX 4080 untuk 1440p ultra atau 4K gaming.",
     "isu_diketahui": "Bobot 2.8kg sangat berat untuk dibawa-bawa. Baterai boros saat gaming. Harga sangat mahal. Kipas sangat bising saat full load.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 30600000,
+    "harga_max": 41400000
   },
   {
     "id": "laptop-0025",
@@ -609,7 +633,6 @@
     "merek": "Lenovo",
     "seri": "Legion Pro 7",
     "tahun": 2024,
-    "harga": 40000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-14900HX (14th Gen, 24C/32T)",
@@ -626,7 +649,9 @@
     ],
     "catatan": "RTX 4090 di laptop — performa mendekati desktop GPU. Untuk gaming 4K atau rendering 3D profesional.",
     "isu_diketahui": "Panas ekstrem saat full load. Baterai habis dalam ~1 jam gaming. Bobot hampir 3kg. Harga sangat premium.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 34000000,
+    "harga_max": 46000000
   },
   {
     "id": "laptop-0026",
@@ -634,7 +659,6 @@
     "merek": "Lenovo",
     "seri": "Legion Slim 5",
     "tahun": 2023,
-    "harga": 19000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 7745HX (Zen 4, 8C/16T)",
@@ -651,7 +675,9 @@
     ],
     "catatan": "Gaming laptop tipis dan ringan (2.1kg). Lebih portable dari Legion Pro biasa. Cocok untuk yang ingin gaming tapi tetap mobile.",
     "isu_diketahui": "TGP RTX 4060 dibatasi ~80W karena chassis tipis — performa GPU ~10-15% di bawah Legion Pro biasa. Thermal agak ketat saat full load.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 16200000,
+    "harga_max": 21900000
   },
   {
     "id": "laptop-0027",
@@ -659,7 +685,6 @@
     "merek": "Lenovo",
     "seri": "Legion Slim 5",
     "tahun": 2024,
-    "harga": 21000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 8845HS (Zen 4, 8C/16T)",
@@ -676,7 +701,9 @@
     ],
     "catatan": "Upgrade ke RTX 4070 di chassis slim. Keseimbangan terbaik performa vs portabilitas di 2024.",
     "isu_diketahui": "TGP masih dibatasi di chassis tipis. Thermal manajemen lebih baik dari 2023 tapi masih butuh perhatian.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 17900000,
+    "harga_max": 24100000
   },
   {
     "id": "laptop-0028",
@@ -684,7 +711,6 @@
     "merek": "Lenovo",
     "seri": "ThinkPad E14",
     "tahun": 2021,
-    "harga": 11000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 4500U (Zen 2, 6C/6T)",
@@ -701,7 +727,9 @@
     ],
     "catatan": "Business laptop entry-level dari ThinkPad. Keyboard terbaik di kelasnya. Build quality kokoh dan tahan lama. MIL-SPEC tested.",
     "isu_diketahui": "Storage default hanya 256GB — sangat kurang untuk kebutuhan modern. Layar brightness 250 nits, kurang ideal outdoor. Tidak ada Thunderbolt.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 9400000,
+    "harga_max": 12600000
   },
   {
     "id": "laptop-0029",
@@ -709,7 +737,6 @@
     "merek": "Lenovo",
     "seri": "ThinkPad E14",
     "tahun": 2022,
-    "harga": 13500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5625U (Zen 3, 6C/12T)",
@@ -726,7 +753,9 @@
     ],
     "catatan": "Salah satu ThinkPad value terbaik. Ryzen 5625U efisien dan bertenaga. Baterai solid ~10 jam kerja ringan.",
     "isu_diketahui": "Tidak ada Thunderbolt. Webcam 720p. Layar masih 16:9 bukan 16:10 seperti ThinkPad premium.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11500000,
+    "harga_max": 15500000
   },
   {
     "id": "laptop-0030",
@@ -734,7 +763,6 @@
     "merek": "Lenovo",
     "seri": "ThinkPad E14",
     "tahun": 2023,
-    "harga": 14500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1335U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -751,7 +779,9 @@
     ],
     "catatan": "Upgrade ke rasio layar 16:10 — lebih banyak ruang vertikal untuk coding dan dokumen. Sangat signifikan untuk produktivitas.",
     "isu_diketahui": "Fingerprint reader kadang tidak responsif di beberapa unit. Webcam masih 720p.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 12300000,
+    "harga_max": 16700000
   },
   {
     "id": "laptop-0031",
@@ -759,7 +789,6 @@
     "merek": "Lenovo",
     "seri": "ThinkPad E14",
     "tahun": 2024,
-    "harga": 16500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core Ultra 5 125U (Meteor Lake, 12C/14T + NPU)",
@@ -776,7 +805,9 @@
     ],
     "catatan": "Intel Core Ultra pertama di seri ThinkPad E. Ada NPU built-in untuk AI tasks. Efisiensi baterai meningkat signifikan vs generasi sebelumnya.",
     "isu_diketahui": "Driver Intel Arc masih kadang bermasalah di aplikasi tertentu. NPU belum banyak dimanfaatkan software 2024.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 14000000,
+    "harga_max": 19000000
   },
   {
     "id": "laptop-0032",
@@ -784,7 +815,6 @@
     "merek": "Lenovo",
     "seri": "ThinkPad T14",
     "tahun": 2021,
-    "harga": 16000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 PRO 5650U (Zen 3, 6C/12T)",
@@ -801,7 +831,9 @@
     ],
     "catatan": "Varian PRO dengan fitur keamanan ekstra (AMD PRO). Cocok untuk enterprise. Keyboard legendaris ThinkPad. Build quality sangat kokoh.",
     "isu_diketahui": "Layar brightness sedang (~400 nits). RAM sebagian soldered — cek konfigurasi sebelum beli.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 13600000,
+    "harga_max": 18400000
   },
   {
     "id": "laptop-0033",
@@ -809,7 +841,6 @@
     "merek": "Lenovo",
     "seri": "ThinkPad T14",
     "tahun": 2022,
-    "harga": 18000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1240P (12th Gen, Alder Lake-P, 12C/16T)",
@@ -826,7 +857,9 @@
     ],
     "catatan": "Upgrade besar ke layar 16:10. Dual Thunderbolt 4. MIL-SPEC tested. Koneksi lengkap termasuk Ethernet RJ45. Sangat cocok untuk profesional bisnis.",
     "isu_diketahui": "RAM 16GB soldered — tidak bisa upgrade. Ini kelemahan serius untuk long-term use.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 15300000,
+    "harga_max": 20700000
   },
   {
     "id": "laptop-0034",
@@ -834,7 +867,6 @@
     "merek": "Lenovo",
     "seri": "ThinkPad T14",
     "tahun": 2023,
-    "harga": 19500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1335U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -851,7 +883,9 @@
     ],
     "catatan": "Pertama kali seri T14 tersedia dengan panel OLED 2.8K. Kelengkapan port sangat baik: 2x Thunderbolt 4, 2x USB-A, HDMI, Ethernet RJ45. Standar emas laptop bisnis.",
     "isu_diketahui": "Harga varian OLED signifikan lebih mahal. Layar OLED lebih boros baterai. Webcam FHD hanya tersedia di konfigurasi tertentu.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 16600000,
+    "harga_max": 22400000
   },
   {
     "id": "laptop-0035",
@@ -859,7 +893,6 @@
     "merek": "Lenovo",
     "seri": "ThinkPad T14",
     "tahun": 2023,
-    "harga": 21000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 PRO 7840U (Zen 4, 8C/16T + NPU)",
@@ -876,7 +909,9 @@
     ],
     "catatan": "Varian AMD dengan Ryzen PRO 7840U sangat powerful. Radeon 780M iGPU terkuat di kelasnya. Cocok untuk enterprise dengan kebutuhan AI workload.",
     "isu_diketahui": null,
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 17900000,
+    "harga_max": 24100000
   },
   {
     "id": "laptop-0036",
@@ -884,7 +919,6 @@
     "merek": "Lenovo",
     "seri": "ThinkPad X1 Carbon",
     "tahun": 2021,
-    "harga": 28000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1165G7 (11th Gen, Tiger Lake, 4C/8T)",
@@ -901,7 +935,9 @@
     ],
     "catatan": "Ultra-premium business ultrabook. Bobot hanya 1.13kg — salah satu laptop 14 inch teringan. Build quality terbaik di kelasnya. 4x Thunderbolt 4.",
     "isu_diketahui": "RAM soldered tidak bisa upgrade. Harga sangat premium. i7-1165G7 mulai ketinggalan performa untuk beban berat 2023+.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 23800000,
+    "harga_max": 32200000
   },
   {
     "id": "laptop-0037",
@@ -909,7 +945,6 @@
     "merek": "Lenovo",
     "seri": "ThinkPad X1 Carbon",
     "tahun": 2022,
-    "harga": 32000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1260P (12th Gen, Alder Lake-P, 12C/16T)",
@@ -926,7 +961,9 @@
     ],
     "catatan": "Upgrade ke Intel 12th Gen dengan arsitektur hybrid. Webcam FHD 1080p untuk pertama kalinya di X1 Carbon. Konektivitas WiFi 6E.",
     "isu_diketahui": "RAM soldered. Beberapa unit batch awal dilaporkan ada masalah sensor fingerprint. Harga masih sangat mahal.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 27200000,
+    "harga_max": 36800000
   },
   {
     "id": "laptop-0038",
@@ -934,7 +971,6 @@
     "merek": "Lenovo",
     "seri": "ThinkPad X1 Carbon",
     "tahun": 2023,
-    "harga": 36000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1365U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -951,7 +987,9 @@
     ],
     "catatan": "OLED display upgrade sangat signifikan. MIL-SPEC tested di 12 kondisi. Bobot 1.12kg. Salah satu ultrabook terbaik untuk profesional. Garansi 3 tahun on-site.",
     "isu_diketahui": "Harga sangat mahal. Tidak ada GPU dedicated. RAM soldered.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 30600000,
+    "harga_max": 41400000
   },
   {
     "id": "laptop-0039",
@@ -959,7 +997,6 @@
     "merek": "Lenovo",
     "seri": "Yoga 7",
     "tahun": 2022,
-    "harga": 13500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 6600U (Zen 3+, 6C/12T)",
@@ -977,7 +1014,9 @@
     ],
     "catatan": "2-in-1 premium dengan Radeon 660M lebih kencang dari Iris Xe. Touchscreen 360 derajat. Build aluminium solid.",
     "isu_diketahui": "Baterai 2022 Lenovo dilaporkan finicky — kadang tidak akurat menampilkan sisa daya. Speaker cukup tapi tidak istimewa.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11500000,
+    "harga_max": 15500000
   },
   {
     "id": "laptop-0040",
@@ -985,7 +1024,6 @@
     "merek": "Lenovo",
     "seri": "Yoga 7",
     "tahun": 2023,
-    "harga": 17000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 7745HX (Zen 4, 8C/16T)",
@@ -1003,7 +1041,9 @@
     ],
     "catatan": "Yoga pertama dengan GPU dedicated yang terjangkau. RX 7600S cocok untuk desain dan gaming casual. Layar QHD+ 165Hz sangat baik.",
     "isu_diketahui": "Thermal agak ketat saat full CPU+GPU load. Fan bisa cukup keras. Tidak ada fitur 2-in-1 touch di varian ini.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 14500000,
+    "harga_max": 19600000
   },
   {
     "id": "laptop-0041",
@@ -1011,7 +1051,6 @@
     "merek": "Lenovo",
     "seri": "Yoga Slim 7 Pro X",
     "tahun": 2022,
-    "harga": 20000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12700H (12th Gen, Alder Lake-H, 14C/20T)",
@@ -1029,7 +1068,9 @@
     ],
     "catatan": "Powerful compact laptop 14.5 inch. 3K display sangat tajam. RTX 3050 untuk creative work ringan. Thunderbolt 4.",
     "isu_diketahui": "CPU panas hingga 104°C saat full load di beberapa unit — thermal tidak ideal. Fan noise cukup tinggi. RAM soldered. Baterai 2022 Lenovo tidak konsisten dalam pengujian.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 17000000,
+    "harga_max": 23000000
   },
   {
     "id": "laptop-0042",
@@ -1037,7 +1078,6 @@
     "merek": "Lenovo",
     "seri": "Yoga Slim 7 Pro X",
     "tahun": 2022,
-    "harga": 19000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 6800HS (Zen 3+, 8C/16T)",
@@ -1055,7 +1095,9 @@
     ],
     "catatan": "Varian AMD lebih dingin dari Intel. Ryzen 6800HS efisien dan kencang. Layar 3K paling tajam di kelasnya 2022.",
     "isu_diketahui": "RAM soldered tidak bisa upgrade. Thermal masih agak ketat meski lebih baik dari Intel. Speaker agak mengecewakan untuk harganya.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 16200000,
+    "harga_max": 21900000
   },
   {
     "id": "laptop-0043",
@@ -1063,7 +1105,6 @@
     "merek": "Lenovo",
     "seri": "Yoga 9i",
     "tahun": 2022,
-    "harga": 24000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1260P (12th Gen, 12C/16T)",
@@ -1080,7 +1121,9 @@
     ],
     "catatan": "Flagship premium 2-in-1. Layar OLED 2.8K Touch luar biasa. Speaker Bowers & Wilkins quad-speaker premium. Desain rotating soundbar unik.",
     "isu_diketahui": "Harga sangat mahal untuk tanpa dedicated GPU. RAM soldered. Baterai menyusut saat charging cepat dipakai bersamaan.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 20400000,
+    "harga_max": 27600000
   },
   {
     "id": "laptop-0044",
@@ -1088,7 +1131,6 @@
     "merek": "Lenovo",
     "seri": "Yoga 9i",
     "tahun": 2023,
-    "harga": 26000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1360P (13th Gen, Raptor Lake, 12C/16T)",
@@ -1105,7 +1147,9 @@
     ],
     "catatan": "Salah satu 2-in-1 premium terbaik 2023. OLED Touch + Bowers & Wilkins audio. Cocok untuk eksekutif dan presenter.",
     "isu_diketahui": "Harga premium tinggi. Tidak ada GPU dedicated. RAM tidak bisa upgrade.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 22100000,
+    "harga_max": 29900000
   },
   {
     "id": "laptop-0045",
@@ -1113,7 +1157,6 @@
     "merek": "Lenovo",
     "seri": "ThinkBook 14",
     "tahun": 2022,
-    "harga": 12000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1235U (12th Gen, 10C/12T)",
@@ -1130,7 +1173,9 @@
     ],
     "catatan": "Di antara ThinkPad dan IdeaPad. Build quality baik, harga lebih terjangkau dari ThinkPad penuh. Keyboard nyaman.",
     "isu_diketahui": "Storage default 256GB sangat kurang. RAM 8GB single-channel di base config. Tidak sekokoh build ThinkPad.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 10200000,
+    "harga_max": 13800000
   },
   {
     "id": "laptop-0046",
@@ -1138,7 +1183,6 @@
     "merek": "Lenovo",
     "seri": "ThinkBook 16",
     "tahun": 2023,
-    "harga": 14500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1335U (13th Gen, 10C/12T)",
@@ -1155,7 +1199,9 @@
     ],
     "catatan": "Layar 16 inch 16:10 sangat nyaman untuk coding dan multitasking. Terasa lega tanpa terlalu besar.",
     "isu_diketahui": null,
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 12300000,
+    "harga_max": 16700000
   },
   {
     "id": "laptop-0047",
@@ -1163,7 +1209,6 @@
     "merek": "Lenovo",
     "seri": "ThinkBook 16p",
     "tahun": 2023,
-    "harga": 21000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 7745HX (Zen 4, 8C/16T)",
@@ -1181,7 +1226,9 @@
     ],
     "catatan": "ThinkBook performa tinggi dengan GPU dedicated. Layar 3.2K sangat tajam untuk desain. Cocok untuk creative professional.",
     "isu_diketahui": "Thermal cukup ketat saat full load. Berat 2.1kg.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 17900000,
+    "harga_max": 24100000
   },
   {
     "id": "laptop-0048",
@@ -1189,7 +1236,6 @@
     "merek": "ASUS",
     "seri": "VivoBook 15",
     "tahun": 2022,
-    "harga": 8500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1235U (12th Gen, Alder Lake-U, 10C/12T)",
@@ -1206,7 +1252,9 @@
     ],
     "catatan": "Salah satu laptop entry-level paling laris di Indonesia. Build quality solid untuk harganya. Layar IPS nyaman dipakai seharian.",
     "isu_diketahui": "RAM hanya 8GB single slot — perlu upgrade untuk multitasking lebih lancar. Webcam 720p. Speaker kualitas pas-pasan. Tidak ada slot SD card di semua varian.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 7200000,
+    "harga_max": 9800000
   },
   {
     "id": "laptop-0049",
@@ -1214,7 +1262,6 @@
     "merek": "ASUS",
     "seri": "VivoBook 15",
     "tahun": 2023,
-    "harga": 9000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1335U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -1231,7 +1278,9 @@
     ],
     "catatan": "Update ke 13th Gen dengan performa sedikit lebih baik. Masih salah satu laptop terlaris di segmen entry Indonesia.",
     "isu_diketahui": "RAM masih 8GB single channel di base config. Thermal bisa throttle saat sustained load karena cooling tipis. Engsel agak goyang di beberapa unit.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 7700000,
+    "harga_max": 10400000
   },
   {
     "id": "laptop-0050",
@@ -1239,7 +1288,6 @@
     "merek": "ASUS",
     "seri": "VivoBook 16",
     "tahun": 2022,
-    "harga": 8000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5600H (Zen 3, 6C/12T)",
@@ -1256,7 +1304,9 @@
     ],
     "catatan": "Layar 16 inch 16:10 lebih lega untuk kerja dan belajar. Ryzen 5 5600H bertenaga untuk kelasnya. Value sangat baik.",
     "isu_diketahui": "RAM hanya 8GB. Layar brightness ~250 nits, kurang ideal di luar ruangan. Baterai tahan ~7 jam.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 6800000,
+    "harga_max": 9200000
   },
   {
     "id": "laptop-0051",
@@ -1264,7 +1314,6 @@
     "merek": "ASUS",
     "seri": "VivoBook S15",
     "tahun": 2023,
-    "harga": 11000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-13500H (13th Gen, Raptor Lake-H, 12C/16T)",
@@ -1282,7 +1331,9 @@
     ],
     "catatan": "OLED 120Hz di harga mid-range adalah nilai luar biasa. Warna sangat akurat (DCI-P3 100%) — cocok untuk editor foto/video pemula.",
     "isu_diketahui": "OLED agak boros baterai. Tidak ada GPU dedicated. Engsel terasa kurang premium.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 9400000,
+    "harga_max": 12600000
   },
   {
     "id": "laptop-0052",
@@ -1290,7 +1341,6 @@
     "merek": "ASUS",
     "seri": "VivoBook Pro 15",
     "tahun": 2022,
-    "harga": 14000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 6600H (Zen 3+, 6C/12T)",
@@ -1308,7 +1358,9 @@
     ],
     "catatan": "OLED + RTX 3050 kombinasi menarik untuk creative work. Layar OLED sangat akurat untuk editing. RTX 3050 cukup untuk rendering ringan dan desain.",
     "isu_diketahui": "RTX 3050 TGP dibatasi 60W — performa GPU di bawah laptop gaming sejati. Thermal agak ketat. Speaker mengecewakan untuk harganya.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11900000,
+    "harga_max": 16100000
   },
   {
     "id": "laptop-0053",
@@ -1316,7 +1368,6 @@
     "merek": "ASUS",
     "seri": "ZenBook 14",
     "tahun": 2021,
-    "harga": 12000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5500U (Zen 3, 6C/12T)",
@@ -1334,7 +1385,9 @@
     ],
     "catatan": "Ultrabook tipis dan ringan 1.17kg. Build aluminium premium. Baterai luar biasa tahan hingga 12 jam. Salah satu ultrabook AMD terbaik 2021.",
     "isu_diketahui": "RAM 8GB soldered tidak bisa upgrade — ini kelemahan serius. Layar brightness sedang (~300 nits). Speaker kecil tapi ok.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 10200000,
+    "harga_max": 13800000
   },
   {
     "id": "laptop-0054",
@@ -1342,7 +1395,6 @@
     "merek": "ASUS",
     "seri": "ZenBook 14X",
     "tahun": 2022,
-    "harga": 17000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12700H (12th Gen, Alder Lake-H, 14C/20T)",
@@ -1360,7 +1412,9 @@
     ],
     "catatan": "Layar OLED 2.8K Touch luar biasa. Build premium. ErgoLift hinge mengangkat chassis saat dibuka — keyboard lebih nyaman dan airflow lebih baik.",
     "isu_diketahui": "RAM soldered tidak bisa upgrade. Tidak ada GPU dedicated. Harga cukup tinggi untuk tanpa dGPU. Baterai 72Wh habis lebih cepat dari ekspektasi saat full load.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 14500000,
+    "harga_max": 19600000
   },
   {
     "id": "laptop-0055",
@@ -1368,7 +1422,6 @@
     "merek": "ASUS",
     "seri": "ZenBook 14",
     "tahun": 2023,
-    "harga": 16000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 7745HX (Zen 4, 8C/16T)",
@@ -1386,7 +1439,9 @@
     ],
     "catatan": "Kombinasi OLED + Ryzen 7 7745HX + Radeon 780M sangat powerful untuk laptop tipis. Salah satu ultrabook terbaik 2023.",
     "isu_diketahui": "RAM soldered. Panas saat sustained load karena chassis tipis. Beberapa unit dilaporkan coil whine saat charging.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 13600000,
+    "harga_max": 18400000
   },
   {
     "id": "laptop-0056",
@@ -1394,7 +1449,6 @@
     "merek": "ASUS",
     "seri": "ZenBook Pro 14",
     "tahun": 2023,
-    "harga": 22000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-13900H (13th Gen, 14C/20T)",
@@ -1412,7 +1466,9 @@
     ],
     "catatan": "Ultrabook premium dengan GPU dedicated serius. RTX 4060 + OLED 2.8K = paradise untuk konten kreator profesional. DialPad touchpad unik dengan knob kontrol.",
     "isu_diketahui": "Sangat panas saat full load — bisa throttle agresif. Fan noise tinggi. RAM soldered. Harga mahal. Berat 1.65kg untuk 'ultrabook'.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 18700000,
+    "harga_max": 25300000
   },
   {
     "id": "laptop-0057",
@@ -1420,7 +1476,6 @@
     "merek": "ASUS",
     "seri": "TUF Gaming A15",
     "tahun": 2020,
-    "harga": 10000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 4600H (Zen 2, 6C/12T)",
@@ -1437,7 +1492,9 @@
     ],
     "catatan": "Budget gaming laptop terbaik 2020. MIL-SPEC tested. Build kokoh untuk harganya. 144Hz refresh rate di kelas budget pertama.",
     "isu_diketahui": "RAM 8GB single-channel sangat membatasi performa GPU. Layar panel 144Hz tapi response time agak lambat. Speaker jelek. Tidak ada webcam di beberapa varian.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 8500000,
+    "harga_max": 11500000
   },
   {
     "id": "laptop-0058",
@@ -1445,7 +1502,6 @@
     "merek": "ASUS",
     "seri": "TUF Gaming A15",
     "tahun": 2021,
-    "harga": 12500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 5800H (Zen 3, 8C/16T)",
@@ -1462,7 +1518,9 @@
     ],
     "catatan": "Upgrade signifikan ke Ryzen 5800H + RTX 3060. Value gaming terbaik 2021. Build MIL-SPEC lebih tahan banting dari laptop gaming lain.",
     "isu_diketahui": "Thermal paste stock tidak optimal — reapply thermal paste bisa turunkan suhu 10-15°C. Fan bising saat gaming. Tidak ada webcam di beberapa varian. Layar warna tidak terlalu akurat.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 10600000,
+    "harga_max": 14400000
   },
   {
     "id": "laptop-0059",
@@ -1470,7 +1528,6 @@
     "merek": "ASUS",
     "seri": "TUF Gaming A15",
     "tahun": 2022,
-    "harga": 14000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 6800H (Zen 3+, 8C/16T)",
@@ -1486,7 +1543,9 @@
     ],
     "catatan": "Upgrade ke DDR5 dan RTX 3070 Ti. Chassis baru FA507 sedikit lebih tipis. Performa gaming 1080p sangat baik.",
     "isu_diketahui": "Thermal paste stock masih tidak optimal seperti pendahulunya. Layar warna masih belum terlalu akurat untuk kreator. Webcam akhirnya ditambahkan di semua varian.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11900000,
+    "harga_max": 16100000
   },
   {
     "id": "laptop-0060",
@@ -1494,7 +1553,6 @@
     "merek": "ASUS",
     "seri": "TUF Gaming A15",
     "tahun": 2023,
-    "harga": 15000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 7745HX (Zen 4, 8C/16T)",
@@ -1510,7 +1568,9 @@
     ],
     "catatan": "RTX 4060 Gen 4 jauh lebih efisien dan kencang dari RTX 3070 Ti. Salah satu gaming laptop value terbaik 2023.",
     "isu_diketahui": "Layar 144Hz terasa kurang untuk GPU sekencang RTX 4060 — idealnya 165Hz+. Fan masih bising. Thermal paste stock masih perlu diganti untuk performa optimal.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 12800000,
+    "harga_max": 17300000
   },
   {
     "id": "laptop-0061",
@@ -1518,7 +1578,6 @@
     "merek": "ASUS",
     "seri": "TUF Gaming F15",
     "tahun": 2021,
-    "harga": 13000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-11800H (11th Gen, Tiger Lake-H, 8C/16T)",
@@ -1534,7 +1593,9 @@
     ],
     "catatan": "Versi Intel dari TUF Gaming. i7-11800H sangat bertenaga untuk gaming dan multitasking berat. MIL-SPEC certified.",
     "isu_diketahui": "i7-11800H sangat panas saat full load — suhu bisa 95°C+. Thermal throttling agresif tanpa repaste. Fan sangat bising.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11100000,
+    "harga_max": 14900000
   },
   {
     "id": "laptop-0062",
@@ -1542,7 +1603,6 @@
     "merek": "ASUS",
     "seri": "TUF Gaming F15",
     "tahun": 2024,
-    "harga": 16000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-13620H (13th Gen, 10C/16T)",
@@ -1558,7 +1618,9 @@
     ],
     "catatan": "Update signifikan ke RTX 4060 Gen 4. Thermal lebih baik dari generasi i7-11800H. Harga kompetitif untuk speknya.",
     "isu_diketahui": "Layar masih 144Hz — upgrade ke 165Hz direkomendasikan. Tidak ada MUX switch di semua konfigurasi.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 13600000,
+    "harga_max": 18400000
   },
   {
     "id": "laptop-0063",
@@ -1566,7 +1628,6 @@
     "merek": "ASUS",
     "seri": "ROG Strix G15",
     "tahun": 2021,
-    "harga": 18000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 9 5900HX (Zen 3, 8C/16T)",
@@ -1583,7 +1644,9 @@
     ],
     "catatan": "AMD Advantage Edition — CPU dan GPU AMD full. RX 6800M + Ryzen 9 5900HX kombinasi fenomenal 2021. Layar 300Hz untuk competitive gaming.",
     "isu_diketahui": "Driver AMD GPU laptop 2021 masih sering bug dan crash. Perbaikan driver berlangsung 2022-2023. Sangat berat (2.3kg) dan panas saat full load. Baterai boros.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 15300000,
+    "harga_max": 20700000
   },
   {
     "id": "laptop-0064",
@@ -1591,7 +1654,6 @@
     "merek": "ASUS",
     "seri": "ROG Strix G15",
     "tahun": 2022,
-    "harga": 20000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12700H (12th Gen, 14C/20T)",
@@ -1608,7 +1670,9 @@
     ],
     "catatan": "Upgrade ke layar QHD 165Hz — sangat tajam untuk gaming dan konten. i7-12700H + RTX 3070 Ti kombinasi kuat. ROG Armoury Crate lengkap untuk customisasi.",
     "isu_diketahui": "Sangat berat 2.3kg. Panas saat full load. Baterai ~3-4 jam saat gaming. Harga premium.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 17000000,
+    "harga_max": 23000000
   },
   {
     "id": "laptop-0065",
@@ -1616,7 +1680,6 @@
     "merek": "ASUS",
     "seri": "ROG Strix G16",
     "tahun": 2023,
-    "harga": 24000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-13980HX (13th Gen, 24C/32T)",
@@ -1633,7 +1696,9 @@
     ],
     "catatan": "Chassis baru 16 inch 16:10 lebih lega. i9-13980HX + RTX 4070 = performa luar biasa. ROG Nebula Display 240Hz sangat mulus.",
     "isu_diketahui": "i9-13980HX sangat panas dan haus daya. Throttling agresif saat baterai tidak full. Berat 2.5kg. Fan sangat bising saat performa penuh.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 20400000,
+    "harga_max": 27600000
   },
   {
     "id": "laptop-0066",
@@ -1641,7 +1706,6 @@
     "merek": "ASUS",
     "seri": "ROG Zephyrus G14",
     "tahun": 2021,
-    "harga": 20000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 9 5900HS (Zen 3, 8C/16T)",
@@ -1658,7 +1722,9 @@
     ],
     "catatan": "Gaming laptop compact 14 inch terbaik 2021. 1.7kg sangat ringan untuk kelasnya. Ryzen 9 5900HS + RTX 3060 mengejutkan. AniMe Matrix LED khas Zephyrus.",
     "isu_diketahui": "RAM soldered tidak bisa upgrade. Tidak ada webcam (baru ditambahkan di 2022). Baterai sering throttle saat daya baterai rendah. Layar 2021 kurang cerah saat siang outdoor.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 17000000,
+    "harga_max": 23000000
   },
   {
     "id": "laptop-0067",
@@ -1666,7 +1732,6 @@
     "merek": "ASUS",
     "seri": "ROG Zephyrus G14",
     "tahun": 2022,
-    "harga": 22000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 9 6900HX (Zen 3+, 8C/16T)",
@@ -1683,7 +1748,9 @@
     ],
     "catatan": "Upgrade layar ke QHD+ 16:10 lebih lega. Versi full AMD. Webcam akhirnya ditambahkan. Masih sangat portable 1.65kg untuk gaming laptop.",
     "isu_diketahui": "Driver AMD GPU di 2022 masih kadang bermasalah. RAM soldered. RX 6700S kurang dikenal dibanding GPU Nvidia di kelasnya.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 18700000,
+    "harga_max": 25300000
   },
   {
     "id": "laptop-0068",
@@ -1691,7 +1758,6 @@
     "merek": "ASUS",
     "seri": "ROG Zephyrus G14",
     "tahun": 2023,
-    "harga": 26000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 9 7940HS (Zen 4, 8C/16T)",
@@ -1708,7 +1774,9 @@
     ],
     "catatan": "Upgrade fenomenal — OLED display pertama di Zephyrus G14. QHD+ OLED + RTX 4060 + Ryzen 9 7940HS = salah satu gaming laptop terbaik 2023. Ringan 1.65kg.",
     "isu_diketahui": "RAM soldered — tidak bisa upgrade sama sekali. Thermal agak ketat untuk chassis sekecil ini. Harga cukup premium. Baterai lebih boros karena OLED.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 22100000,
+    "harga_max": 29900000
   },
   {
     "id": "laptop-0069",
@@ -1716,7 +1784,6 @@
     "merek": "ASUS",
     "seri": "ROG Flow X13",
     "tahun": 2022,
-    "harga": 24000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 9 6900HS (Zen 3+, 8C/16T)",
@@ -1733,7 +1800,9 @@
     ],
     "catatan": "Gaming laptop 2-in-1 unik. Layar touchscreen 360 derajat. Compatible dengan ROG XG Mobile eGPU untuk upgrade GPU eksternal. Ultra-portable 1.3kg untuk gaming laptop.",
     "isu_diketahui": "RTX 3050 Ti terbatas untuk gaming berat tanpa XG Mobile. XG Mobile mahal terpisah. RAM soldered. Harga mahal untuk GPU yang tergolong entry.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 20400000,
+    "harga_max": 27600000
   },
   {
     "id": "laptop-0070",
@@ -1741,7 +1810,6 @@
     "merek": "ASUS",
     "seri": "ROG Zephyrus M16",
     "tahun": 2021,
-    "harga": 25000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-11900H (11th Gen, Tiger Lake-H, 8C/16T)",
@@ -1758,7 +1826,9 @@
     ],
     "catatan": "16 inch 16:10 gaming laptop premium. Layar sangat lega. RTX 3080 untuk laptop adalah flagship 2021. Build premium dan tipis untuk kelasnya.",
     "isu_diketahui": "i9-11900H sangat panas. Throttling agresif saat full CPU+GPU load. Baterai ~2-3 jam gaming. Sangat mahal.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 21300000,
+    "harga_max": 28700000
   },
   {
     "id": "laptop-0071",
@@ -1766,7 +1836,6 @@
     "merek": "ASUS",
     "seri": "ExpertBook B5",
     "tahun": 2022,
-    "harga": 18000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1265U (12th Gen, Alder Lake-U, 10C/12T)",
@@ -1782,7 +1851,9 @@
     ],
     "catatan": "Business laptop premium ASUS. MIL-SPEC tested. Fingerprint + IR camera untuk login aman. Thunderbolt 4. Garansi 3 tahun on-site. Cocok untuk profesional bisnis.",
     "isu_diketahui": "Harga mahal untuk tanpa GPU dedicated. Desain konservatif — tidak sekeren ThinkPad. Layar brightness sedang.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 15300000,
+    "harga_max": 20700000
   },
   {
     "id": "laptop-0072",
@@ -1790,7 +1861,6 @@
     "merek": "ASUS",
     "seri": "VivoBook Pro 16X",
     "tahun": 2022,
-    "harga": 20000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 6800H (Zen 3+, 8C/16T)",
@@ -1807,7 +1877,9 @@
     ],
     "catatan": "Layar 4K OLED untuk kreator di kelas harga yang relatif terjangkau. Warna sangat akurat untuk editing foto dan video. ASUS Dial knob untuk kontrol Adobe apps.",
     "isu_diketahui": "Layar 4K 60Hz — tidak cocok untuk gaming. RTX 3060 TGP dibatasi 60W karena chassis. Berat 2.1kg. Baterai cepat habis dengan layar 4K OLED.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 17000000,
+    "harga_max": 23000000
   },
   {
     "id": "laptop-0073",
@@ -1815,7 +1887,6 @@
     "merek": "ASUS",
     "seri": "ZenBook Duo",
     "tahun": 2024,
-    "harga": 28000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core Ultra 9 185H (Meteor Lake, 16C/22T)",
@@ -1832,7 +1903,9 @@
     ],
     "catatan": "Inovasi dual OLED screen terbaru ASUS 2024. Desain revolusioner — dua layar OLED sejajar. Sangat produktif untuk multitasking. Keyboard terpisah dengan stand khusus.",
     "isu_diketahui": "Harga sangat mahal. Berat 1.65kg tapi setup lengkap dengan keyboard jadi lebih berat. RAM soldered. Baterai terbagi untuk dua layar OLED.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 23800000,
+    "harga_max": 32200000
   },
   {
     "id": "laptop-0074",
@@ -1840,7 +1913,6 @@
     "merek": "ASUS",
     "seri": "ROG Strix SCAR 16",
     "tahun": 2023,
-    "harga": 38000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-13980HX (13th Gen, 24C/32T)",
@@ -1857,7 +1929,9 @@
     ],
     "catatan": "Gaming laptop paling bertenaga di lineup ASUS 2023. RTX 4090 + i9-13980HX = performa mendekati PC desktop. MUX Switch langsung ke GPU tanpa iGPU overhead.",
     "isu_diketahui": "Panas ekstrem — suhu CPU bisa 100°C+ saat full load. Baterai habis sangat cepat saat gaming. Sangat berat 2.7kg. Harga sangat mahal.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 32300000,
+    "harga_max": 43700000
   },
   {
     "id": "laptop-0075",
@@ -1865,7 +1939,6 @@
     "merek": "ASUS",
     "seri": "TUF Gaming A14",
     "tahun": 2024,
-    "harga": 18000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 9 8945HS (Zen 4, 8C/16T + NPU)",
@@ -1882,7 +1955,9 @@
     ],
     "catatan": "Gaming laptop 14 inch terkecil dan tertipis dari TUF 2024. Bobot hanya 1.46kg — sangat portable untuk gaming laptop. RTX 4060 di chassis 14 inch sangat impresif.",
     "isu_diketahui": "Thermal sangat ketat di chassis kecil — throttling lebih agresif dari TUF A15. Fan sangat bising saat full load.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 15300000,
+    "harga_max": 20700000
   },
   {
     "id": "laptop-0076",
@@ -1890,7 +1965,6 @@
     "merek": "ASUS",
     "seri": "ZenBook S13",
     "tahun": 2023,
-    "harga": 19000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 7745U (Zen 4, 8C/16T)",
@@ -1907,7 +1981,9 @@
     ],
     "catatan": "Ultrabook 13 inch paling tipis ASUS — hanya 10.9mm. Bobot 1.0kg. OLED 2.8K luar biasa. Baterai tahan 12+ jam kerja ringan.",
     "isu_diketahui": "RAM soldered. Port terbatas: 2x USB-C + 1x USB-A saja. Tidak ada GPU dedicated. Harga premium.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 16200000,
+    "harga_max": 21900000
   },
   {
     "id": "laptop-0077",
@@ -1915,7 +1991,6 @@
     "merek": "ASUS",
     "seri": "ROG Zephyrus G14",
     "tahun": 2024,
-    "harga": 30000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen AI 9 HX 370 (Zen 5, 12C/24T + NPU)",
@@ -1932,7 +2007,9 @@
     ],
     "catatan": "G14 2024 dengan chip Zen 5 terbaru. RTX 4070 di 14 inch chassis yang masih relatif ringan 1.65kg. Salah satu gaming laptop compact terbaik 2024.",
     "isu_diketahui": "RAM soldered tidak bisa upgrade. Harga melonjak dari generasi 2023. Thermal masih ketat untuk chassis kecil.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 25500000,
+    "harga_max": 34500000
   },
   {
     "id": "laptop-0078",
@@ -1940,7 +2017,6 @@
     "merek": "HP",
     "seri": "Pavilion 15",
     "tahun": 2020,
-    "harga": 7000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1035G1 (10th Gen, Ice Lake, 4C/8T)",
@@ -1957,7 +2033,9 @@
     ],
     "catatan": "Laptop entry-level HP paling populer 2020. Desain tipis dan ringan untuk kelasnya. Build quality solid.",
     "isu_diketahui": "RAM hanya 8GB single channel. Layar brightness sedang ~250 nits. Baterai tidak konsisten antar unit. Speaker kualitas pas-pasan.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 6000000,
+    "harga_max": 8000000
   },
   {
     "id": "laptop-0079",
@@ -1965,7 +2043,6 @@
     "merek": "HP",
     "seri": "Pavilion 15",
     "tahun": 2021,
-    "harga": 7500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5500U (Zen 3, 6C/12T)",
@@ -1982,7 +2059,9 @@
     ],
     "catatan": "Versi AMD lebih kencang dari Intel sekelasnya. Ryzen 5 5500U sangat efisien. Salah satu laptop terlaris HP di Indonesia 2021.",
     "isu_diketahui": "RAM single channel di base config. Layar warna tidak terlalu akurat. Engsel kurang kokoh di beberapa unit laporan pengguna.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 6400000,
+    "harga_max": 8600000
   },
   {
     "id": "laptop-0080",
@@ -1990,7 +2069,6 @@
     "merek": "HP",
     "seri": "Pavilion 15",
     "tahun": 2022,
-    "harga": 8000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1235U (12th Gen, Alder Lake-U, 10C/12T)",
@@ -2007,7 +2085,9 @@
     ],
     "catatan": "Upgrade ke Intel 12th Gen. Iris Xe graphics lebih baik dari UHD generasi lama untuk multimedia.",
     "isu_diketahui": "Thermal throttle saat sustained load karena cooling tipis. RAM masih 8GB single channel di base. Engsel masih terasa ringkih.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 6800000,
+    "harga_max": 9200000
   },
   {
     "id": "laptop-0081",
@@ -2015,7 +2095,6 @@
     "merek": "HP",
     "seri": "Pavilion 14",
     "tahun": 2023,
-    "harga": 8500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 7530U (Zen 3, 6C/12T)",
@@ -2032,7 +2111,9 @@
     ],
     "catatan": "Form factor 14 inch lebih portable. Ryzen 7530U efisien dan bertenaga untuk tugas harian. Baterai solid ~9 jam.",
     "isu_diketahui": "RAM 8GB. Tidak ada slot SD card di beberapa varian. Webcam 720p.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 7200000,
+    "harga_max": 9800000
   },
   {
     "id": "laptop-0082",
@@ -2040,7 +2121,6 @@
     "merek": "HP",
     "seri": "ENVY x360 14",
     "tahun": 2021,
-    "harga": 11000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5500U (Zen 3, 6C/12T)",
@@ -2057,7 +2137,9 @@
     ],
     "catatan": "2-in-1 mid-range HP. Touchscreen 360 derajat. Build aluminium solid. Lebih premium dari Pavilion.",
     "isu_diketahui": "Storage hanya 256GB — sangat kurang. RAM single channel. Touchpad terkadang tidak responsif.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 9400000,
+    "harga_max": 12600000
   },
   {
     "id": "laptop-0083",
@@ -2065,7 +2147,6 @@
     "merek": "HP",
     "seri": "ENVY x360 13",
     "tahun": 2022,
-    "harga": 14000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1250U (12th Gen, Alder Lake-U, 10C/12T)",
@@ -2082,7 +2163,9 @@
     ],
     "catatan": "Compact 2-in-1 premium. OLED layar tajam dan akurat. Baterai tahan lama ~12 jam. Ringan 1.27kg.",
     "isu_diketahui": "RAM soldered tidak bisa upgrade. Tidak ada GPU dedicated. Harga cukup tinggi untuk spek yang ada.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11900000,
+    "harga_max": 16100000
   },
   {
     "id": "laptop-0084",
@@ -2090,7 +2173,6 @@
     "merek": "HP",
     "seri": "ENVY 16",
     "tahun": 2022,
-    "harga": 20000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12700H (12th Gen, Alder Lake-H, 14C/20T)",
@@ -2108,7 +2190,9 @@
     ],
     "catatan": "Creator laptop premium HP. OLED QHD+ Touch sangat akurat untuk editing. RTX 3060 untuk rendering dan desain. Thunderbolt 4.",
     "isu_diketahui": "Thermal agak ketat saat full CPU+GPU load. Fan bisa bising. Baterai boros karena OLED + dGPU. Harga premium.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 17000000,
+    "harga_max": 23000000
   },
   {
     "id": "laptop-0085",
@@ -2116,7 +2200,6 @@
     "merek": "HP",
     "seri": "ENVY 14",
     "tahun": 2023,
-    "harga": 16000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1355U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -2133,7 +2216,9 @@
     ],
     "catatan": "ENVY 14 2023 dengan OLED 2.8K sangat menarik. Build premium aluminium. Thunderbolt 4. Fingerprint + IR camera.",
     "isu_diketahui": "Tidak ada GPU dedicated. Baterai boros dengan OLED. Harga di atas rata-rata untuk tanpa dGPU.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 13600000,
+    "harga_max": 18400000
   },
   {
     "id": "laptop-0086",
@@ -2141,7 +2226,6 @@
     "merek": "HP",
     "seri": "Spectre x360 14",
     "tahun": 2021,
-    "harga": 22000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1165G7 (11th Gen, Tiger Lake, 4C/8T)",
@@ -2158,7 +2242,9 @@
     ],
     "catatan": "Flagship 2-in-1 premium HP. Rasio layar 3:2 sangat produktif untuk dokumen. OLED AMOLED luar biasa. Desain gem-cut ikonik HP. Thunderbolt 4.",
     "isu_diketahui": "RAM soldered. Tidak ada GPU dedicated. i7-1165G7 mulai ketinggalan 2023+. Harga sangat premium. Baterai tidak konsisten antara mode layar berbeda.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 18700000,
+    "harga_max": 25300000
   },
   {
     "id": "laptop-0087",
@@ -2166,7 +2252,6 @@
     "merek": "HP",
     "seri": "Spectre x360 16",
     "tahun": 2022,
-    "harga": 28000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1255U (12th Gen, Alder Lake-U, 10C/12T)",
@@ -2183,7 +2268,9 @@
     ],
     "catatan": "Flagship besar HP dengan layar 4K+ OLED menakjubkan. Intel Arc A370M untuk GPU ringan. Thunderbolt 4. Desain premium gem-cut.",
     "isu_diketahui": "Intel Arc A370M driver bermasalah di 2022 — sangat sering crash dan bug. Baru stabil setelah update driver 2023. RAM soldered. Sangat berat 2.1kg untuk 2-in-1. Harga sangat mahal.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 23800000,
+    "harga_max": 32200000
   },
   {
     "id": "laptop-0088",
@@ -2191,7 +2278,6 @@
     "merek": "HP",
     "seri": "Spectre x360 14",
     "tahun": 2023,
-    "harga": 26000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1355U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -2208,7 +2294,9 @@
     ],
     "catatan": "Upgrade ke 13th Gen dengan layar 3K+ OLED lebih cerah dan akurat. Rasio 3:2 tetap sangat produktif. Build premium terbaik HP.",
     "isu_diketahui": "RAM soldered. Tidak ada GPU dedicated. Harga sangat tinggi. Baterai boros dengan OLED.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 22100000,
+    "harga_max": 29900000
   },
   {
     "id": "laptop-0089",
@@ -2216,7 +2304,6 @@
     "merek": "HP",
     "seri": "OMEN 15",
     "tahun": 2020,
-    "harga": 16000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-10750H (10th Gen, Comet Lake-H, 6C/12T)",
@@ -2232,7 +2319,9 @@
     ],
     "catatan": "Gaming laptop premium HP 2020. RTX 2060 solid untuk 1080p gaming. OMEN Command Center untuk tuning. Build kokoh dan estetis.",
     "isu_diketahui": "Thermal throttle agresif saat full load. Fan sangat bising. Baterai ~3 jam gaming. Harga premium untuk speknya di 2020.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 13600000,
+    "harga_max": 18400000
   },
   {
     "id": "laptop-0090",
@@ -2240,7 +2329,6 @@
     "merek": "HP",
     "seri": "OMEN 16",
     "tahun": 2022,
-    "harga": 19000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 6800H (Zen 3+, 8C/16T)",
@@ -2257,7 +2345,9 @@
     ],
     "catatan": "Full AMD gaming laptop. RX 6650M sangat bertenaga untuk 1440p gaming. Layar QHD 165Hz tajam dan mulus. OMEN Command Center lengkap.",
     "isu_diketahui": "Driver AMD GPU laptop kadang tidak stabil di 2022. Thermal agak ketat. Fan bising. Baterai ~3-4 jam gaming.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 16200000,
+    "harga_max": 21900000
   },
   {
     "id": "laptop-0091",
@@ -2265,7 +2355,6 @@
     "merek": "HP",
     "seri": "OMEN 16",
     "tahun": 2023,
-    "harga": 22000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-13700HX (13th Gen, 16C/24T)",
@@ -2282,7 +2371,9 @@
     ],
     "catatan": "Upgrade besar ke RTX 4070. Performa 1440p gaming sangat baik. OMEN Tempest Cooling diperbaiki dari generasi sebelumnya.",
     "isu_diketahui": "Thermal masih bisa ketat saat full load lama. Fan noise. Tidak ada MUX switch.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 18700000,
+    "harga_max": 25300000
   },
   {
     "id": "laptop-0092",
@@ -2290,7 +2381,6 @@
     "merek": "HP",
     "seri": "OMEN Transcend 14",
     "tahun": 2024,
-    "harga": 28000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core Ultra 7 155H (Meteor Lake, 16C/22T + NPU)",
@@ -2307,7 +2397,9 @@
     ],
     "catatan": "Gaming laptop tipis premium 2024. OLED 2.8K 165Hz luar biasa untuk gaming dan konten kreator. Bobot hanya 1.58kg — sangat ringan untuk GPU sekelas ini.",
     "isu_diketahui": "RAM soldered tidak bisa upgrade. Harga sangat premium. Thermal agak ketat di chassis tipis saat full load.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 23800000,
+    "harga_max": 32200000
   },
   {
     "id": "laptop-0093",
@@ -2315,7 +2407,6 @@
     "merek": "HP",
     "seri": "Victus 15",
     "tahun": 2021,
-    "harga": 10000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5600H (Zen 3, 6C/12T)",
@@ -2332,7 +2423,9 @@
     ],
     "catatan": "Budget gaming baru dari HP 2021 — pengganti OMEN entry. Lebih terjangkau dari OMEN. Ryzen 5600H bertenaga untuk kelas ini.",
     "isu_diketahui": "RAM 8GB single channel membatasi GPU performance. GTX 1650 sudah terasa ketinggalan untuk game AAA modern. Layar warna tidak akurat.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 8500000,
+    "harga_max": 11500000
   },
   {
     "id": "laptop-0094",
@@ -2340,7 +2433,6 @@
     "merek": "HP",
     "seri": "Victus 15",
     "tahun": 2022,
-    "harga": 13000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5600H (Zen 3, 6C/12T)",
@@ -2357,7 +2449,9 @@
     ],
     "catatan": "Upgrade ke RTX 3050 Ti dan 16GB RAM. Value gaming yang solid untuk mahasiswa. Build masih plastik tapi kokoh.",
     "isu_diketahui": "RTX 3050 Ti TGP dibatasi 60W. Thermal agak ketat. Fan cukup bising saat gaming. Layar warna masih tidak akurat untuk kreator.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11100000,
+    "harga_max": 14900000
   },
   {
     "id": "laptop-0095",
@@ -2365,7 +2459,6 @@
     "merek": "HP",
     "seri": "Victus 15",
     "tahun": 2023,
-    "harga": 12000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-13420H (13th Gen, 8C/12T)",
@@ -2382,7 +2475,9 @@
     ],
     "catatan": "RTX 4060 di harga Victus adalah value luar biasa 2023. Performa gaming 1080p sangat baik untuk budget gaming.",
     "isu_diketahui": "RAM hanya 8GB single channel — sangat disarankan upgrade ke 16GB dual channel segera. Thermal agak ketat saat full load. Layar 144Hz tapi kualitas panel biasa.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 10200000,
+    "harga_max": 13800000
   },
   {
     "id": "laptop-0096",
@@ -2390,7 +2485,6 @@
     "merek": "HP",
     "seri": "Victus 16",
     "tahun": 2024,
-    "harga": 15000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 8745H (Zen 4, 8C/16T)",
@@ -2407,7 +2501,9 @@
     ],
     "catatan": "Victus 16 terbaru dengan Ryzen 8000 series. Layar lebih besar untuk gaming lebih imersif. Value gaming sangat baik di 2024.",
     "isu_diketahui": "Thermal masih jadi kelemahan utama Victus. Fan bising. Layar warna tidak akurat untuk kreator.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 12800000,
+    "harga_max": 17300000
   },
   {
     "id": "laptop-0097",
@@ -2415,7 +2511,6 @@
     "merek": "HP",
     "seri": "EliteBook 840",
     "tahun": 2021,
-    "harga": 18000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1165G7 (11th Gen, Tiger Lake, 4C/8T)",
@@ -2431,7 +2526,9 @@
     ],
     "catatan": "Business laptop premium HP. Sure View privasi layar mencegah shoulder surfing. MIL-SPEC tested. Thunderbolt 4. HP Wolf Security bawaan. Garansi 3 tahun.",
     "isu_diketahui": "Harga premium. i7-1165G7 mulai ketinggalan 2023+. Sure View layar agak menggelap saat aktif. Tidak ada GPU dedicated.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 15300000,
+    "harga_max": 20700000
   },
   {
     "id": "laptop-0098",
@@ -2439,7 +2536,6 @@
     "merek": "HP",
     "seri": "EliteBook 840",
     "tahun": 2022,
-    "harga": 20000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1245U (12th Gen, Alder Lake-U, 10C/12T)",
@@ -2455,7 +2551,9 @@
     ],
     "catatan": "Upgrade ke layar 16:10 lebih produktif. Intel 12th Gen lebih efisien. HP Sure View, Wolf Security, Thunderbolt 4. Standar keamanan enterprise.",
     "isu_diketahui": "Harga sangat mahal. RAM di beberapa konfigurasi soldered. Tidak ada GPU dedicated.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 17000000,
+    "harga_max": 23000000
   },
   {
     "id": "laptop-0099",
@@ -2463,7 +2561,6 @@
     "merek": "HP",
     "seri": "EliteBook 840",
     "tahun": 2023,
-    "harga": 22000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1355U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -2479,7 +2576,9 @@
     ],
     "catatan": "Business flagship HP 2023. HP AI Companion untuk produktivitas AI. Kamera 9MP dengan fitur privacy. Konektivitas lengkap.",
     "isu_diketahui": "Harga enterprise sangat tinggi. RAM sebagian soldered tergantung konfigurasi.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 18700000,
+    "harga_max": 25300000
   },
   {
     "id": "laptop-0100",
@@ -2487,7 +2586,6 @@
     "merek": "HP",
     "seri": "ProBook 450",
     "tahun": 2022,
-    "harga": 13500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1235U (12th Gen, Alder Lake-U, 10C/12T)",
@@ -2504,7 +2602,9 @@
     ],
     "catatan": "Business mid-range HP. Lebih terjangkau dari EliteBook tapi fitur keamanan cukup. MIL-SPEC tested. HP Wolf Security bawaan.",
     "isu_diketahui": "Storage default 256GB kurang. RAM 8GB base perlu upgrade. Desain boxy dan kurang modern dibanding kompetitor.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11500000,
+    "harga_max": 15500000
   },
   {
     "id": "laptop-0101",
@@ -2512,7 +2612,6 @@
     "merek": "HP",
     "seri": "ProBook 450",
     "tahun": 2023,
-    "harga": 15000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1355U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -2529,7 +2628,9 @@
     ],
     "catatan": "Update ke 13th Gen. RAM 16GB lebih dari cukup untuk kebutuhan bisnis. Port lengkap termasuk RJ45 Ethernet. Webcam FHD.",
     "isu_diketahui": "Desain masih konservatif. Tidak ada Thunderbolt 4. Layar brightness standar.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 12800000,
+    "harga_max": 17300000
   },
   {
     "id": "laptop-0102",
@@ -2537,7 +2638,6 @@
     "merek": "HP",
     "seri": "HP Laptop 15s",
     "tahun": 2023,
-    "harga": 6500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i3-1315U (13th Gen, Raptor Lake-U, 6C/8T)",
@@ -2553,7 +2653,9 @@
     ],
     "catatan": "Entry level paling terjangkau dari HP 2023. Cocok untuk pelajar dengan kebutuhan dasar Office dan browsing. Ringan dan mudah dibawa.",
     "isu_diketahui": "Storage 256GB sangat kurang — wajib tambah SSD atau gunakan external. RAM 8GB terbatas. Performa sangat terbatas untuk multitasking.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 5500000,
+    "harga_max": 7500000
   },
   {
     "id": "laptop-0103",
@@ -2561,7 +2663,6 @@
     "merek": "HP",
     "seri": "HP Laptop 14s",
     "tahun": 2024,
-    "harga": 6000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 3 7320U (Zen 3+, 4C/8T)",
@@ -2577,7 +2678,9 @@
     ],
     "catatan": "Laptop paling entry dan portable dari HP 2024. 14 inch ringan untuk pelajar. Cukup untuk tugas kuliah dan Office.",
     "isu_diketahui": "Spek sangat terbatas. Storage dan RAM perlu ditambah untuk penggunaan lebih dari sekedar Office. Tidak ada fitur premium.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 5100000,
+    "harga_max": 6900000
   },
   {
     "id": "laptop-0104",
@@ -2585,7 +2688,6 @@
     "merek": "HP",
     "seri": "ENVY x360 15",
     "tahun": 2023,
-    "harga": 15000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 7730U (Zen 3, 8C/16T)",
@@ -2602,7 +2704,9 @@
     ],
     "catatan": "2-in-1 15 inch dengan OLED layar indah. Touchscreen 360 derajat. Ryzen 7 7730U bertenaga untuk multitasking berat. Stylus HP included.",
     "isu_diketahui": "Tidak ada GPU dedicated. Baterai boros karena OLED. Agak berat untuk 2-in-1 (1.89kg).",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 12800000,
+    "harga_max": 17300000
   },
   {
     "id": "laptop-0105",
@@ -2610,7 +2714,6 @@
     "merek": "HP",
     "seri": "OMEN 16",
     "tahun": 2022,
-    "harga": 18000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12700H (12th Gen, Alder Lake-H, 14C/20T)",
@@ -2627,7 +2730,9 @@
     ],
     "catatan": "OMEN 16 varian Intel 2022. RTX 3070 Ti + i7-12700H kombinasi kuat untuk gaming 1080p high dan rendering ringan.",
     "isu_diketahui": "Fan bising saat gaming. Thermal agak ketat. Baterai boros.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 15300000,
+    "harga_max": 20700000
   },
   {
     "id": "laptop-0106",
@@ -2635,7 +2740,6 @@
     "merek": "HP",
     "seri": "Pavilion Plus 14",
     "tahun": 2023,
-    "harga": 10500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-13500H (13th Gen, Raptor Lake-H, 12C/16T)",
@@ -2653,7 +2757,9 @@
     ],
     "catatan": "OLED 2.8K di harga Pavilion adalah nilai luar biasa. Untuk harganya layar ini sangat premium. Cocok untuk pelajar/pekerja yang suka konten visual.",
     "isu_diketahui": "Tidak ada GPU dedicated. Baterai lebih boros dari Pavilion biasa karena OLED. Engsel tidak bisa 180 derajat penuh.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 8900000,
+    "harga_max": 12100000
   },
   {
     "id": "laptop-0107",
@@ -2661,7 +2767,6 @@
     "merek": "HP",
     "seri": "Victus 15",
     "tahun": 2024,
-    "harga": 11500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-13420H (13th Gen, 8C/12T)",
@@ -2678,7 +2783,9 @@
     ],
     "catatan": "Budget gaming 2024 dengan RTX 4050. Value sangat baik untuk entry gaming. Cocok untuk pelajar yang mulai gaming.",
     "isu_diketahui": "RAM 8GB single channel — wajib upgrade ke 16GB dual channel. Thermal masih jadi kelemahan Victus. Fan bising.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 9800000,
+    "harga_max": 13200000
   },
   {
     "id": "laptop-0108",
@@ -2686,7 +2793,6 @@
     "merek": "Dell",
     "seri": "Inspiron 15 3000",
     "tahun": 2021,
-    "harga": 7500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1135G7 (11th Gen, Tiger Lake, 4C/8T)",
@@ -2703,7 +2809,9 @@
     ],
     "catatan": "Laptop entry Dell paling populer 2021. Build solid dan reliable. Dell Support sangat baik di Indonesia. Panel WVA sudut pandang luas tapi warna biasa.",
     "isu_diketahui": "Panel WVA bukan IPS — warna agak redup dan tidak akurat. RAM single channel di base. Engsel terasa plastik. Speaker sangat lemah.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 6400000,
+    "harga_max": 8600000
   },
   {
     "id": "laptop-0109",
@@ -2711,7 +2819,6 @@
     "merek": "Dell",
     "seri": "Inspiron 15 3000",
     "tahun": 2022,
-    "harga": 8000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1235U (12th Gen, Alder Lake-U, 10C/12T)",
@@ -2728,7 +2835,9 @@
     ],
     "catatan": "Upgrade ke 12th Gen. Desain chassis baru lebih modern dari 3511. Dell SupportAssist bawaan untuk maintenance mudah.",
     "isu_diketahui": "Panel masih WVA bukan IPS. RAM single channel. Thermal throttle saat sustained load. Speaker masih buruk.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 6800000,
+    "harga_max": 9200000
   },
   {
     "id": "laptop-0110",
@@ -2736,7 +2845,6 @@
     "merek": "Dell",
     "seri": "Inspiron 15 3000",
     "tahun": 2023,
-    "harga": 8500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1334U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -2753,7 +2861,9 @@
     ],
     "catatan": "Update rutin ke 13th Gen. Performa sedikit lebih baik. Layar masih sama — WVA standar.",
     "isu_diketahui": "Panel WVA tidak berubah dari 3511/3520. Satu slot RAM — single channel. Tidak ada slot SD card.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 7200000,
+    "harga_max": 9800000
   },
   {
     "id": "laptop-0111",
@@ -2761,7 +2871,6 @@
     "merek": "Dell",
     "seri": "Inspiron 14 5000",
     "tahun": 2021,
-    "harga": 9500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5500U (Zen 3, 6C/12T)",
@@ -2778,7 +2887,9 @@
     ],
     "catatan": "Inspiron 5000 series lebih premium dari 3000. Build lebih kokoh. Ryzen 5500U bertenaga. Lebih compact dari 15 inch.",
     "isu_diketahui": "Panel WVA masih jadi kelemahan. RAM single channel. Engsel bisa longgar setelah pemakaian lama.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 8100000,
+    "harga_max": 10900000
   },
   {
     "id": "laptop-0112",
@@ -2786,7 +2897,6 @@
     "merek": "Dell",
     "seri": "Inspiron 14 5000",
     "tahun": 2022,
-    "harga": 10000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 6600U (Zen 3+, 6C/12T)",
@@ -2803,7 +2913,9 @@
     ],
     "catatan": "Upgrade ke panel IPS! Jauh lebih baik dari WVA. Radeon 660M lebih bertenaga dari Vega 7. Desain slim modern.",
     "isu_diketahui": "RAM masih single channel 8GB. PCIe Gen4 SSD tapi slot hanya satu. Tidak ada Thunderbolt.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 8500000,
+    "harga_max": 11500000
   },
   {
     "id": "laptop-0113",
@@ -2811,7 +2923,6 @@
     "merek": "Dell",
     "seri": "Inspiron 16 5000",
     "tahun": 2023,
-    "harga": 12000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 7730U (Zen 3, 8C/16T)",
@@ -2829,7 +2940,9 @@
     ],
     "catatan": "16 inch 16:10 produktif. Ryzen 7 7730U bertenaga untuk coding dan multitasking. RAM 16GB dual channel solid. Dell build quality terpercaya.",
     "isu_diketahui": "GPU integrated hanya — tidak cocok untuk gaming serius. Baterai ~7-8 jam. Layar brightness standar.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 10200000,
+    "harga_max": 13800000
   },
   {
     "id": "laptop-0114",
@@ -2837,7 +2950,6 @@
     "merek": "Dell",
     "seri": "XPS 13",
     "tahun": 2021,
-    "harga": 22000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1185G7 (11th Gen, Tiger Lake, 4C/8T)",
@@ -2854,7 +2966,9 @@
     ],
     "catatan": "Ultrabook premium terbaik 2021. InfinityEdge bezel super tipis ikonik Dell. Build aluminium premium. Thunderbolt 4. Salah satu laptop paling indah secara desain.",
     "isu_diketahui": "RAM soldered tidak bisa upgrade. Hanya ada port USB-C — butuh dongle untuk USB-A dan HDMI. Webcam posisi bawah (nose cam) buruk untuk video call. Thermal throttle saat sustained load.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 18700000,
+    "harga_max": 25300000
   },
   {
     "id": "laptop-0115",
@@ -2862,7 +2976,6 @@
     "merek": "Dell",
     "seri": "XPS 13",
     "tahun": 2022,
-    "harga": 24000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1250U (12th Gen, Alder Lake-U, 10C/12T)",
@@ -2879,7 +2992,9 @@
     ],
     "catatan": "Desain baru lebih tipis. Webcam dipindah ke atas layar — akhirnya. Upgrade ke LPDDR5. Bobot hanya 1.17kg.",
     "isu_diketahui": "RAM soldered. Port masih hanya 2x Thunderbolt 4 — tidak ada USB-A sama sekali. Thermal throttle agresif di chassis tipis. Harga sangat premium.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 20400000,
+    "harga_max": 27600000
   },
   {
     "id": "laptop-0116",
@@ -2887,7 +3002,6 @@
     "merek": "Dell",
     "seri": "XPS 13",
     "tahun": 2024,
-    "harga": 26000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core Ultra 7 165H (Meteor Lake, 16C/22T + NPU)",
@@ -2904,7 +3018,9 @@
     ],
     "catatan": "XPS 13 terbaru dengan Intel Core Ultra dan NPU. Desain baru minimalis dengan touchpad haptic. Performa meningkat signifikan dari generasi sebelumnya.",
     "isu_diketahui": "RAM soldered. Desain baru hilangkan MagSafe-style charging — hanya USB-C. Keyboard layout berubah — beberapa pengguna tidak suka. Harga sangat mahal.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 22100000,
+    "harga_max": 29900000
   },
   {
     "id": "laptop-0117",
@@ -2912,7 +3028,6 @@
     "merek": "Dell",
     "seri": "XPS 15",
     "tahun": 2022,
-    "harga": 30000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12700H (12th Gen, Alder Lake-H, 14C/20T)",
@@ -2930,7 +3045,9 @@
     ],
     "catatan": "XPS 15 premium creator laptop. Layar InfinityEdge 16:10 lega. Build aluminium premium. Thunderbolt 4. Speaker 6-speaker Waves MaxxAudio sangat baik.",
     "isu_diketahui": "RTX 3050 Ti TGP dibatasi 40W — performa GPU sangat di bawah potensi. Thermal throttle agresif. Harga sangat mahal untuk GPU sekelas ini.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 25500000,
+    "harga_max": 34500000
   },
   {
     "id": "laptop-0118",
@@ -2938,7 +3055,6 @@
     "merek": "Dell",
     "seri": "XPS 15",
     "tahun": 2023,
-    "harga": 36000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-13900H (13th Gen, Raptor Lake-H, 14C/20T)",
@@ -2956,7 +3072,9 @@
     ],
     "catatan": "OLED 3.5K pada XPS 15 adalah layar laptop terbaik yang bisa dibeli 2023. Speaker 6-speaker premium. Build unibody aluminium sempurna. Thunderbolt 4.",
     "isu_diketahui": "RTX 4060 TGP masih dibatasi 60W di chassis XPS — performa tidak setara laptop gaming. Thermal throttle tetap jadi masalah XPS. Harga sangat premium. RAM soldered di beberapa konfigurasi.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 30600000,
+    "harga_max": 41400000
   },
   {
     "id": "laptop-0119",
@@ -2964,7 +3082,6 @@
     "merek": "Dell",
     "seri": "Vostro 14 3000",
     "tahun": 2022,
-    "harga": 9000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1235U (12th Gen, Alder Lake-U, 10C/12T)",
@@ -2981,7 +3098,9 @@
     ],
     "catatan": "Business entry-level Dell. Lebih terjangkau dari Latitude. Windows Pro bawaan. Dell SupportAssist untuk enterprise. Garansi 1 tahun NBD on-site.",
     "isu_diketahui": "Panel WVA bukan IPS. RAM single channel. Tidak ada Thunderbolt. Desain konservatif.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 7700000,
+    "harga_max": 10400000
   },
   {
     "id": "laptop-0120",
@@ -2989,7 +3108,6 @@
     "merek": "Dell",
     "seri": "Vostro 15 3000",
     "tahun": 2023,
-    "harga": 9500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1334U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -3006,7 +3124,9 @@
     ],
     "catatan": "Business laptop mid-entry Dell. Windows Pro bawaan untuk enterprise. Dual storage slot tersedia untuk upgrade. Port lengkap termasuk RJ45 Ethernet.",
     "isu_diketahui": "Panel WVA. RAM single channel. Desain boxy kurang modern. Speaker tidak istimewa.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 8100000,
+    "harga_max": 10900000
   },
   {
     "id": "laptop-0121",
@@ -3014,7 +3134,6 @@
     "merek": "Dell",
     "seri": "Latitude 5000",
     "tahun": 2021,
-    "harga": 18000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-11850H (11th Gen, Tiger Lake-H, 8C/16T)",
@@ -3030,7 +3149,9 @@
     ],
     "catatan": "Business premium Dell. MX450 untuk GPU ringan. MIL-SPEC tested. vPro untuk remote management. Dell SafeScreen dan SafeID fitur keamanan enterprise.",
     "isu_diketahui": "MX450 sangat terbatas untuk kreator — lebih sebagai GPU akselerasi ringan. Harga enterprise sangat mahal. Desain kaku dan konservatif.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 15300000,
+    "harga_max": 20700000
   },
   {
     "id": "laptop-0122",
@@ -3038,7 +3159,6 @@
     "merek": "Dell",
     "seri": "Latitude 5000",
     "tahun": 2022,
-    "harga": 20000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12800H (12th Gen, Alder Lake-H, 14C/20T)",
@@ -3054,7 +3174,9 @@
     ],
     "catatan": "Upgrade ke Intel 12th Gen HX series. MX550 lebih bertenaga dari MX450. Dell Optimizer AI untuk performa adaptif. Thunderbolt 4.",
     "isu_diketahui": "Harga sangat mahal. MX550 masih terbatas untuk kreator serius. Berat 1.86kg.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 17000000,
+    "harga_max": 23000000
   },
   {
     "id": "laptop-0123",
@@ -3062,7 +3184,6 @@
     "merek": "Dell",
     "seri": "Latitude 7000",
     "tahun": 2023,
-    "harga": 25000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1365U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -3078,7 +3199,9 @@
     ],
     "catatan": "Premium business flagship Dell. Build magnesium alloy sangat ringan 1.15kg. Dell Optimizer + ExpressConnect WiFi. MIL-SPEC 810H. Thunderbolt 4. Garansi 3 tahun ProSupport.",
     "isu_diketahui": "Harga sangat mahal untuk tanpa GPU dedicated. RAM soldered di beberapa konfigurasi. Port terbatas tanpa dongle.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 21300000,
+    "harga_max": 28700000
   },
   {
     "id": "laptop-0124",
@@ -3086,7 +3209,6 @@
     "merek": "Dell",
     "seri": "Dell G15",
     "tahun": 2021,
-    "harga": 11000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-10200H (10th Gen, Comet Lake-H, 4C/8T)",
@@ -3103,7 +3225,9 @@
     ],
     "catatan": "Budget gaming Dell. RTX 3050 untuk 1080p gaming medium. Build kokoh khas Dell. Support Dell Gaming sangat baik.",
     "isu_diketahui": "i5-10200H sudah ketinggalan — bottleneck untuk GPU RTX 3050. Panel WVA bukan IPS. RAM single channel 8GB. Storage 256GB sangat kurang.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 9400000,
+    "harga_max": 12600000
   },
   {
     "id": "laptop-0125",
@@ -3111,7 +3235,6 @@
     "merek": "Dell",
     "seri": "Dell G15",
     "tahun": 2022,
-    "harga": 14000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12700H (12th Gen, Alder Lake-H, 14C/20T)",
@@ -3127,7 +3250,9 @@
     ],
     "catatan": "Upgrade besar — i7-12700H + RTX 3060 + DDR5 + layar IPS 165Hz. Salah satu gaming laptop value terbaik Dell 2022. Build kokoh dan port lengkap.",
     "isu_diketahui": "Fan cukup bising saat gaming. Thermal paste stock tidak optimal. Baterai ~3-4 jam gaming. Desain agak tebal dan berat.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11900000,
+    "harga_max": 16100000
   },
   {
     "id": "laptop-0126",
@@ -3135,7 +3260,6 @@
     "merek": "Dell",
     "seri": "Dell G15",
     "tahun": 2023,
-    "harga": 17000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-13650HX (13th Gen, 6P+8E, 20T)",
@@ -3151,7 +3275,9 @@
     ],
     "catatan": "RTX 4060 Gen 4 upgrade signifikan. i7-13650HX sangat kencang. Thermal management diperbaiki dari generasi sebelumnya. Dell Gaming Center untuk tuning.",
     "isu_diketahui": "Fan masih bising. Baterai boros saat gaming. Chassis agak berat 2.81kg. Tidak ada MUX switch.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 14500000,
+    "harga_max": 19600000
   },
   {
     "id": "laptop-0127",
@@ -3159,7 +3285,6 @@
     "merek": "Dell",
     "seri": "Dell G16",
     "tahun": 2023,
-    "harga": 26000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-13900HX (13th Gen, 24C/32T)",
@@ -3176,7 +3301,9 @@
     ],
     "catatan": "Flagship gaming Dell 2023. Layar QHD+ 16:10 sangat lega. i9-13900HX + RTX 4070 kombinasi sangat bertenaga. MUX switch tersedia.",
     "isu_diketahui": "i9-13900HX sangat panas saat full load. Fan sangat bising. Baterai boros. Sangat berat 2.9kg.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 22100000,
+    "harga_max": 29900000
   },
   {
     "id": "laptop-0128",
@@ -3184,7 +3311,6 @@
     "merek": "Dell",
     "seri": "Dell G16",
     "tahun": 2024,
-    "harga": 23000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 8845HS (Zen 4, 8C/16T)",
@@ -3201,7 +3327,9 @@
     ],
     "catatan": "Varian AMD 2024 lebih dingin dan efisien dari Intel. Ryzen 8845HS + RTX 4070 performa sangat baik. QHD+ 165Hz ideal untuk gaming dan kreator.",
     "isu_diketahui": "Fan masih bising saat full load. Berat 2.5kg. Baterai boros saat gaming.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 19600000,
+    "harga_max": 26400000
   },
   {
     "id": "laptop-0129",
@@ -3209,7 +3337,6 @@
     "merek": "Dell",
     "seri": "Alienware m15",
     "tahun": 2021,
-    "harga": 28000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 9 5900HX (Zen 3, 8C/16T)",
@@ -3225,7 +3352,9 @@
     ],
     "catatan": "Flagship gaming Dell Alienware. Layar 360Hz untuk competitive gaming. Ryzen 9 5900HX + RTX 3070 sangat bertenaga. Cherry MX keyboard mechanical di varian tertentu.",
     "isu_diketahui": "Sangat berat 2.33kg. Baterai boros ekstrem ~2 jam gaming. Fan sangat bising. Harga sangat premium. Thermal masih bisa throttle saat full load.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 23800000,
+    "harga_max": 32200000
   },
   {
     "id": "laptop-0130",
@@ -3233,7 +3362,6 @@
     "merek": "Dell",
     "seri": "Alienware x14",
     "tahun": 2022,
-    "harga": 30000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12700H (12th Gen, 14C/20T)",
@@ -3249,7 +3377,9 @@
     ],
     "catatan": "Gaming laptop Alienware paling tipis — hanya 14.99mm. Cherry MX keyboard mechanical. RGB per-key. Desain futuristik ikonik Alienware.",
     "isu_diketahui": "RAM soldered tidak bisa upgrade. RTX 3060 dibatasi di chassis tipis. Harga sangat premium untuk spek yang ada. Fan sangat bising.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 25500000,
+    "harga_max": 34500000
   },
   {
     "id": "laptop-0131",
@@ -3257,7 +3387,6 @@
     "merek": "Dell",
     "seri": "Alienware m16",
     "tahun": 2023,
-    "harga": 40000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-13980HX (13th Gen, 24C/32T)",
@@ -3273,7 +3402,9 @@
     ],
     "catatan": "Gaming laptop paling bertenaga Dell 2023. RTX 4090 + i9-13980HX = monster performa. QHD+ 240Hz untuk gaming kompetitif premium. Per-key RGB AlienFX.",
     "isu_diketahui": "Sangat berat 3.1kg. Baterai habis sangat cepat saat gaming. Panas ekstrem. Harga luar biasa mahal. Fan sangat bising.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 34000000,
+    "harga_max": 46000000
   },
   {
     "id": "laptop-0132",
@@ -3281,7 +3412,6 @@
     "merek": "Dell",
     "seri": "Inspiron 14 Plus",
     "tahun": 2022,
-    "harga": 14500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12700H (12th Gen, Alder Lake-H, 14C/20T)",
@@ -3298,7 +3428,9 @@
     ],
     "catatan": "Inspiron Plus posisinya antara Inspiron biasa dan XPS. Layar 2.5K 16:10 luar biasa untuk harganya. i7-12700H sangat bertenaga. Thunderbolt 4.",
     "isu_diketahui": "Tidak ada GPU dedicated. Thermal agak ketat untuk i7-12700H di chassis non-gaming. Fan bisa bising saat sustained load.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 12300000,
+    "harga_max": 16700000
   },
   {
     "id": "laptop-0133",
@@ -3306,7 +3438,6 @@
     "merek": "Dell",
     "seri": "Inspiron 16 Plus",
     "tahun": 2023,
-    "harga": 20000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-13900H (13th Gen, Raptor Lake-H, 14C/20T)",
@@ -3324,7 +3455,9 @@
     ],
     "catatan": "Laptop produktivitas dan kreativitas terbaik Dell non-XPS. Layar 3.2K luar biasa. i9-13900H + RTX 4060 + 32GB RAM sangat powerful. Thunderbolt 4.",
     "isu_diketahui": "Thermal agak ketat saat full CPU+GPU load. Fan bisa bising. Berat 2.0kg.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 17000000,
+    "harga_max": 23000000
   },
   {
     "id": "laptop-0134",
@@ -3332,7 +3465,6 @@
     "merek": "Dell",
     "seri": "XPS 14",
     "tahun": 2024,
-    "harga": 32000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core Ultra 7 155H (Meteor Lake, 16C/22T + NPU)",
@@ -3350,7 +3482,9 @@
     ],
     "catatan": "XPS 14 baru — posisi antara XPS 13 dan XPS 15. OLED 3K+ Touch luar biasa. GPU dedicated di chassis 14 inch. Desain premium unibody aluminium.",
     "isu_diketahui": "RAM soldered. RTX 4050 dibatasi TGP di chassis tipis. Harga sangat premium. Keyboard layout berubah dari generasi XPS lama.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 27200000,
+    "harga_max": 36800000
   },
   {
     "id": "laptop-0135",
@@ -3358,7 +3492,6 @@
     "merek": "Dell",
     "seri": "Inspiron 15 5000",
     "tahun": 2021,
-    "harga": 10500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 5700U (Zen 3, 8C/16T)",
@@ -3376,7 +3509,9 @@
     ],
     "catatan": "Inspiron 5000 AMD versi 8-core. Ryzen 7 5700U sangat bertenaga untuk multitasking dan coding. RAM 16GB dual channel solid. Value sangat baik.",
     "isu_diketahui": "Panel WVA — warna kurang akurat. GPU integrated hanya. Engsel bisa longgar setelah pemakaian intensif.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 8900000,
+    "harga_max": 12100000
   },
   {
     "id": "laptop-0136",
@@ -3384,7 +3519,6 @@
     "merek": "Dell",
     "seri": "Vostro 14 5000",
     "tahun": 2021,
-    "harga": 9000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5500U (Zen 3, 6C/12T)",
@@ -3400,7 +3534,9 @@
     ],
     "catatan": "Business entry Dell dengan AMD. Windows Pro bawaan. Ryzen 5500U efisien. Port lengkap untuk bisnis termasuk RJ45.",
     "isu_diketahui": "Storage 256GB kurang. RAM single channel 8GB. Panel WVA.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 7700000,
+    "harga_max": 10400000
   },
   {
     "id": "laptop-0137",
@@ -3408,7 +3544,6 @@
     "merek": "Dell",
     "seri": "Dell G15",
     "tahun": 2022,
-    "harga": 16000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 6800H (Zen 3+, 8C/16T)",
@@ -3424,7 +3559,9 @@
     ],
     "catatan": "Varian AMD G15 2022. Ryzen 6800H + RTX 3070 Ti kombinasi kencang. Layar IPS 165Hz. Thermal lebih baik dari varian Intel.",
     "isu_diketahui": "Fan bising saat gaming. Baterai ~3-4 jam gaming. Chassis agak berat dan tebal.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 13600000,
+    "harga_max": 18400000
   },
   {
     "id": "laptop-0138",
@@ -3432,7 +3569,6 @@
     "merek": "Acer",
     "seri": "Aspire 5",
     "tahun": 2021,
-    "harga": 7500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5500U (Zen 3, 6C/12T)",
@@ -3449,7 +3585,9 @@
     ],
     "catatan": "Salah satu laptop entry terlaris 2021. IPS display lebih baik dari kompetitor di kelas yang sama. Ryzen 5500U sangat efisien dan bertenaga untuk harganya.",
     "isu_diketahui": "RAM single channel di base config. Layar brightness sedang ~250 nits. Speaker sangat lemah. Engsel agak kaku.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 6400000,
+    "harga_max": 8600000
   },
   {
     "id": "laptop-0139",
@@ -3457,7 +3595,6 @@
     "merek": "Acer",
     "seri": "Aspire 5",
     "tahun": 2022,
-    "harga": 8000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1235U (12th Gen, Alder Lake-U, 10C/12T)",
@@ -3474,7 +3611,9 @@
     ],
     "catatan": "Update ke Intel 12th Gen. Iris Xe lebih bertenaga untuk multimedia. Build quality solid untuk kelas entry.",
     "isu_diketahui": "RAM single channel. Thermal throttle ringan saat sustained load. Webcam 720p. Port SD card hilang di beberapa varian.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 6800000,
+    "harga_max": 9200000
   },
   {
     "id": "laptop-0140",
@@ -3482,7 +3621,6 @@
     "merek": "Acer",
     "seri": "Aspire 5",
     "tahun": 2023,
-    "harga": 8500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 7530U (Zen 3, 6C/12T)",
@@ -3499,7 +3637,9 @@
     ],
     "catatan": "Update ke Ryzen 7000 series. Performa sedikit lebih baik dan efisien. Masih jadi value terbaik di kelas entry.",
     "isu_diketahui": "RAM single channel. Tidak ada upgrade besar dari versi 2021 selain processor. Speaker masih buruk.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 7200000,
+    "harga_max": 9800000
   },
   {
     "id": "laptop-0141",
@@ -3507,7 +3647,6 @@
     "merek": "Acer",
     "seri": "Aspire 7",
     "tahun": 2022,
-    "harga": 10000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5625U (Zen 3, 6C/12T)",
@@ -3524,7 +3663,9 @@
     ],
     "catatan": "Entry gaming laptop terjangkau. GTX 1650 + 144Hz layar combo menarik untuk harganya. RAM 16GB dual channel solid.",
     "isu_diketahui": "GTX 1650 sudah ketinggalan untuk game AAA 2023+. Fan bising saat gaming. Thermal agak ketat. Build plastik terasa kurang premium.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 8500000,
+    "harga_max": 11500000
   },
   {
     "id": "laptop-0142",
@@ -3532,7 +3673,6 @@
     "merek": "Acer",
     "seri": "Aspire Lite",
     "tahun": 2023,
-    "harga": 7000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1235U (12th Gen, 10C/12T)",
@@ -3548,7 +3688,9 @@
     ],
     "catatan": "Seri entry paling terjangkau Acer 2023. 14 inch portable untuk pelajar. Cukup untuk Office, browsing, dan streaming.",
     "isu_diketahui": "Spek sangat terbatas. RAM 8GB tidak bisa upgrade di beberapa varian. Build plastik tipis terasa ringkih.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 6000000,
+    "harga_max": 8000000
   },
   {
     "id": "laptop-0143",
@@ -3556,7 +3698,6 @@
     "merek": "Acer",
     "seri": "Swift 3",
     "tahun": 2021,
-    "harga": 11000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 5700U (Zen 3, 8C/16T)",
@@ -3574,7 +3715,9 @@
     ],
     "catatan": "Ultrabook ringan 1.2kg premium Acer. Ryzen 7 5700U 8-core bertenaga luar biasa untuk kelasnya. Baterai solid ~10 jam. Build aluminium premium.",
     "isu_diketahui": "Layar brightness sedang ~300 nits. Tidak ada GPU dedicated. Webcam 720p. Port USB-A hanya satu.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 9400000,
+    "harga_max": 12600000
   },
   {
     "id": "laptop-0144",
@@ -3582,7 +3725,6 @@
     "merek": "Acer",
     "seri": "Swift 3",
     "tahun": 2022,
-    "harga": 12000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1260P (12th Gen, Alder Lake-P, 12C/16T)",
@@ -3599,7 +3741,9 @@
     ],
     "catatan": "Upgrade ke Intel 12th Gen P-series bertenaga. Thunderbolt 4. Build aluminium tipis 1.25kg. Fingerprint reader terintegrasi tombol power.",
     "isu_diketahui": "RAM soldered tidak bisa upgrade. Layar masih FHD biasa — tidak ada upgrade ke 2K. Port terbatas.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 10200000,
+    "harga_max": 13800000
   },
   {
     "id": "laptop-0145",
@@ -3607,7 +3751,6 @@
     "merek": "Acer",
     "seri": "Swift X",
     "tahun": 2022,
-    "harga": 13500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5625U (Zen 3, 6C/12T)",
@@ -3625,7 +3768,9 @@
     ],
     "catatan": "Creator ultrabook tipis dengan GPU dedicated. RTX 3050 Ti untuk desain dan rendering ringan. Bobot 1.4kg untuk ukuran ini sangat ringan. Thunderbolt 4.",
     "isu_diketahui": "RTX 3050 Ti TGP dibatasi 35W di chassis tipis — performa GPU sangat terbatas. Baterai ~6 jam karena GPU dedicated.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11500000,
+    "harga_max": 15500000
   },
   {
     "id": "laptop-0146",
@@ -3633,7 +3778,6 @@
     "merek": "Acer",
     "seri": "Swift X",
     "tahun": 2023,
-    "harga": 16000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 7 7840U (Zen 4, 8C/16T)",
@@ -3651,7 +3795,9 @@
     ],
     "catatan": "OLED 2.8K + RTX 4050 + Ryzen 7840U di chassis 1.4kg sangat impresif. Salah satu creator ultrabook terbaik 2023 untuk harganya.",
     "isu_diketahui": "RAM soldered tidak bisa upgrade. RTX 4050 TGP masih dibatasi di chassis tipis. Baterai ~7 jam karena OLED dan dGPU.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 13600000,
+    "harga_max": 18400000
   },
   {
     "id": "laptop-0147",
@@ -3659,7 +3805,6 @@
     "merek": "Acer",
     "seri": "Swift Go 14",
     "tahun": 2023,
-    "harga": 13000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1355U (13th Gen, Raptor Lake-U, 10C/12T)",
@@ -3677,7 +3822,9 @@
     ],
     "catatan": "OLED 2.8K di harga yang kompetitif. Ringan 1.25kg. Thunderbolt 4. Fingerprint reader. Cocok untuk profesional muda dan mahasiswa.",
     "isu_diketahui": "RAM soldered. Tidak ada GPU dedicated. Layar 60Hz — tidak ideal untuk konten dinamis. Baterai ~8 jam.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 11100000,
+    "harga_max": 14900000
   },
   {
     "id": "laptop-0148",
@@ -3685,7 +3832,6 @@
     "merek": "Acer",
     "seri": "Nitro 5",
     "tahun": 2020,
-    "harga": 10000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-10300H (10th Gen, Comet Lake-H, 4C/8T)",
@@ -3702,7 +3848,9 @@
     ],
     "catatan": "Budget gaming klasik yang sangat populer di Indonesia. IPS 144Hz di harga entry adalah nilai besar 2020. Build kokoh untuk gaming.",
     "isu_diketahui": "RAM single channel 8GB bottleneck GPU. Fan sangat bising saat gaming. Thermal paste stock perlu diganti. i5-10300H mulai ketinggalan 2023.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 8500000,
+    "harga_max": 11500000
   },
   {
     "id": "laptop-0149",
@@ -3710,7 +3858,6 @@
     "merek": "Acer",
     "seri": "Nitro 5",
     "tahun": 2021,
-    "harga": 11500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 5600H (Zen 3, 6C/12T)",
@@ -3727,7 +3874,9 @@
     ],
     "catatan": "Upgrade besar ke Ryzen 5600H + RTX 3060. Value gaming terbaik 2021. Nitro 5 menjadi pilihan pertama banyak gamer Indonesia.",
     "isu_diketahui": "RAM single channel 8GB — wajib upgrade ke 16GB dual channel. Fan sangat bising (ini kelemahan Nitro yang konsisten). Thermal perlu repaste untuk optimal.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 9800000,
+    "harga_max": 13200000
   },
   {
     "id": "laptop-0150",
@@ -3735,7 +3884,6 @@
     "merek": "Acer",
     "seri": "Nitro 5",
     "tahun": 2022,
-    "harga": 13000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-12500H (12th Gen, Alder Lake-H, 12C/16T)",
@@ -3751,7 +3899,9 @@
     ],
     "catatan": "Upgrade ke Intel 12th Gen 12-core. Performa CPU meningkat signifikan. RAM 16GB dual channel lebih ideal. Nitro 5 masih jadi raja budget gaming.",
     "isu_diketahui": "Fan noise adalah kelemahan terbesar Nitro 5 yang tidak pernah berubah. Thermal paste stock tidak optimal. Layar warna tidak akurat untuk kreator.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11100000,
+    "harga_max": 14900000
   },
   {
     "id": "laptop-0151",
@@ -3759,7 +3909,6 @@
     "merek": "Acer",
     "seri": "Nitro V",
     "tahun": 2023,
-    "harga": 12000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-13420H (13th Gen, 8C/12T)",
@@ -3776,7 +3925,9 @@
     ],
     "catatan": "Pengganti Nitro 5 di 2023 — rebrand menjadi Nitro V. RTX 4050 Gen 4 jauh lebih efisien. Desain chassis baru lebih segar. Value gaming tetap kompetitif.",
     "isu_diketahui": "RAM 8GB single channel — wajib upgrade segera. Fan noise masih jadi ciri khas yang kurang menyenangkan. Thermal paste tetap tidak optimal dari pabrik.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 10200000,
+    "harga_max": 13800000
   },
   {
     "id": "laptop-0152",
@@ -3784,7 +3935,6 @@
     "merek": "Acer",
     "seri": "Nitro V",
     "tahun": 2024,
-    "harga": 13500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "AMD Ryzen 5 8645HS (Zen 4, 6C/12T)",
@@ -3800,7 +3950,9 @@
     ],
     "catatan": "Nitro V 2024 dengan RTX 4060 adalah upgrade signifikan. AMD Ryzen 8645HS efisien dan kencang. Thermal management sedikit membaik dari generasi sebelumnya.",
     "isu_diketahui": "Fan noise masih jadi isu konsisten Nitro. Layar 144Hz terasa kurang untuk RTX 4060 yang bisa push lebih tinggi.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 11500000,
+    "harga_max": 15500000
   },
   {
     "id": "laptop-0153",
@@ -3808,7 +3960,6 @@
     "merek": "Acer",
     "seri": "Predator Helios 300",
     "tahun": 2021,
-    "harga": 18000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-11800H (11th Gen, Tiger Lake-H, 8C/16T)",
@@ -3825,7 +3976,9 @@
     ],
     "catatan": "Gaming laptop Predator mid-high 2021. RTX 3070 + i7-11800H sangat kencang. Thermals lebih baik dari Nitro berkat dual-fan system. Build premium.",
     "isu_diketahui": "i7-11800H sangat panas saat full load. Fan bising meski lebih baik dari Nitro. Baterai boros. Harga premium.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 15300000,
+    "harga_max": 20700000
   },
   {
     "id": "laptop-0154",
@@ -3833,7 +3986,6 @@
     "merek": "Acer",
     "seri": "Predator Helios 300",
     "tahun": 2022,
-    "harga": 20000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12700H (12th Gen, Alder Lake-H, 14C/20T)",
@@ -3850,7 +4002,9 @@
     ],
     "catatan": "Upgrade ke RTX 3080 Ti — salah satu GPU laptop terkencang 2022. Refresh rate naik ke 165Hz. Thermals PredatorSense lebih baik.",
     "isu_diketahui": "Sangat berat 2.5kg. Sangat panas saat full load. Baterai ~2 jam gaming. Harga sangat mahal.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 17000000,
+    "harga_max": 23000000
   },
   {
     "id": "laptop-0155",
@@ -3858,7 +4012,6 @@
     "merek": "Acer",
     "seri": "Predator Helios Neo 16",
     "tahun": 2023,
-    "harga": 21000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-13700HX (13th Gen, 16C/24T)",
@@ -3875,7 +4028,9 @@
     ],
     "catatan": "Seri baru Predator Neo 2023 — posisi antara Nitro dan Helios penuh. QHD+ 16:10 layar besar. RTX 4070 performa solid. Thermals lebih baik dari Helios 300 lawas.",
     "isu_diketahui": "Fan bising saat full load. Berat 2.6kg. Baterai ~3 jam gaming.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 17900000,
+    "harga_max": 24100000
   },
   {
     "id": "laptop-0156",
@@ -3883,7 +4038,6 @@
     "merek": "Acer",
     "seri": "Predator Triton 16",
     "tahun": 2023,
-    "harga": 35000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-13900HX (13th Gen, 24C/32T)",
@@ -3900,7 +4054,9 @@
     ],
     "catatan": "Flagship Predator 2023. Mini LED 240Hz luar biasa. RTX 4080 + i9-13900HX = performa monster. PredatorSense cooling advanced.",
     "isu_diketahui": "Sangat berat 2.6kg. Panas ekstrem saat full load. Baterai boros. Harga sangat mahal.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 29800000,
+    "harga_max": 40300000
   },
   {
     "id": "laptop-0157",
@@ -3908,7 +4064,6 @@
     "merek": "MSI",
     "seri": "Modern 14",
     "tahun": 2021,
-    "harga": 9000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-1155G7 (11th Gen, Tiger Lake, 4C/8T)",
@@ -3925,7 +4080,9 @@
     ],
     "catatan": "Laptop tipis MSI untuk produktivitas. Build aluminium solid. Ringan 1.4kg. Fingerprint reader. Layar IPS akurat warna.",
     "isu_diketahui": "RAM single channel di base config. Thermal kadang ketat untuk chassis tipis. Tidak ada Thunderbolt. Speaker biasa.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 7700000,
+    "harga_max": 10400000
   },
   {
     "id": "laptop-0158",
@@ -3933,7 +4090,6 @@
     "merek": "MSI",
     "seri": "Modern 15",
     "tahun": 2022,
-    "harga": 11000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1255U (12th Gen, Alder Lake-U, 10C/12T)",
@@ -3950,7 +4106,9 @@
     ],
     "catatan": "Produktivitas laptop 15 inch dari MSI. Build slim dan ringan 1.7kg. RAM 16GB dual channel solid untuk multitasking.",
     "isu_diketahui": "Tidak ada Thunderbolt. Layar 60Hz. Baterai ~7 jam. Tidak cocok untuk gaming serius.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 9400000,
+    "harga_max": 12600000
   },
   {
     "id": "laptop-0159",
@@ -3958,7 +4116,6 @@
     "merek": "MSI",
     "seri": "Prestige 14",
     "tahun": 2022,
-    "harga": 14000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1280P (12th Gen, Alder Lake-P, 14C/20T)",
@@ -3975,7 +4132,9 @@
     ],
     "catatan": "Premium ultrabook MSI. Intel Evo certified. Thunderbolt 4. Build premium tipis 1.29kg. Baterai solid ~12 jam kerja ringan.",
     "isu_diketahui": "RAM soldered tidak bisa upgrade. Tidak ada GPU dedicated. Harga cukup tinggi untuk tanpa dGPU.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11900000,
+    "harga_max": 16100000
   },
   {
     "id": "laptop-0160",
@@ -3983,7 +4142,6 @@
     "merek": "MSI",
     "seri": "Prestige 16",
     "tahun": 2023,
-    "harga": 22000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-13700H (13th Gen, Raptor Lake-H, 14C/20T)",
@@ -4001,7 +4159,9 @@
     ],
     "catatan": "Creator premium MSI terbaik 2023. 4K+ OLED Touch 16 inch luar biasa untuk editor profesional. RTX 4060 untuk rendering. Thunderbolt 4. Build premium.",
     "isu_diketahui": "Layar 4K OLED sangat boros baterai. Berat 1.9kg. Harga premium. Fan kadang bising saat GPU load tinggi.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 18700000,
+    "harga_max": 25300000
   },
   {
     "id": "laptop-0161",
@@ -4009,7 +4169,6 @@
     "merek": "MSI",
     "seri": "GF63 Thin",
     "tahun": 2021,
-    "harga": 10500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-11400H (11th Gen, Tiger Lake-H, 6C/12T)",
@@ -4026,7 +4185,9 @@
     ],
     "catatan": "Budget gaming tipis MSI. Chassis lebih slim dari kompetitor. 144Hz layar solid untuk gaming casual. Build terasa premium untuk harganya.",
     "isu_diketahui": "GTX 1650 Max-Q TGP sangat rendah — performa GPU lebih lambat dari GTX 1650 biasa. RAM single channel. Fan bising saat gaming.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 8900000,
+    "harga_max": 12100000
   },
   {
     "id": "laptop-0162",
@@ -4034,7 +4195,6 @@
     "merek": "MSI",
     "seri": "GF65 Thin",
     "tahun": 2021,
-    "harga": 13000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-10500H (10th Gen, Comet Lake-H, 6C/12T)",
@@ -4050,7 +4210,9 @@
     ],
     "catatan": "Thin gaming laptop dengan RTX 3060. Chassis lebih tipis dari gaming laptop biasa. Desain premium MSI khas.",
     "isu_diketahui": "i5-10500H bottleneck RTX 3060. RAM single channel 8GB perlu upgrade segera. Fan bising. TGP RTX 3060 dibatasi di chassis tipis.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 11100000,
+    "harga_max": 14900000
   },
   {
     "id": "laptop-0163",
@@ -4058,7 +4220,6 @@
     "merek": "MSI",
     "seri": "Cyborg 15",
     "tahun": 2023,
-    "harga": 12500000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i5-12450H (12th Gen, Alder Lake-H, 8C/12T)",
@@ -4075,7 +4236,9 @@
     ],
     "catatan": "Pengganti GF63 Thin. Desain transparan unik khas Cyborg. RTX 4050 Gen 4 upgrade besar dari GTX 1650. DDR5 sudah standard. Value gaming solid.",
     "isu_diketahui": "RAM single channel 8GB di base — wajib upgrade. Fan bising. Layar warna tidak akurat. Build terasa kurang kokoh di bagian bawah chassis.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 10600000,
+    "harga_max": 14400000
   },
   {
     "id": "laptop-0164",
@@ -4083,7 +4246,6 @@
     "merek": "MSI",
     "seri": "Cyborg 15",
     "tahun": 2024,
-    "harga": 14000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-13620H (13th Gen, 10C/16T)",
@@ -4099,7 +4261,9 @@
     ],
     "catatan": "Update ke i7-13620H dan RTX 4060. RAM 16GB DDR5 sudah memadai. Performa gaming 1080p sangat baik untuk budget ini.",
     "isu_diketahui": "Fan masih bising. Layar 144Hz terasa kurang untuk RTX 4060. Build bagian bawah masih agak flexibel.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 11900000,
+    "harga_max": 16100000
   },
   {
     "id": "laptop-0165",
@@ -4107,7 +4271,6 @@
     "merek": "MSI",
     "seri": "GP66 Leopard",
     "tahun": 2021,
-    "harga": 19000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-11800H (11th Gen, Tiger Lake-H, 8C/16T)",
@@ -4124,7 +4287,9 @@
     ],
     "catatan": "Gaming laptop mid-high MSI. Layar 240Hz untuk competitive gaming. RTX 3070 + i7-11800H kencang. Cooler Boost 5 dual-fan system solid.",
     "isu_diketahui": "i7-11800H sangat panas — thermal throttle agresif saat full load. Fan sangat bising. Baterai ~3 jam gaming. Berat 2.25kg.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 16200000,
+    "harga_max": 21900000
   },
   {
     "id": "laptop-0166",
@@ -4132,7 +4297,6 @@
     "merek": "MSI",
     "seri": "GP76 Leopard",
     "tahun": 2022,
-    "harga": 22000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12700H (12th Gen, Alder Lake-H, 14C/20T)",
@@ -4148,7 +4312,9 @@
     ],
     "catatan": "Gaming laptop 17 inch layar besar. 360Hz untuk competitive gaming. RTX 3080 Ti tertinggi di 2022. Cooler Boost 5 lebih efisien dari generasi sebelumnya.",
     "isu_diketahui": "Sangat berat 2.9kg. Sangat boros baterai ~2 jam gaming. Fan sangat bising. Harga sangat mahal.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 18700000,
+    "harga_max": 25300000
   },
   {
     "id": "laptop-0167",
@@ -4156,7 +4322,6 @@
     "merek": "MSI",
     "seri": "Vector GP66",
     "tahun": 2022,
-    "harga": 24000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-12700H (12th Gen, 14C/20T)",
@@ -4173,7 +4338,9 @@
     ],
     "catatan": "Flagship gaming MSI 15 inch 2022. QHD 240Hz layar tajam dan mulus. RTX 3080 Ti + i7-12700H sangat bertenaga. Per-key RGB SteelSeries keyboard.",
     "isu_diketahui": "Sangat panas dan bising saat full load. Baterai boros ekstrem. Berat 2.3kg. Harga sangat premium.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 20400000,
+    "harga_max": 27600000
   },
   {
     "id": "laptop-0168",
@@ -4181,7 +4348,6 @@
     "merek": "MSI",
     "seri": "Raider GE78",
     "tahun": 2023,
-    "harga": 40000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-13980HX (13th Gen, 24C/32T)",
@@ -4198,7 +4364,9 @@
     ],
     "catatan": "Flagship gaming monster MSI 2023. RTX 4090 + i9-13980HX = performa paling buas. Display 17.3 inch QHD+ 240Hz impresif. Cooler Boost Trinity+ cooling.",
     "isu_diketahui": "Sangat berat 3.1kg. Panas ekstrem saat full load. Baterai habis sangat cepat. Harga luar biasa mahal. Fan sangat bising.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 34000000,
+    "harga_max": 46000000
   },
   {
     "id": "laptop-0169",
@@ -4206,7 +4374,6 @@
     "merek": "MSI",
     "seri": "Titan GT77",
     "tahun": 2022,
-    "harga": 50000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-12900HX (12th Gen, Alder Lake-HX, 16C/24T)",
@@ -4223,7 +4390,9 @@
     ],
     "catatan": "Desktop replacement laptop paling ekstrem. 4K UHD 144Hz layar terbaik untuk kreator. Cherry MX mechanical keyboard full-size. 64GB RAM + 4TB SSD sangat besar.",
     "isu_diketahui": "Sangat berat 3.5kg — hampir tidak portable. Baterai ~1 jam gaming. Perlu adaptor power 330W besar. Harga ekstrem. Panas dan bising.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 42500000,
+    "harga_max": 57500000
   },
   {
     "id": "laptop-0170",
@@ -4231,7 +4400,6 @@
     "merek": "MSI",
     "seri": "Stealth 15M",
     "tahun": 2021,
-    "harga": 19000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-11375H (11th Gen, Tiger Lake-H35, 4C/8T)",
@@ -4248,7 +4416,9 @@
     ],
     "catatan": "Gaming laptop tipis ultra-slim hanya 16.5mm. Bobot sangat ringan 1.7kg untuk gaming laptop. Desain elegan cocok untuk profesional yang gaming.",
     "isu_diketahui": "i7-11375H hanya 4-core — bottleneck serius untuk RTX 3060. Thermal sangat ketat di chassis tipis — throttling agresif. RTX 3060 TGP dibatasi 60W.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 16200000,
+    "harga_max": 21900000
   },
   {
     "id": "laptop-0171",
@@ -4256,7 +4426,6 @@
     "merek": "MSI",
     "seri": "Stealth 16 Studio",
     "tahun": 2023,
-    "harga": 38000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-13900H (13th Gen, Raptor Lake-H, 14C/20T)",
@@ -4273,7 +4442,9 @@
     ],
     "catatan": "Gaming x Creator premium tipis. 4K+ OLED Touch luar biasa untuk editor dan gamer. RTX 4080 + i9-13900H sangat bertenaga. Tipis 15.9mm dengan GPU sekelas ini sangat impresif.",
     "isu_diketahui": "Thermal sangat ketat di chassis tipis — throttling saat sustained full load. Baterai boros karena 4K OLED + dGPU besar. Harga sangat mahal.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 32300000,
+    "harga_max": 43700000
   },
   {
     "id": "laptop-0172",
@@ -4281,7 +4452,6 @@
     "merek": "MSI",
     "seri": "Summit E16 Flip",
     "tahun": 2022,
-    "harga": 20000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-1280P (12th Gen, Alder Lake-P, 14C/20T)",
@@ -4298,7 +4468,9 @@
     ],
     "catatan": "2-in-1 premium MSI. QHD+ Touch 360 derajat. Build premium slim. Intel Evo certified. Thunderbolt 4. Stylus included. Cocok untuk presenter dan desainer.",
     "isu_diketahui": "RAM soldered. Tidak ada GPU dedicated. Harga mahal untuk tanpa dGPU. Thermal agak ketat saat sustained load.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 17000000,
+    "harga_max": 23000000
   },
   {
     "id": "laptop-0173",
@@ -4306,7 +4478,6 @@
     "merek": "MSI",
     "seri": "Creator Z16",
     "tahun": 2022,
-    "harga": 40000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i9-12900HX (12th Gen, Alder Lake-HX, 16C/24T)",
@@ -4323,7 +4494,9 @@
     ],
     "catatan": "Creator laptop flagship MSI 2022. RTX 3080 Ti untuk rendering dan 3D profesional. QHD+ Touch layar sangat lebar. Thunderbolt 4. Per-key RGB keyboard.",
     "isu_diketahui": "Sangat mahal. Sangat panas saat full load. Berat 2.5kg. Baterai boros. Fan sangat bising saat full render.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 34000000,
+    "harga_max": 46000000
   },
   {
     "id": "laptop-0174",
@@ -4331,7 +4504,6 @@
     "merek": "MSI",
     "seri": "Creator M16",
     "tahun": 2023,
-    "harga": 22000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Intel Core i7-13700HX (13th Gen, 16C/24T)",
@@ -4348,7 +4520,9 @@
     ],
     "catatan": "Creator laptop mid-range MSI 2023. QHD+ 165Hz ideal untuk desain dan editing. RTX 4060 untuk rendering. Thunderbolt 4. Lebih terjangkau dari Creator Z16.",
     "isu_diketahui": "Fan bisa bising saat GPU load tinggi. Berat 2.2kg. Thermal masih bisa ketat saat full CPU+GPU load.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 18700000,
+    "harga_max": 25300000
   },
   {
     "id": "laptop-0175",
@@ -4356,7 +4530,6 @@
     "merek": "Apple",
     "seri": "MacBook Air",
     "tahun": 2020,
-    "harga": 15000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Apple M1 (8-core CPU, 4P+4E, 5nm)",
@@ -4374,7 +4547,9 @@
     ],
     "catatan": "Revolusi laptop 2020. Chip M1 pertama Apple mengalahkan hampir semua laptop Intel x86 di kelasnya dalam efisiensi dan performa. Fanless — benar-benar senyap. Baterai luar biasa 15-18 jam. Bobot 1.29kg.",
     "isu_diketahui": "RAM 8GB terasa kurang untuk multitasking berat di 2023+. Storage 256GB sangat cepat tapi kapasitas kecil. Tidak kompatibel dengan banyak software Windows tanpa Parallels. Harga second masih relatif tinggi.",
-    "status": "Discontinued — Digantikan M2"
+    "status": "Discontinued — Digantikan M2",
+    "harga_min": 12800000,
+    "harga_max": 17300000
   },
   {
     "id": "laptop-0176",
@@ -4382,7 +4557,6 @@
     "merek": "Apple",
     "seri": "MacBook Air",
     "tahun": 2022,
-    "harga": 19000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Apple M2 (8-core CPU, 4P+4E, 5nm enhanced)",
@@ -4401,7 +4575,9 @@
     ],
     "catatan": "Desain baru tanpa batas (notch di atas layar). Layar Liquid Retina lebih besar dan cerah dari M1. MagSafe kembali. Performa M2 ~18% lebih kencang dari M1. Masih fanless dan sangat senyap.",
     "isu_diketahui": "Versi 256GB SSD menggunakan chip NAND single die — kecepatan baca/tulis SSD LEBIH LAMBAT dari M1 256GB. Isu serius yang sudah dikonfirmasi banyak reviewer. Solusi: pilih varian 512GB ke atas. RAM 8GB masih terasa kurang untuk banyak pengguna. Notch tidak semua orang suka.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 16200000,
+    "harga_max": 21900000
   },
   {
     "id": "laptop-0177",
@@ -4409,7 +4585,6 @@
     "merek": "Apple",
     "seri": "MacBook Air 15",
     "tahun": 2023,
-    "harga": 23000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Apple M2 (8-core CPU, 4P+4E, 5nm enhanced)",
@@ -4428,7 +4603,9 @@
     ],
     "catatan": "MacBook Air pertama dengan layar 15 inch. Layar Liquid Retina 2.8K sangat lega dan tajam. Speaker 6-speaker sistem terbaik di kelas ultrabook. Tetap fanless dan senyap. GPU 10-core lebih kencang dari M2 13 inch.",
     "isu_diketahui": "Sama seperti M2 13 inch — varian 256GB punya isu SSD lambat. RAM 8GB masih jadi perdebatan untuk harga segini. Tidak ada port SD card. Hanya 2x USB-C.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 19600000,
+    "harga_max": 26400000
   },
   {
     "id": "laptop-0178",
@@ -4436,7 +4613,6 @@
     "merek": "Apple",
     "seri": "MacBook Air",
     "tahun": 2024,
-    "harga": 21000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Apple M3 (8-core CPU, 4P+4E, 3nm)",
@@ -4455,7 +4631,9 @@
     ],
     "catatan": "Chip M3 3nm — lompatan efisiensi besar. GPU 10-core bisa gaming lebih baik dari M2. Fitur baru: support dual external monitor tanpa dongle khusus. Hardware ray tracing. Baterai hingga 18 jam.",
     "isu_diketahui": "Varian 256GB masih pakai single die NAND — isu SSD lambat dari M2 belum sepenuhnya hilang di konfigurasi terendah. RAM 8GB tetap jadi perdebatan di 2024. Harga naik dari M2.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 17900000,
+    "harga_max": 24100000
   },
   {
     "id": "laptop-0179",
@@ -4463,7 +4641,6 @@
     "merek": "Apple",
     "seri": "MacBook Air 15",
     "tahun": 2024,
-    "harga": 26000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Apple M3 (8-core CPU, 4P+4E, 3nm)",
@@ -4481,7 +4658,9 @@
     ],
     "catatan": "MacBook Air 15 terbaru dengan M3. Konfigurasi 16GB/512GB jauh lebih layak untuk penggunaan profesional. Layar besar 15.3 inch sangat lega. Speaker 6-speaker terbaik di kelasnya.",
     "isu_diketahui": "Harga cukup tinggi. Fanless berarti performa bisa turun saat sustained heavy workload panjang. Tidak ada GPU dedicated untuk rendering berat.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 22100000,
+    "harga_max": 29900000
   },
   {
     "id": "laptop-0180",
@@ -4489,7 +4668,6 @@
     "merek": "Apple",
     "seri": "MacBook Pro 13",
     "tahun": 2020,
-    "harga": 18000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Apple M1 (8-core CPU, 4P+4E, 5nm)",
@@ -4507,7 +4685,9 @@
     ],
     "catatan": "MacBook Pro pertama dengan chip Apple Silicon. Berbeda dari Air M1 karena punya fan aktif — performa sustained lebih konsisten untuk workload berat. GPU 8-core lebih baik dari Air M1 7-core.",
     "isu_diketahui": "Desain sama dengan MacBook Pro Intel 2019 — tidak ada perubahan fisik. RAM masih 8GB di base. TouchBar yang tidak disukai banyak pengguna masih ada. Digantikan desain baru di 2022.",
-    "status": "Discontinued"
+    "status": "Discontinued",
+    "harga_min": 15300000,
+    "harga_max": 20700000
   },
   {
     "id": "laptop-0181",
@@ -4515,7 +4695,6 @@
     "merek": "Apple",
     "seri": "MacBook Pro 14",
     "tahun": 2023,
-    "harga": 32000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Apple M2 Pro (12-core CPU, 8P+4E, 5nm enhanced)",
@@ -4533,7 +4712,9 @@
     ],
     "catatan": "MacBook Pro dengan chip M2 Pro — jauh lebih kencang dari M2 biasa. Layar Liquid Retina XDR 120Hz ProMotion luar biasa tajam dan mulus. Port kembali lengkap: HDMI, SD card, MagSafe. Fan aktif untuk sustained performance.",
     "isu_diketahui": "Harga sangat mahal. RAM soldered. Upgrade RAM/storage hanya bisa saat beli. Baterai boros saat heavy workload meski rata-rata bisa 18+ jam kerja ringan.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 27200000,
+    "harga_max": 36800000
   },
   {
     "id": "laptop-0182",
@@ -4541,7 +4722,6 @@
     "merek": "Apple",
     "seri": "MacBook Pro 14",
     "tahun": 2023,
-    "harga": 35000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Apple M3 Pro (12-core CPU, 6P+6E, 3nm)",
@@ -4559,7 +4739,9 @@
     ],
     "catatan": "Chip M3 Pro 3nm — hardware ray tracing pertama di laptop Apple. GPU 18-core sangat bertenaga untuk rendering. 18GB RAM lebih dari cukup untuk profesional. Layar XDR 120Hz terbaik di kelasnya.",
     "isu_diketahui": "Harga sangat mahal. RAM dan storage tidak bisa diupgrade setelah beli. Beberapa benchmark menunjukkan M3 Pro tidak selalu lebih kencang dari M2 Max dalam workload tertentu.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 29800000,
+    "harga_max": 40300000
   },
   {
     "id": "laptop-0183",
@@ -4567,7 +4749,6 @@
     "merek": "Apple",
     "seri": "MacBook Pro 16",
     "tahun": 2023,
-    "harga": 50000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Apple M2 Max (12-core CPU, 8P+4E, 5nm enhanced)",
@@ -4584,7 +4765,9 @@
     ],
     "catatan": "Workstation laptop terbaik dunia 2023. GPU 38-core mengalahkan banyak GPU dedicated laptop di workload kreatif. 32GB RAM Unified sangat lega. Layar XDR 16 inch spektakuler. Baterai 22 jam.",
     "isu_diketahui": "Harga ekstrem. RAM dan storage soldered. Sangat berat untuk 'laptop' — 2.15kg. Boros baterai saat full GPU load meski tahan lama di kerja ringan.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 42500000,
+    "harga_max": 57500000
   },
   {
     "id": "laptop-0184",
@@ -4592,7 +4775,6 @@
     "merek": "Apple",
     "seri": "MacBook Pro 16",
     "tahun": 2023,
-    "harga": 60000000,
     "kondisi": "Baru",
     "spesifikasi": {
       "processor": "Apple M3 Max (16-core CPU, 12P+4E, 3nm)",
@@ -4609,6 +4791,8 @@
     ],
     "catatan": "Laptop paling powerful yang bisa dibeli 2023. GPU 40-core 3nm dengan hardware ray tracing. 48GB Unified Memory untuk workload AI dan 3D besar. Performa GPU mendekati RTX 4090 di beberapa benchmark kreatif.",
     "isu_diketahui": "Harga sangat ekstrem. RAM soldered — tidak bisa upgrade. 2.15kg cukup berat. Tidak semua software Windows/Android tersedia di macOS.",
-    "status": "Active"
+    "status": "Active",
+    "harga_min": 51000000,
+    "harga_max": 69000000
   }
 ]

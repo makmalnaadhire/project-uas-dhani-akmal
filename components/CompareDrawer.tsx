@@ -19,7 +19,7 @@ function getValue(laptop: Laptop, key: string): string {
     case "ram": return laptop.spesifikasi.ram;
     case "storage": return laptop.spesifikasi.storage;
     case "gpu": return laptop.spesifikasi.gpu;
-    case "harga": return formatRupiah(laptop.harga);
+    case "harga": return `${formatRupiah(laptop.harga_min)} - ${formatRupiah(laptop.harga_max)}`;
     case "kondisi": return laptop.kondisi;
     case "kategori": return laptop.kategori.join(", ");
     case "tahun": return String(laptop.tahun);

@@ -79,7 +79,7 @@ function exportLaptopPDF(laptop: Laptop) {
       </table>
       <div style="background:#f0fdfa;border:1px solid #2dd4bf40;border-radius:8px;padding:16px;text-align:center;">
         <p style="font-size:11px;color:#64748b;margin:0 0 4px;">Harga Estimasi</p>
-        <p style="font-size:24px;font-weight:800;color:#0f172a;margin:0;">${formatRupiah(laptop.harga)}</p>
+        <p style="font-size:24px;font-weight:800;color:#0f172a;margin:0;">${formatRupiah(laptop.harga_min)} - ${formatRupiah(laptop.harga_max)}</p>
       </div>
       <p style="font-size:11px;color:#94a3b8;margin-top:24px;text-align:center;">LaptopPintar &mdash; Temukan Laptop yang Tepat untuk Kamu</p>
       <script>window.onload=function(){window.print();}<\/script>
@@ -133,8 +133,8 @@ export default function CatalogSection({
     if (activeBadge !== "semua") list = list.filter(l => l.kategori.includes(activeBadge));
 
     switch (sortBy) {
-      case "harga-low": list.sort((a, b) => a.harga - b.harga); break;
-      case "harga-high": list.sort((a, b) => b.harga - a.harga); break;
+      case "harga-low": list.sort((a, b) => a.harga_min - b.harga_min); break;
+      case "harga-high": list.sort((a, b) => b.harga_max - a.harga_max); break;
       case "nama": list.sort((a, b) => a.nama.localeCompare(b.nama)); break;
       case "tahun": list.sort((a, b) => b.tahun - a.tahun); break;
     }
@@ -364,7 +364,7 @@ export default function CatalogSection({
                     <div className="flex justify-between items-start pt-3 border-t border-slate-200 dark:border-white/5 gap-3">
                       <div className="flex-1 min-w-0">
                         <span className="text-lg font-bold font-[family-name:var(--font-display)] text-slate-900 dark:text-white block leading-tight">
-                          {formatRupiah(laptop.harga)}
+                          {formatRupiah(laptop.harga_min)} - {formatRupiah(laptop.harga_max)}
                         </span>
                         <span className="text-[10px] italic text-slate-500 dark:text-slate-400 mt-0.4 block leading-tight">
                           *Harga kisaran, dapat berubah sewaktu-waktu

@@ -108,7 +108,7 @@ export default function LaptopDetailPage({ params }: { params: Promise<{ id: str
               <span className="text-xs text-slate-500">Harga</span>
             </div>
             <p className="text-3xl font-bold font-[family-name:var(--font-display)] text-white">
-              {formatRupiah(laptop.harga)}
+              {formatRupiah(laptop.harga_min)} - {formatRupiah(laptop.harga_max)}
             </p>
           </div>
 

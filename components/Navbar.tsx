@@ -174,7 +174,7 @@ export default function Navbar() {
 
                   <div className="py-2">
                     <button
-                      onClick={() => setDropdownOpen(false)}
+                      onClick={() => { setDropdownOpen(false); router.push("/profile"); }}
                       className="w-full flex items-center gap-3 px-5 py-2.5 text-sm text-slate-300 hover:bg-white/5 hover:text-white transition-colors"
                     >
                       <UserIcon size={16} className="text-slate-400" />

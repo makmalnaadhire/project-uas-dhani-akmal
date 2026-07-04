@@ -14,11 +14,13 @@ export interface Laptop {
   merek: string;
   seri: string;
   tahun: number;
-  harga: number;
+  harga_min: number;
+  harga_max: number;
   kondisi: string;
   spesifikasi: Spesifikasi;
   kategori: string[];
   catatan: string;
   isu_diketahui: string | null;
   status: string;
+  gambar?: string;
 }

@@ -60,7 +60,7 @@ export default function RecommendSection({ laptops, setSelectedLaptop }: Props) 
     const budget = budgetRanges[budgetRange];
     return laptops.filter(l => {
       const matchN = matchCategory(selectedNeed, l);
-      const matchB = l.harga >= budget.min && l.harga <= budget.max;
+      const matchB = l.harga_max >= budget.min && l.harga_min <= budget.max;
       const matchC = selectedCondition === "All" || l.kondisi === selectedCondition;
       return matchN && matchB && matchC;
     }).sort((a, b) => {
@@ -69,7 +69,7 @@ export default function RecommendSection({ laptops, setSelectedLaptop }: Props) 
       if (b.kondisi === "Baru") sb += 10;
       sa += parseInt(a.spesifikasi.ram);
       sb += parseInt(b.spesifikasi.ram);
-      return sb - sa || a.harga - b.harga;
+      return sb - sa || a.harga_min - b.harga_min;
     });
   }, [laptops, selectedNeed, budgetRange, selectedCondition]);
 
@@ -185,7 +185,7 @@ export default function RecommendSection({ laptops, setSelectedLaptop }: Props) 
                       <div className="text-xs text-slate-500">{l.spesifikasi.processor} · {l.spesifikasi.ram}</div>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <div className="text-sm font-bold font-[family-name:var(--font-display)]">{formatRupiah(l.harga)}</div>
+                      <div className="text-sm font-bold font-[family-name:var(--font-display)]">{formatRupiah(l.harga_min)} - {formatRupiah(l.harga_max)}</div>
                       <div className={`text-[10px] ${l.kondisi === "Baru" ? "text-[#2dd4bf]" : "text-[#f97316]"}`}>{l.kondisi}</div>
                     </div>
                     <ArrowRight size={14} className="text-slate-600 group-hover:text-[#f97316] transition-colors flex-shrink-0" />

@@ -18,7 +18,7 @@ export default function HeroSection() {
   const { t } = useTranslation();
   const totalLaptops = laptops.length;
   const brands = [...new Set(laptops.map((l) => l.merek))].length;
-  const avgPrice = laptops.reduce((s, l) => s + l.harga, 0) / laptops.length;
+  const avgPrice = laptops.reduce((s, l) => s + l.harga_min, 0) / laptops.length;
 
   const stats = [
     { icon: <Laptop2 size={22} />, value: totalLaptops, label: t.statLaptops, color: "text-[#2dd4bf]", bg: "bg-[#2dd4bf]/10" },
@@ -74,7 +74,7 @@ export default function HeroSection() {
 
             <div className="grid grid-cols-2 gap-4 slide-up" style={{ animationDelay: "0.2s" }}>
               {stats.map((s, i) => (
-                <div key={i} className="glass rounded-xl p-5 hover:border-white/15 transition-all duration-300 group">
+                <div key={i} className="glass rounded-xl p-5 border border-white/5 hover:border-white/20 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 group">
                   <div className={`w-10 h-10 rounded-lg ${s.bg} ${s.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
                     {s.icon}
                   </div>
@@ -101,7 +101,7 @@ export default function HeroSection() {
             <Link
               key={i}
               href={f.href}
-              className="glass rounded-xl p-7 text-left hover:border-white/15 transition-all duration-300 group"
+              className="glass rounded-xl p-7 text-left border border-white/5 hover:border-white/20 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 group"
             >
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110" style={{ backgroundColor: `${f.color}15`, color: f.color }}>
                 {f.icon}
@@ -124,7 +124,7 @@ export default function HeroSection() {
               {t.ctaDesc}
             </p>
             <div className="flex justify-center gap-3">
-              <Link href="/recommendations" className="px-6 py-3 rounded-lg bg-gradient-to-r from-[#f97316] to-[#ef4444] text-white font-semibold text-sm hover:shadow-[0_0_25px_rgba(249,115,22,0.4)] transition-all duration-300">
+              <Link href="/recommendations" className="px-6 py-3 rounded-lg bg-gradient-to-r from-[#2dd4bf] to-[#4ade80] text-[#0f172a] font-semibold text-sm hover:shadow-[0_0_25px_rgba(45,212,191,0.4)] transition-all duration-300">
                 {t.ctaStart}
               </Link>
               <Link href="/education" className="px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-white font-semibold text-sm hover:bg-white/10 transition-all duration-300">
