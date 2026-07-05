@@ -66,7 +66,7 @@ const translations = {
     loginTitle: "Masuk ke Akun Anda",
     loginSubtitle: "Selamat datang kembali! Silakan masuk ke akun Anda.",
     loginEmailLabel: "Username atau Email",
-    loginEmailPlaceholder: "anda@contoh.com",
+    loginEmailPlaceholder: "user123@gmail.com",
     loginPasswordLabel: "Kata Sandi",
     loginPasswordPlaceholder: "Masukkan kata sandi Anda",
     loginRemember: "Ingat Saya",

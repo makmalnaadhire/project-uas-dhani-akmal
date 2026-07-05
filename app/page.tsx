@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Link from "next/link";
-import { useApp } from "@/components/providers/AppProvider";
 import { useTranslation } from "@/components/providers/LanguageProvider";
 import ScrollReveal from "@/components/ScrollReveal";
 import {
@@ -57,6 +56,7 @@ function useCountUp(target: number, duration = 1500) {
 function StatCounter({
   icon,
   value,
+  prefix,
   suffix,
   label,
   color,
@@ -65,6 +65,7 @@ function StatCounter({
 }: {
   icon: React.ReactNode;
   value: number;
+  prefix?: string;
   suffix?: string;
   label: string;
   color: string;
@@ -85,7 +86,7 @@ function StatCounter({
           {icon}
         </div>
         <div className="text-2xl font-bold font-[family-name:var(--font-display)]">
-          {suffix ? `Rp ${count}jt` : `${count}${suffix ?? ""}`}
+          {prefix ?? ""}{count}{suffix ?? ""}
         </div>
         <div className="text-xs text-slate-500 mt-1">{label}</div>
       </div>
@@ -208,24 +209,14 @@ function Particle({
 /* ── Main Homepage ─────────────────────────────────────── */
 
 export default function HomePage() {
-  const { laptops } = useApp();
   const { t } = useTranslation();
-
-  const totalLaptops = laptops.length;
-  const brands = useMemo(
-    () => [...new Set(laptops.map((l) => l.merek))].length,
-    [laptops]
-  );
-  const avgPrice = useMemo(
-    () => laptops.reduce((s, l) => s + l.harga_min, 0) / laptops.length,
-    [laptops]
-  );
 
   const stats = useMemo(
     () => [
       {
         icon: <Laptop2 size={22} />,
-        value: totalLaptops,
+        value: 180,
+        prefix: "",
         suffix: "+",
         label: t.statLaptops,
         color: "text-[#2dd4bf]",
@@ -233,7 +224,8 @@ export default function HomePage() {
       },
       {
         icon: <Monitor size={22} />,
-        value: brands,
+        value: 5,
+        prefix: "",
         suffix: "+",
         label: t.statBrands,
         color: "text-[#f97316]",
@@ -241,7 +233,8 @@ export default function HomePage() {
       },
       {
         icon: <TrendingUp size={22} />,
-        value: Math.round(avgPrice / 1_000_000),
+        value: 15,
+        prefix: "Rp ",
         suffix: "jt",
         label: t.statAvgPrice,
         color: "text-[#d946ef]",
@@ -250,13 +243,14 @@ export default function HomePage() {
       {
         icon: <Zap size={22} />,
         value: 99,
+        prefix: "",
         suffix: "%",
         label: t.statAI,
         color: "text-[#06b6d4]",
         bg: "bg-[#06b6d4]/10",
       },
     ],
-    [totalLaptops, brands, avgPrice, t]
+    [t]
   );
 
   const features = useMemo(
