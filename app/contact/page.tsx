@@ -1,161 +1,245 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MapPin, Phone, Send, CheckCircle2, Loader2 } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Globe,
+  Send,
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
+  ExternalLink,
+} from "lucide-react";
 import { useTranslation } from "@/components/providers/LanguageProvider";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [isSending, setIsSending] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [error, setError] = useState("");
   const { t } = useTranslation();
+
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [isSending, setIsSending] = useState(false);
+  const [toast, setToast] = useState<"success" | "error" | null>(null);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const showToast = (type: "success" | "error", msg?: string) => {
+    if (type === "error" && msg) setErrorMsg(msg);
+    setToast(type);
+    setTimeout(() => {
+      setToast(null);
+      setErrorMsg("");
+    }, 4500);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSending(true);
-    setError("");
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(form),
       });
 
       const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.error || "Gagal mengirim pesan");
-      }
+      if (!res.ok) throw new Error(data.error || "Gagal mengirim pesan");
 
-      setFormData({ name: "", email: "", message: "" });
-      setShowSuccess(true);
-      setTimeout(() => setShowSuccess(false), 5000);
+      setForm({ name: "", email: "", message: "" });
+      showToast("success");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Terjadi kesalahan");
+      showToast("error", err instanceof Error ? err.message : "Terjadi kesalahan");
     } finally {
       setIsSending(false);
     }
   };
 
+  const inputClass =
+    "w-full px-4 py-3 rounded-xl bg-zinc-900/60 border border-slate-700/50 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all";
+
   return (
-    <div className="pt-24 pb-20 max-w-6xl mx-auto px-4 sm:px-6 min-h-screen">
-      {/* Success Toast */}
-      {showSuccess && (
-        <div className="fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 backdrop-blur-md shadow-2xl shadow-emerald-500/10 animate-in slide-in-from-right-5 fade-in duration-300">
-          <CheckCircle2 size={18} className="text-emerald-400 flex-shrink-0" />
-          <p className="text-sm text-emerald-300 font-medium">{t.contactSent}</p>
+    <div className="min-h-screen pt-24 pb-20 px-4 sm:px-6">
+      {/* Toast Notification */}
+      {toast === "success" && (
+        <div className="fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 backdrop-blur-xl shadow-2xl shadow-emerald-500/10 transition-all">
+          <CheckCircle2 size={18} className="text-emerald-400 shrink-0" />
+          <span className="text-sm text-emerald-300 font-medium">
+            {t.contactSent}
+          </span>
         </div>
       )}
 
-      <div className="text-center mb-12">
-        <h1 className="text-3xl font-bold font-[family-name:var(--font-display)] mb-2">
-          <span className="text-gradient-cyan">{t.contactTitle}</span> {t.contactSubtitle}
-        </h1>
-        <p className="text-slate-400 text-sm">{t.contactDesc}</p>
-      </div>
+      {toast === "error" && (
+        <div className="fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-xl bg-red-500/15 border border-red-500/30 backdrop-blur-xl shadow-2xl shadow-red-500/10 transition-all">
+          <AlertCircle size={18} className="text-red-400 shrink-0" />
+          <span className="text-sm text-red-300 font-medium">{errorMsg}</span>
+        </div>
+      )}
 
-      <div className="grid lg:grid-cols-5 gap-8">
-        {/* Left Column — Contact Info */}
-        <div className="lg:col-span-2">
-          <div className="glass rounded-2xl p-6 sm:p-8 border border-white/5 h-full">
-            <h2 className="text-lg font-bold font-[family-name:var(--font-display)] text-white mb-6">
-              {t.contactInfo}
-            </h2>
+      <div className="max-w-6xl mx-auto py-10">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <h1 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-display)] mb-3">
+            <span className="text-gradient-cyan">{t.contactTitle}</span>{" "}
+            {t.contactSubtitle}
+          </h1>
+          <p className="text-slate-400 text-sm max-w-md mx-auto">
+            {t.contactDesc}
+          </p>
+        </div>
 
-            <div className="space-y-5">
-              <a href="mailto:laptoppintar.id@gmail.com" className="flex items-start gap-4 group">
-                <div className="w-11 h-11 rounded-xl bg-[#06b6d4]/10 text-[#06b6d4] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <Mail size={18} />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500 mb-0.5">{t.contactEmail}</p>
-                  <p className="text-sm text-white font-medium break-all hover:text-[#06b6d4] transition-colors">
-                    laptoppintar.id@gmail.com
-                  </p>
-                </div>
-              </a>
+        {/* Two-Column Dashboard */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* ── Left Column: Contact Info ── */}
+          <div className="space-y-6">
+            <div className="bg-zinc-900/40 backdrop-blur-md border border-slate-800/60 p-6 rounded-2xl">
+              <h2 className="text-lg font-bold font-[family-name:var(--font-display)] text-white mb-6">
+                {t.contactInfo}
+              </h2>
 
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-[#2dd4bf]/10 text-[#2dd4bf] flex items-center justify-center flex-shrink-0">
-                  <MapPin size={18} />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500 mb-0.5">{t.contactLocation}</p>
-                  <p className="text-sm text-white font-medium">Balikpapan, Kalimantan Timur, Indonesia</p>
-                </div>
-              </div>
+              <div className="space-y-5">
+                {/* Email */}
+                <a
+                  href="mailto:laptoppintar.id@gmail.com"
+                  className="flex items-start gap-4 group"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <Mail size={18} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[11px] text-slate-500 uppercase tracking-wider mb-0.5">
+                      {t.contactEmail}
+                    </p>
+                    <p className="text-sm text-white font-medium break-all group-hover:text-indigo-400 transition-colors">
+                      laptoppintar.id@gmail.com
+                    </p>
+                  </div>
+                </a>
 
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-[#d946ef]/10 text-[#d946ef] flex items-center justify-center flex-shrink-0">
-                  <Phone size={18} />
+                {/* Location */}
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <p className="text-[11px] text-slate-500 uppercase tracking-wider mb-0.5">
+                      {t.contactLocation}
+                    </p>
+                    <p className="text-sm text-white font-medium">
+                      Balikpapan, Kalimantan Timur, Indonesia
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs text-slate-500 mb-0.5">{t.contactPhone}</p>
-                  <p className="text-sm text-white font-medium">+62 812-3456-7890</p>
+
+                {/* Website */}
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+                    <Globe size={18} />
+                  </div>
+                  <div>
+                    <p className="text-[11px] text-slate-500 uppercase tracking-wider mb-0.5">
+                      {t.contactWebsite}
+                    </p>
+                    <p className="text-sm text-white font-medium">
+                      laptoppintar.id
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Right Column — Contact Form */}
-        <div className="lg:col-span-3">
-          <div className="glass rounded-2xl p-6 sm:p-8 border border-white/5">
+            {/* Social Links */}
+            <div className="bg-zinc-900/40 backdrop-blur-md border border-slate-800/60 p-6 rounded-2xl">
+              <h3 className="text-sm font-bold text-white font-[family-name:var(--font-display)] mb-4">
+                {t.contactSocial}
+              </h3>
+              <div className="flex gap-3">
+                <a
+                  href="https://instagram.com/laptoppintar.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-pink-500/10 border border-pink-500/20 text-sm text-pink-400 hover:bg-pink-500/20 transition-all"
+                >
+                  <ExternalLink size={16} />
+                  Instagram
+                </a>
+                <a
+                  href="https://wa.me/6281234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-green-500/10 border border-green-500/20 text-sm text-green-400 hover:bg-green-500/20 transition-all"
+                >
+                  <ExternalLink size={16} />
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Right Column: Message Form ── */}
+          <div className="bg-zinc-900/40 backdrop-blur-md border border-slate-800/60 p-6 sm:p-8 rounded-2xl">
             <h2 className="text-lg font-bold font-[family-name:var(--font-display)] text-white mb-6">
               {t.contactForm}
             </h2>
 
-            {error && (
-              <div className="mb-4 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/30 text-sm text-red-400">
-                {error}
-              </div>
-            )}
-
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="text-xs text-slate-500 mb-1.5 block font-medium">{t.contactName}</label>
+                  <label className="text-[11px] text-slate-500 uppercase tracking-wider mb-1.5 block font-medium">
+                    {t.contactName}
+                  </label>
                   <input
                     type="text"
+                    name="name"
                     required
-                    value={formData.name}
-                    onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl bg-[#0f172a] border border-white/10 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#06b6d4]/50 input-glow transition-all"
-                    placeholder={t.contactNamePlaceholder}
+                    value={form.name}
+                    onChange={handleChange}
                     disabled={isSending}
+                    placeholder={t.contactNamePlaceholder}
+                    className={inputClass}
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-slate-500 mb-1.5 block font-medium">{t.contactEmail}</label>
+                  <label className="text-[11px] text-slate-500 uppercase tracking-wider mb-1.5 block font-medium">
+                    {t.contactEmail}
+                  </label>
                   <input
                     type="email"
+                    name="email"
                     required
-                    value={formData.email}
-                    onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl bg-[#0f172a] border border-white/10 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#06b6d4]/50 input-glow transition-all"
-                    placeholder={t.contactEmailPlaceholder}
+                    value={form.email}
+                    onChange={handleChange}
                     disabled={isSending}
+                    placeholder={t.contactEmailPlaceholder}
+                    className={inputClass}
                   />
                 </div>
               </div>
+
               <div>
-                <label className="text-xs text-slate-500 mb-1.5 block font-medium">{t.contactMessage}</label>
+                <label className="text-[11px] text-slate-500 uppercase tracking-wider mb-1.5 block font-medium">
+                  {t.contactMessage}
+                </label>
                 <textarea
+                  name="message"
                   required
                   rows={6}
-                  value={formData.message}
-                  onChange={(e) => setFormData((p) => ({ ...p, message: e.target.value }))}
-                  className="w-full px-4 py-3 rounded-xl bg-[#0f172a] border border-white/10 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#06b6d4]/50 input-glow transition-all resize-none"
-                  placeholder={t.contactMessagePlaceholder}
+                  value={form.message}
+                  onChange={handleChange}
                   disabled={isSending}
+                  placeholder={t.contactMessagePlaceholder}
+                  className={`${inputClass} resize-none`}
                 />
               </div>
+
               <button
                 type="submit"
                 disabled={isSending}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] text-white text-sm font-semibold hover:shadow-[0_0_25px_rgba(6,182,212,0.3)] transition-all active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white text-sm font-semibold hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSending ? (
                   <>

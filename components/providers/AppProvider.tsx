@@ -3,7 +3,6 @@
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 import type { Laptop } from "@/lib/types";
 import laptopsData from "@/data/laptops.json";
-import CompareDrawer from "@/components/CompareDrawer";
 import LaptopModal from "@/components/LaptopModal";
 
 interface AppContextType {
@@ -65,7 +64,6 @@ export default function AppProvider({ children }: { children: ReactNode }) {
       wishlist, toggleWishlist, selectedLaptop, setSelectedLaptop,
     }}>
       {children}
-      <CompareDrawer items={compareList} onRemove={toggleCompare} onClose={clearCompare} />
       <LaptopModal
         laptop={selectedLaptop}
         onClose={() => setSelectedLaptop(null)}

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useMemo, useCallback, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import type { Laptop } from "@/lib/types";
-import Markdown from "react-markdown";
 import { useApp } from "@/components/providers/AppProvider";
 import { useTranslation } from "@/components/providers/LanguageProvider";
 import {
@@ -20,10 +20,16 @@ import {
   AlertTriangle,
   StickyNote,
   ChevronDown,
-  Sparkles,
+  ChevronRight,
+  Laptop as LaptopIcon,
+  GitCompareArrows,
+  Check,
 } from "lucide-react";
 
-const formatRupiah = (n: number) => "Rp " + n.toLocaleString("id-ID");
+/* ── Helpers ────────────────────────────────────────────── */
+
+const formatRupiah = (n: number) =>
+  "Rp " + n.toLocaleString("id-ID");
 
 const kategoriColors: Record<string, string> = {
   pelajar: "text-[#2dd4bf] bg-[#2dd4bf]/10 border-[#2dd4bf]/20",
@@ -33,9 +39,21 @@ const kategoriColors: Record<string, string> = {
   programmer: "text-[#a855f7] bg-[#a855f7]/10 border-[#a855f7]/20",
 };
 
-const ITEMS_PER_PAGE = 15;
+const statusBadge: Record<string, { label: string; className: string }> = {
+  Active: {
+    label: "Active",
+    className: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+  },
+  Discontinued: {
+    label: "Discontinued",
+    className: "text-slate-400 bg-slate-500/10 border-slate-500/20",
+  },
+};
 
-const quickFilterBadges = [
+const INITIAL_LOAD = 12;
+const LOAD_MORE_STEP = 12;
+
+const quickFilters = [
   { label: "Semua", value: "semua" },
   { label: "Pelajar", value: "pelajar" },
   { label: "Pekerja", value: "pekerja" },
@@ -50,7 +68,7 @@ function Toast({ message, onClose }: { message: string; onClose: () => void }) {
   return (
     <div className="fixed top-6 right-6 z-[100] toast-anim">
       <div className="glass rounded-xl px-4 py-3 flex items-center gap-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border border-[#2dd4bf]/20">
-        <div className="w-6 h-6 rounded-full bg-[#2dd4bf]/15 flex items-center justify-center flex-shrink-0">
+        <div className="w-6 h-6 rounded-full bg-[#2dd4bf]/15 flex items-center justify-center shrink-0">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="20 6 9 17 4 12" />
           </svg>
@@ -104,92 +122,43 @@ function exportLaptopPDF(laptop: Laptop) {
 
 /* ── Detail Modal ───────────────────────────────────────── */
 
-function LaptopModal({
+function LaptopDetailModal({
   laptop,
   onClose,
   onToggleWishlist,
   isWished,
-  allLaptops,
 }: {
   laptop: Laptop;
   onClose: () => void;
   onToggleWishlist: (id: string) => void;
   isWished: boolean;
-  allLaptops: Laptop[];
 }) {
-  const [compareId, setCompareId] = useState<string>("");
-  const [aiAnalysis, setAiAnalysis] = useState<string | null>(null);
-  const [aiLoading, setAiLoading] = useState(false);
-
-  const compareLaptop = useMemo(
-    () => allLaptops.find(l => l.id === compareId) || null,
-    [allLaptops, compareId]
-  );
-
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, []);
 
-  // Reset AI state when comparison changes
-  useEffect(() => {
-    setAiAnalysis(null);
-    setAiLoading(false);
-  }, [compareId]);
-
-  // Fetch AI analysis when a comparison laptop is selected
-  useEffect(() => {
-    if (!compareLaptop) return;
-
-    const controller = new AbortController();
-    setAiLoading(true);
-    setAiAnalysis(null);
-
-    const prompt = `Berikan analisis perbandingan singkat dan objektif antara dua laptop ini untuk membantu pengguna memilih: Laptop A (${laptop.nama} - ${laptop.spesifikasi.processor}) vs Laptop B (${compareLaptop.nama} - ${compareLaptop.spesifikasi.processor}). Fokus pada kelebihan masing-masing.`;
-
-    fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }),
-      signal: controller.signal,
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.content) setAiAnalysis(data.content);
-        else setAiAnalysis("Maaf, analisis tidak tersedia saat ini.");
-      })
-      .catch(() => {
-        if (!controller.signal.aborted) setAiAnalysis("Gagal memuat analisis AI. Silakan coba lagi.");
-      })
-      .finally(() => {
-        if (!controller.signal.aborted) setAiLoading(false);
-      });
-
-    return () => controller.abort();
-  }, [laptop, compareLaptop]);
-
   const specs = [
-    { icon: <Cpu size={16} />, label: "Processor", key: "processor" as const, color: "text-[#2dd4bf]" },
-    { icon: <MemoryStick size={16} />, label: "RAM", key: "ram" as const, color: "text-[#d946ef]" },
-    { icon: <HardDrive size={16} />, label: "Storage", key: "storage" as const, color: "text-[#f97316]" },
-    { icon: <Monitor size={16} />, label: "GPU", key: "gpu" as const, color: "text-[#06b6d4]" },
-    { icon: <Monitor size={16} />, label: "Display", key: "display" as const, color: "text-[#eab308]" },
+    { icon: <Cpu size={16} />, label: "Processor", value: laptop.spesifikasi.processor, color: "text-[#2dd4bf]" },
+    { icon: <MemoryStick size={16} />, label: "RAM", value: laptop.spesifikasi.ram, color: "text-[#d946ef]" },
+    { icon: <HardDrive size={16} />, label: "Storage", value: laptop.spesifikasi.storage, color: "text-[#f97316]" },
+    { icon: <Monitor size={16} />, label: "GPU", value: laptop.spesifikasi.gpu, color: "text-[#06b6d4]" },
+    { icon: <Monitor size={16} />, label: "Display", value: laptop.spesifikasi.display, color: "text-[#eab308]" },
+    { icon: <LaptopIcon size={16} />, label: "OS", value: laptop.spesifikasi.os, color: "text-[#a855f7]" },
   ];
 
-  const availableLaptops = allLaptops.filter(l => l.id !== laptop.id);
+  const st = statusBadge[laptop.status] || statusBadge.Active;
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4" onClick={onClose}>
-      {/* Backdrop */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
-      {/* Modal content */}
       <div
-        className={`relative max-h-[90vh] overflow-y-auto rounded-2xl border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.5)] transition-all duration-300 ${
-          compareLaptop ? "w-full max-w-3xl" : "w-full max-w-lg"
-        }`}
+        className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.5)]"
         style={{ background: "linear-gradient(180deg, #111827 0%, #0b1120 100%)" }}
-        onClick={e => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Top gradient bar */}
         <div className="h-1.5 bg-gradient-to-r from-[#2dd4bf] via-[#d946ef] to-[#f97316] rounded-t-2xl" />
@@ -198,21 +167,28 @@ function LaptopModal({
         <div className="px-6 pt-5 pb-0">
           <div className="flex items-start justify-between">
             <div className="flex-1 min-w-0 pr-4">
-              <span className={`inline-block text-[10px] font-medium px-2.5 py-0.5 rounded-full border mb-2 ${
-                laptop.kondisi === "Baru"
-                  ? "text-[#2dd4bf] bg-[#2dd4bf]/10 border-[#2dd4bf]/20"
-                  : "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/20"
-              }`}>
-                {laptop.kondisi}
-              </span>
+              <div className="flex items-center gap-2 mb-2 flex-wrap">
+                <span className={`inline-block text-[10px] font-medium px-2.5 py-0.5 rounded-full border ${st.className}`}>
+                  {st.label}
+                </span>
+                <span className={`inline-block text-[10px] font-medium px-2.5 py-0.5 rounded-full border ${
+                  laptop.kondisi === "Baru"
+                    ? "text-[#2dd4bf] bg-[#2dd4bf]/10 border-[#2dd4bf]/20"
+                    : "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/20"
+                }`}>
+                  {laptop.kondisi}
+                </span>
+              </div>
               <h2 className="text-xl font-bold text-white font-[family-name:var(--font-display)] leading-tight">
                 {laptop.nama}
               </h2>
-              <p className="text-sm text-slate-400 mt-1">{laptop.merek} &middot; {laptop.seri} &middot; {laptop.tahun}</p>
+              <p className="text-sm text-slate-400 mt-1">
+                {laptop.merek} &middot; {laptop.seri} &middot; {laptop.tahun}
+              </p>
             </div>
             <button
               onClick={onClose}
-              className="p-2 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 transition-all flex-shrink-0"
+              className="p-2 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 transition-all shrink-0"
             >
               <X size={18} />
             </button>
@@ -220,10 +196,13 @@ function LaptopModal({
 
           {/* Category badges */}
           <div className="flex flex-wrap gap-1.5 mt-3">
-            {laptop.kategori.map(kat => (
-              <span key={kat} className={`text-[10px] font-medium px-2 py-0.5 rounded-md border ${
-                kategoriColors[kat] || "text-slate-400 bg-white/5 border-white/10"
-              }`}>
+            {laptop.kategori.map((kat) => (
+              <span
+                key={kat}
+                className={`text-[10px] font-medium px-2 py-0.5 rounded-md border ${
+                  kategoriColors[kat] || "text-slate-400 bg-white/5 border-white/10"
+                }`}
+              >
                 {kat.replace("_", " ")}
               </span>
             ))}
@@ -239,7 +218,9 @@ function LaptopModal({
               <span className="text-[11px] text-slate-500 uppercase tracking-wider font-medium">Harga Estimasi</span>
             </div>
             <p className="text-2xl font-bold font-[family-name:var(--font-display)] text-white">
-              {formatRupiah(laptop.harga_min)} <span className="text-slate-500 text-base font-normal mx-1">-</span> {formatRupiah(laptop.harga_max)}
+              {formatRupiah(laptop.harga_min)}{" "}
+              <span className="text-slate-500 text-base font-normal mx-1">-</span>{" "}
+              {formatRupiah(laptop.harga_max)}
             </p>
           </div>
 
@@ -253,7 +234,7 @@ function LaptopModal({
                     <span className={s.color}>{s.icon}</span>
                     <span className="text-[10px] text-slate-500 uppercase tracking-wider">{s.label}</span>
                   </div>
-                  <p className="text-[13px] font-medium text-white leading-snug">{laptop.spesifikasi[s.key]}</p>
+                  <p className="text-[13px] font-medium text-white leading-snug">{s.value}</p>
                 </div>
               ))}
             </div>
@@ -281,101 +262,7 @@ function LaptopModal({
             </div>
           )}
 
-          {/* Comparison Dropdown */}
-          <div>
-            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block">Bandingkan dengan Laptop Lain</label>
-            <div className="relative">
-              <select
-                value={compareId}
-                onChange={e => setCompareId(e.target.value)}
-                className="w-full appearance-none px-4 py-2.5 pr-10 rounded-xl bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#6366f1]/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.1)] transition-all cursor-pointer"
-              >
-                <option value="">-- Pilih laptop untuk dibandingkan --</option>
-                {availableLaptops.map(l => (
-                  <option key={l.id} value={l.id}>{l.nama} ({l.merek})</option>
-                ))}
-              </select>
-              <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
-            </div>
-          </div>
-
-          {/* Side-by-Side Comparison View */}
-          {compareLaptop && (
-            <div className="space-y-4 slide-up">
-              {/* Comparison Header */}
-              <div className="grid grid-cols-2 gap-3">
-                <div className="p-3 rounded-xl bg-[#2dd4bf]/5 border border-[#2dd4bf]/15">
-                  <p className="text-[10px] text-[#2dd4bf] uppercase tracking-wider font-semibold mb-1">Laptop A</p>
-                  <p className="text-sm font-semibold text-white truncate">{laptop.nama}</p>
-                </div>
-                <div className="p-3 rounded-xl bg-[#d946ef]/5 border border-[#d946ef]/15">
-                  <p className="text-[10px] text-[#d946ef] uppercase tracking-wider font-semibold mb-1">Laptop B</p>
-                  <p className="text-sm font-semibold text-white truncate">{compareLaptop.nama}</p>
-                </div>
-              </div>
-
-              {/* Comparison Table */}
-              <div className="rounded-xl border border-white/5 overflow-hidden">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-white/5">
-                      <th className="text-left text-[10px] text-slate-500 uppercase tracking-wider font-semibold px-4 py-2.5 w-1/3">Spesifikasi</th>
-                      <th className="text-left text-[10px] text-[#2dd4bf] uppercase tracking-wider font-semibold px-4 py-2.5 w-1/3">{laptop.nama.split(" ").slice(0, 2).join(" ")}</th>
-                      <th className="text-left text-[10px] text-[#d946ef] uppercase tracking-wider font-semibold px-4 py-2.5 w-1/3">{compareLaptop.nama.split(" ").slice(0, 2).join(" ")}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      { label: "Harga", a: `${formatRupiah(laptop.harga_min)} - ${formatRupiah(laptop.harga_max)}`, b: `${formatRupiah(compareLaptop.harga_min)} - ${formatRupiah(compareLaptop.harga_max)}` },
-                      { label: "Processor", a: laptop.spesifikasi.processor, b: compareLaptop.spesifikasi.processor },
-                      { label: "RAM", a: laptop.spesifikasi.ram, b: compareLaptop.spesifikasi.ram },
-                      { label: "Storage", a: laptop.spesifikasi.storage, b: compareLaptop.spesifikasi.storage },
-                      { label: "GPU", a: laptop.spesifikasi.gpu, b: compareLaptop.spesifikasi.gpu },
-                      { label: "Display", a: laptop.spesifikasi.display, b: compareLaptop.spesifikasi.display },
-                      { label: "OS", a: laptop.spesifikasi.os, b: compareLaptop.spesifikasi.os },
-                    ].map((row, i) => (
-                      <tr key={i} className="border-b border-white/5 last:border-b-0">
-                        <td className="px-4 py-3 text-[11px] text-slate-500 font-medium">{row.label}</td>
-                        <td className="px-4 py-3 text-[12px] text-slate-300">{row.a}</td>
-                        <td className="px-4 py-3 text-[12px] text-slate-300">{row.b}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              {/* AI Analysis Section */}
-              <div className="p-4 rounded-xl bg-indigo-950/20 border border-indigo-500/20">
-                <div className="flex items-center gap-2 mb-3">
-                  <Sparkles size={14} className="text-indigo-400" />
-                  <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Analisis Asisten AI</span>
-                </div>
-                {aiLoading ? (
-                  <div className="space-y-2">
-                    <div className="h-3 bg-indigo-500/10 rounded-full w-full animate-pulse" />
-                    <div className="h-3 bg-indigo-500/10 rounded-full w-4/5 animate-pulse" />
-                    <div className="h-3 bg-indigo-500/10 rounded-full w-3/5 animate-pulse" />
-                    <p className="text-[11px] text-indigo-400/60 mt-2 italic">Ling AI sedang menganalisis...</p>
-                  </div>
-                ) : aiAnalysis ? (
-                  <div className="text-[13px] text-slate-300 leading-relaxed prose prose-invert prose-sm max-w-none
-                    prose-headings:text-indigo-400 prose-headings:font-semibold prose-headings:my-2
-                    prose-strong:text-slate-100 prose-strong:font-bold
-                    prose-p:text-slate-300 prose-p:my-1
-                    prose-ul:list-disc prose-ul:pl-5 prose-ul:space-y-1
-                    prose-li:text-slate-300
-                    prose-code:text-indigo-300 prose-code:bg-indigo-500/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-                  ">
-                    <Markdown>{aiAnalysis}</Markdown>
-                  </div>
-                ) : (
-                  <p className="text-[11px] text-slate-500 italic">Pilih laptop di atas untuk melihat analisis AI.</p>
-                )}
-              </div>
-            </div>
-          )}
-
-          {/* Action buttons */}
+          {/* Actions */}
           <div className="flex gap-3 pt-1">
             <button
               onClick={() => onToggleWishlist(laptop.id)}
@@ -388,6 +275,13 @@ function LaptopModal({
               <Heart size={15} fill={isWished ? "currentColor" : "none"} />
               {isWished ? "Tersimpan" : "Wishlist"}
             </button>
+            <button
+              onClick={() => exportLaptopPDF(laptop)}
+              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-white/5 text-slate-400 border border-white/10 hover:text-[#2dd4bf] hover:border-[#2dd4bf]/30 transition-all"
+            >
+              <FileDown size={15} />
+              PDF
+            </button>
           </div>
         </div>
       </div>
@@ -398,8 +292,10 @@ function LaptopModal({
 /* ── Catalog Page ───────────────────────────────────────── */
 
 export default function CatalogPage() {
-  const { laptops, wishlist, toggleWishlist } = useApp();
+  const { laptops, wishlist, toggleWishlist, compareList, toggleCompare, clearCompare } = useApp();
   const { t } = useTranslation();
+  const router = useRouter();
+
   const [search, setSearch] = useState("");
   const [brandFilter, setBrandFilter] = useState("All");
   const [conditionFilter, setConditionFilter] = useState("All");
@@ -408,87 +304,94 @@ export default function CatalogPage() {
   const [showFilters, setShowFilters] = useState(false);
   const [activeBadge, setActiveBadge] = useState("semua");
   const [toast, setToast] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_LOAD);
   const [selectedLaptop, setSelectedLaptop] = useState<Laptop | null>(null);
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [search, brandFilter, conditionFilter, categoryFilter, sortBy, activeBadge]);
+  const compareCount = compareList.length;
+  const isCompareActive = compareCount >= 2;
 
   const showToast = useCallback((msg: string) => {
     setToast(msg);
     setTimeout(() => setToast(null), 2500);
   }, []);
 
-  const brands = useMemo(() => ["All", ...Array.from(new Set(laptops.map(l => l.merek)))].sort(), [laptops]);
-  const allKategori = useMemo(() => ["All", ...Array.from(new Set(laptops.flatMap(l => l.kategori)))].sort(), [laptops]);
+  const brands = useMemo(
+    () => ["All", ...Array.from(new Set(laptops.map((l) => l.merek)))].sort(),
+    [laptops]
+  );
+  const allKategori = useMemo(
+    () => ["All", ...Array.from(new Set(laptops.flatMap((l) => l.kategori)))].sort(),
+    [laptops]
+  );
 
   const filtered = useMemo(() => {
     let list = [...laptops];
     if (search) {
       const q = search.toLowerCase();
-      list = list.filter(l =>
-        l.nama.toLowerCase().includes(q) ||
-        l.merek.toLowerCase().includes(q) ||
-        l.seri.toLowerCase().includes(q) ||
-        l.spesifikasi.processor.toLowerCase().includes(q) ||
-        l.spesifikasi.gpu.toLowerCase().includes(q)
+      list = list.filter(
+        (l) =>
+          l.nama.toLowerCase().includes(q) ||
+          l.merek.toLowerCase().includes(q) ||
+          l.seri.toLowerCase().includes(q) ||
+          l.spesifikasi.processor.toLowerCase().includes(q) ||
+          l.spesifikasi.gpu.toLowerCase().includes(q)
       );
     }
-    if (brandFilter !== "All") list = list.filter(l => l.merek === brandFilter);
-    if (conditionFilter !== "All") list = list.filter(l => l.kondisi === conditionFilter);
-    if (categoryFilter !== "All") list = list.filter(l => l.kategori.includes(categoryFilter.toLowerCase()));
-    if (activeBadge !== "semua") list = list.filter(l => l.kategori.includes(activeBadge));
+    if (brandFilter !== "All") list = list.filter((l) => l.merek === brandFilter);
+    if (conditionFilter !== "All") list = list.filter((l) => l.kondisi === conditionFilter);
+    if (categoryFilter !== "All") list = list.filter((l) => l.kategori.includes(categoryFilter.toLowerCase()));
+    if (activeBadge !== "semua") list = list.filter((l) => l.kategori.includes(activeBadge));
 
     switch (sortBy) {
-      case "harga-low": list.sort((a, b) => a.harga_min - b.harga_min); break;
-      case "harga-high": list.sort((a, b) => b.harga_max - a.harga_max); break;
-      case "nama": list.sort((a, b) => a.nama.localeCompare(b.nama)); break;
-      case "tahun": list.sort((a, b) => b.tahun - a.tahun); break;
+      case "harga-low":
+        list.sort((a, b) => a.harga_min - b.harga_min);
+        break;
+      case "harga-high":
+        list.sort((a, b) => b.harga_max - a.harga_max);
+        break;
+      case "nama":
+        list.sort((a, b) => a.nama.localeCompare(b.nama));
+        break;
+      case "tahun":
+        list.sort((a, b) => b.tahun - a.tahun);
+        break;
     }
     return list;
   }, [laptops, search, brandFilter, conditionFilter, categoryFilter, sortBy, activeBadge]);
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
-  const safeCurrentPage = Math.min(currentPage, totalPages);
-  const paginatedItems = useMemo(
-    () => filtered.slice((safeCurrentPage - 1) * ITEMS_PER_PAGE, safeCurrentPage * ITEMS_PER_PAGE),
-    [filtered, safeCurrentPage]
+  /* Reset visible count when filters change */
+  useEffect(() => {
+    setVisibleCount(INITIAL_LOAD);
+  }, [search, brandFilter, conditionFilter, categoryFilter, sortBy, activeBadge]);
+
+  const visibleItems = useMemo(
+    () => filtered.slice(0, visibleCount),
+    [filtered, visibleCount]
   );
 
-  const pageNumbers = useMemo(() => {
-    const pages: (number | "...")[] = [];
-    if (totalPages <= 7) {
-      for (let i = 1; i <= totalPages; i++) pages.push(i);
-    } else {
-      pages.push(1);
-      if (safeCurrentPage > 3) pages.push("...");
-      const start = Math.max(2, safeCurrentPage - 1);
-      const end = Math.min(totalPages - 1, safeCurrentPage + 1);
-      for (let i = start; i <= end; i++) pages.push(i);
-      if (safeCurrentPage < totalPages - 2) pages.push("...");
-      pages.push(totalPages);
-    }
-    return pages;
-  }, [totalPages, safeCurrentPage]);
+  const hasMore = visibleCount < filtered.length;
 
-  const handleShare = useCallback((e: React.MouseEvent, laptop: Laptop) => {
-    e.stopPropagation();
-    e.preventDefault();
-    const url = window.location.origin + "/catalog?id=" + laptop.id;
-    navigator.clipboard.writeText(url).then(() => {
-      showToast("Link rekomendasi berhasil disalin!");
-    }).catch(() => {
-      showToast("Gagal menyalin link.");
-    });
-  }, [showToast]);
+  const handleLoadMore = useCallback(() => {
+    setVisibleCount((prev) => prev + LOAD_MORE_STEP);
+  }, []);
 
   const handleBadgeClick = useCallback((value: string) => {
     setActiveBadge(value);
-    if (value !== "semua") {
-      setCategoryFilter("All");
-    }
+    if (value !== "semua") setCategoryFilter("All");
   }, []);
+
+  const handleShare = useCallback(
+    (e: React.MouseEvent, laptop: Laptop) => {
+      e.stopPropagation();
+      e.preventDefault();
+      const url = window.location.origin + "/catalog?id=" + laptop.id;
+      navigator.clipboard
+        .writeText(url)
+        .then(() => showToast("Link berhasil disalin!"))
+        .catch(() => showToast("Gagal menyalin link."));
+    },
+    [showToast]
+  );
 
   return (
     <div className="pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen">
@@ -496,12 +399,11 @@ export default function CatalogPage() {
 
       {/* Detail Modal */}
       {selectedLaptop && (
-        <LaptopModal
+        <LaptopDetailModal
           laptop={selectedLaptop}
           onClose={() => setSelectedLaptop(null)}
           onToggleWishlist={toggleWishlist}
           isWished={wishlist.includes(selectedLaptop.id)}
-          allLaptops={laptops}
         />
       )}
 
@@ -515,24 +417,54 @@ export default function CatalogPage() {
         </p>
       </div>
 
-      {/* Quick Filter Badges */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {quickFilterBadges.map(badge => {
-          const isActive = activeBadge === badge.value;
-          return (
+      {/* Quick Filter Badges + Compare Trigger */}
+      <div className="flex flex-wrap gap-2 mb-6 items-center">
+        <div className="flex flex-wrap gap-2 flex-1">
+          {quickFilters.map((badge) => (
             <button
               key={badge.value}
               onClick={() => handleBadgeClick(badge.value)}
               className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 border ${
-                isActive
+                activeBadge === badge.value
                   ? "bg-[#6366f1] text-white border-[#6366f1] shadow-[0_0_20px_rgba(99,102,241,0.35)]"
                   : "bg-white/5 text-slate-400 border-white/10 hover:bg-white/10 hover:text-white hover:border-white/20"
               }`}
             >
               {badge.label}
             </button>
-          );
-        })}
+          ))}
+        </div>
+
+        {/* Compare Trigger Button */}
+        {compareCount > 0 && (
+          <button
+            onClick={() => {
+              if (isCompareActive) {
+                const ids = compareList.map((l) => l.id).join(",");
+                router.push(`/compare?ids=${ids}`);
+              } else {
+                showToast(t.catalogCompareSelect);
+              }
+            }}
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 border shrink-0 ${
+              isCompareActive
+                ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white border-transparent shadow-[0_0_25px_rgba(99,102,241,0.4)] hover:from-indigo-500 hover:to-violet-500 hover:shadow-[0_0_35px_rgba(139,92,246,0.5)]"
+                : "bg-white/5 text-slate-400 border-white/10 hover:bg-white/10 hover:text-white"
+            }`}
+          >
+            <GitCompareArrows size={14} />
+            {t.catalogCompareBtn.replace("{count}", String(compareCount))}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                clearCompare();
+              }}
+              className="ml-1 p-0.5 rounded-full hover:bg-white/20 transition-colors"
+            >
+              <X size={10} />
+            </button>
+          </button>
+        )}
       </div>
 
       {/* Search + Advanced Filters */}
@@ -544,11 +476,14 @@ export default function CatalogPage() {
               type="text"
               placeholder={t.catalogSearch}
               value={search}
-              onChange={e => setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
               className="w-full pl-9 pr-4 py-2.5 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-[#2dd4bf]/50 focus:shadow-[0_0_15px_rgba(45,212,191,0.15)] transition-all"
             />
             {search && (
-              <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white">
+              <button
+                onClick={() => setSearch("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white"
+              >
                 <X size={14} />
               </button>
             )}
@@ -556,7 +491,9 @@ export default function CatalogPage() {
           <button
             onClick={() => setShowFilters(!showFilters)}
             className={`flex items-center gap-1.5 px-4 py-2.5 rounded-lg border text-sm font-medium transition-all ${
-              showFilters ? "bg-[#2dd4bf]/10 border-[#2dd4bf]/30 text-[#2dd4bf]" : "bg-white/5 border-white/10 text-slate-400 hover:text-white"
+              showFilters
+                ? "bg-[#2dd4bf]/10 border-[#2dd4bf]/30 text-[#2dd4bf]"
+                : "bg-white/5 border-white/10 text-slate-400 hover:text-white"
             }`}
           >
             <SlidersHorizontal size={14} />
@@ -568,13 +505,25 @@ export default function CatalogPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 pt-4 border-t border-white/5">
             <div>
               <label className="text-xs text-slate-500 mb-1 block">{t.catalogBrand}</label>
-              <select value={brandFilter} onChange={e => setBrandFilter(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#2dd4bf]/50">
-                {brands.map(b => <option key={b} value={b}>{b}</option>)}
+              <select
+                value={brandFilter}
+                onChange={(e) => setBrandFilter(e.target.value)}
+                className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#2dd4bf]/50"
+              >
+                {brands.map((b) => (
+                  <option key={b} value={b}>
+                    {b}
+                  </option>
+                ))}
               </select>
             </div>
             <div>
               <label className="text-xs text-slate-500 mb-1 block">{t.catalogCondition}</label>
-              <select value={conditionFilter} onChange={e => setConditionFilter(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#2dd4bf]/50">
+              <select
+                value={conditionFilter}
+                onChange={(e) => setConditionFilter(e.target.value)}
+                className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#2dd4bf]/50"
+              >
                 <option value="All">{t.catalogAll}</option>
                 <option value="Baru">{t.catalogNew}</option>
                 <option value="Bekas">{t.catalogUsed}</option>
@@ -582,13 +531,28 @@ export default function CatalogPage() {
             </div>
             <div>
               <label className="text-xs text-slate-500 mb-1 block">{t.catalogCategory}</label>
-              <select value={categoryFilter} onChange={e => { setCategoryFilter(e.target.value); setActiveBadge("semua"); }} className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#2dd4bf]/50">
-                {allKategori.map(c => <option key={c} value={c}>{c === "All" ? t.catalogAll : c}</option>)}
+              <select
+                value={categoryFilter}
+                onChange={(e) => {
+                  setCategoryFilter(e.target.value);
+                  setActiveBadge("semua");
+                }}
+                className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#2dd4bf]/50"
+              >
+                {allKategori.map((c) => (
+                  <option key={c} value={c}>
+                    {c === "All" ? t.catalogAll : c}
+                  </option>
+                ))}
               </select>
             </div>
             <div>
               <label className="text-xs text-slate-500 mb-1 block">{t.catalogSort}</label>
-              <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#2dd4bf]/50">
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#2dd4bf]/50"
+              >
                 <option value="nama">{t.catalogSortName}</option>
                 <option value="harga-low">{t.catalogSortLow}</option>
                 <option value="harga-high">{t.catalogSortHigh}</option>
@@ -599,7 +563,7 @@ export default function CatalogPage() {
         )}
       </div>
 
-      {/* Empty state */}
+      {/* Empty State */}
       {filtered.length === 0 ? (
         <div className="text-center py-20">
           <div className="text-5xl mb-4">&#x1F50D;</div>
@@ -608,85 +572,137 @@ export default function CatalogPage() {
         </div>
       ) : (
         <>
-          {/* Card grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
-            {paginatedItems.map(laptop => {
+          {/* Card Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {visibleItems.map((laptop) => {
               const isWished = wishlist.includes(laptop.id);
+              const isCompared = compareList.some((c) => c.id === laptop.id);
+              const st = statusBadge[laptop.status] || statusBadge.Active;
+
               return (
                 <div
                   key={laptop.id}
-                  role="button"
-                  tabIndex={0}
-                  onClick={() => setSelectedLaptop(laptop)}
-                  onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelectedLaptop(laptop); } }}
-                  className="card-glow rounded-xl overflow-hidden group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer transition-transform duration-200 hover:scale-[1.01] flex flex-col justify-between"
+                  className={`rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group ${
+                    isCompared
+                      ? "border-indigo-500/50 ring-2 ring-indigo-500/20"
+                      : "border-slate-200 dark:border-slate-800"
+                  }`}
                 >
                   {/* Top accent bar */}
-                  <div className="h-1 bg-gradient-to-r from-[#2dd4bf] via-[#d946ef] to-[#f97316] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className={`h-1 transition-all duration-300 ${
+                    isCompared
+                      ? "bg-gradient-to-r from-indigo-600 to-violet-600 opacity-100"
+                      : "bg-gradient-to-r from-[#2dd4bf] via-[#d946ef] to-[#f97316] opacity-0 group-hover:opacity-100"
+                  }`} />
 
-                  {/* Card body – vertical stack */}
-                  <div className="p-5 flex flex-col items-start space-y-2">
-                    {/* Name + kondisi badge */}
-                    <div className="flex items-start justify-between gap-3 w-full">
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-semibold text-slate-900 dark:text-white truncate group-hover:text-[#2dd4bf] transition-colors">
-                          {laptop.nama}
-                        </h3>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                          {laptop.merek} &middot; {laptop.tahun}
-                        </p>
+                  {/* Card Body */}
+                  <div className="p-5 flex-1 flex flex-col">
+                    {/* Brand & Series Header + Compare Toggle */}
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 truncate">
+                          {laptop.merek} &middot; {laptop.seri}
+                        </span>
                       </div>
-                      <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border flex-shrink-0 ${
-                        laptop.kondisi === "Baru"
-                          ? "text-[#2dd4bf] bg-[#2dd4bf]/10 border-[#2dd4bf]/20"
-                          : "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/20"
-                      }`}>
-                        {laptop.kondisi}
-                      </span>
+                      <div className="flex items-center gap-2 shrink-0">
+                        <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${st.className}`}>
+                          {st.label}
+                        </span>
+                        {/* Compare Toggle Button */}
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (!isCompared && compareCount >= 3) {
+                              showToast(t.catalogCompareMax);
+                              return;
+                            }
+                            toggleCompare(laptop);
+                          }}
+                          title={isCompared ? "Hapus dari perbandingan" : "Tambah ke perbandingan"}
+                          className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200 ${
+                            isCompared
+                              ? "bg-indigo-600 text-white shadow-[0_0_12px_rgba(99,102,241,0.4)]"
+                              : "bg-white/5 dark:bg-white/5 text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-400 border border-white/10"
+                          }`}
+                        >
+                          {isCompared ? <Check size={12} /> : <GitCompareArrows size={12} />}
+                        </button>
+                      </div>
                     </div>
 
-                    {/* Core specs – two stacked rows */}
-                    <div className="w-full space-y-1">
-                      <p className="text-sm text-slate-400 truncate">{laptop.spesifikasi.processor}</p>
-                      <p className="text-sm text-slate-400 truncate">{laptop.spesifikasi.ram}</p>
+                    {/* Laptop Name */}
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white mb-3 leading-snug group-hover:text-[#2dd4bf] transition-colors line-clamp-2">
+                      {laptop.nama}
+                    </h3>
+
+                    {/* Spec Grid */}
+                    <div className="grid grid-cols-2 gap-2 mb-4">
+                      {[
+                        { label: "Processor", value: laptop.spesifikasi.processor, color: "text-[#2dd4bf]" },
+                        { label: "RAM", value: laptop.spesifikasi.ram, color: "text-[#d946ef]" },
+                        { label: "Storage", value: laptop.spesifikasi.storage, color: "text-[#f97316]" },
+                        { label: "GPU", value: laptop.spesifikasi.gpu, color: "text-[#06b6d4]" },
+                      ].map((spec, i) => (
+                        <div key={i} className="p-2.5 rounded-lg bg-slate-50 dark:bg-white/[0.03] border border-slate-100 dark:border-white/5">
+                          <p className={`text-[10px] font-medium ${spec.color} uppercase tracking-wider mb-0.5`}>{spec.label}</p>
+                          <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug line-clamp-2">{spec.value}</p>
+                        </div>
+                      ))}
                     </div>
 
-                    {/* Category badges */}
-                    <div className="flex flex-wrap gap-1">
-                      {laptop.kategori.slice(0, 3).map(kat => (
-                        <span key={kat} className={`inline-block text-[10px] font-medium px-2 py-0.5 rounded-md border ${
-                          kategoriColors[kat] || "text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-white/5 border-slate-200 dark:border-white/10"
-                        }`}>
+                    {/* Category Tags */}
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {laptop.kategori.slice(0, 3).map((kat) => (
+                        <span
+                          key={kat}
+                          className={`text-[10px] font-medium px-2 py-0.5 rounded-md border ${
+                            kategoriColors[kat] || "text-slate-400 bg-white/5 border-white/10"
+                          }`}
+                        >
                           {kat.replace("_", " ")}
                         </span>
                       ))}
                     </div>
-                  </div>
 
-                  {/* Card footer – horizontal split */}
-                  <div className="flex flex-row justify-between items-center w-full px-5 py-3 border-t border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02]">
-                    <p className="text-[13px] font-bold font-[family-name:var(--font-display)] text-slate-900 dark:text-white whitespace-nowrap">
-                      {formatRupiah(laptop.harga_min)} - {formatRupiah(laptop.harga_max)}
-                    </p>
-                    <div className="flex items-center gap-1 flex-shrink-0">
+                    {/* Spacer */}
+                    <div className="flex-1" />
+
+                    {/* Price Range */}
+                    <div className="p-3 rounded-xl bg-gradient-to-r from-[#2dd4bf]/5 to-[#d946ef]/5 border border-white/5 mb-4">
+                      <p className="text-[11px] text-slate-500 uppercase tracking-wider mb-0.5">Harga Estimasi</p>
+                      <p className="text-sm font-bold font-[family-name:var(--font-display)] text-slate-900 dark:text-white">
+                        {formatRupiah(laptop.harga_min)} - {formatRupiah(laptop.harga_max)}
+                      </p>
+                      <span className="text-[10px] text-slate-400 font-medium italic mt-2 block border-t border-slate-800/60 pt-2 leading-relaxed tracking-wide">
+                        {t.catalogDisclaimer}
+                      </span>
+                    </div>
+
+                    {/* Action Row */}
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setSelectedLaptop(laptop)}
+                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#2dd4bf] to-[#06b6d4] text-white text-xs font-semibold hover:shadow-[0_0_20px_rgba(45,212,191,0.3)] transition-all active:scale-[0.98]"
+                      >
+                        Lihat Detail
+                        <ChevronRight size={14} />
+                      </button>
                       <button
                         onClick={(e) => handleShare(e, laptop)}
                         title="Salin link"
-                        className="p-2 rounded-lg bg-slate-100 dark:bg-white/5 text-slate-500 hover:text-[#6366f1] hover:bg-[#6366f1]/10 transition-all"
+                        className="p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 text-slate-500 hover:text-[#6366f1] hover:bg-[#6366f1]/10 transition-all"
                       >
                         <Share2 size={14} />
                       </button>
                       <button
-                        onClick={(e) => { e.stopPropagation(); e.preventDefault(); exportLaptopPDF(laptop); }}
-                        title="Cetak PDF"
-                        className="p-2 rounded-lg bg-slate-100 dark:bg-white/5 text-slate-500 hover:text-[#6366f1] hover:bg-[#6366f1]/10 transition-all"
-                      >
-                        <FileDown size={14} />
-                      </button>
-                      <button
-                        onClick={(e) => { e.stopPropagation(); e.preventDefault(); toggleWishlist(laptop.id); }}
-                        className={`p-2 rounded-lg transition-all ${
-                          isWished ? "bg-[#ec4899]/15 text-[#ec4899]" : "bg-slate-100 dark:bg-white/5 text-slate-500 hover:text-[#ec4899] hover:bg-[#ec4899]/10"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleWishlist(laptop.id);
+                        }}
+                        className={`p-2.5 rounded-xl transition-all ${
+                          isWished
+                            ? "bg-[#ec4899]/15 text-[#ec4899]"
+                            : "bg-slate-100 dark:bg-white/5 text-slate-500 hover:text-[#ec4899] hover:bg-[#ec4899]/10"
                         }`}
                       >
                         <Heart size={14} fill={isWished ? "currentColor" : "none"} />
@@ -698,49 +714,52 @@ export default function CatalogPage() {
             })}
           </div>
 
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-1.5 mt-10">
+          {/* Load More Button */}
+          {hasMore && (
+            <div className="flex justify-center mt-10">
               <button
-                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                disabled={safeCurrentPage === 1}
-                className="px-3 py-2 rounded-lg border border-slate-800 bg-slate-900 text-xs font-medium text-slate-400 hover:text-white hover:border-slate-700 transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:text-slate-400 disabled:hover:border-slate-800"
+                onClick={handleLoadMore}
+                className="px-8 py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all active:scale-[0.98]"
               >
-                Prev
-              </button>
-
-              {pageNumbers.map((page, i) =>
-                page === "..." ? (
-                  <span key={`dots-${i}`} className="px-2 py-2 text-xs text-slate-600 select-none">...</span>
-                ) : (
-                  <button
-                    key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`w-9 h-9 rounded-lg text-xs font-medium transition-all border ${
-                      safeCurrentPage === page
-                        ? "bg-indigo-600 text-white border-indigo-600 shadow-[0_0_12px_rgba(99,102,241,0.4)]"
-                        : "border-slate-800 bg-slate-900 text-slate-400 hover:text-white hover:border-slate-700"
-                    }`}
-                  >
-                    {page}
-                  </button>
-                )
-              )}
-
-              <button
-                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                disabled={safeCurrentPage === totalPages}
-                className="px-3 py-2 rounded-lg border border-slate-800 bg-slate-900 text-xs font-medium text-slate-400 hover:text-white hover:border-slate-700 transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:text-slate-400 disabled:hover:border-slate-800"
-              >
-                Next
+                Muat Lebih Banyak ({filtered.length - visibleCount} tersisa)
               </button>
             </div>
           )}
 
+          {/* Count */}
           <p className="text-center text-[11px] text-slate-600 mt-4">
-            Menampilkan {(safeCurrentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(safeCurrentPage * ITEMS_PER_PAGE, filtered.length)} dari {filtered.length} laptop
+            Menampilkan {visibleItems.length} dari {filtered.length} laptop
           </p>
         </>
+      )}
+
+      {/* Floating Compare Action Button */}
+      {compareCount > 0 && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 slide-up">
+          <button
+            onClick={() => {
+              if (isCompareActive) {
+                const ids = compareList.map((l) => l.id).join(",");
+                router.push(`/compare?ids=${ids}`);
+              } else {
+                showToast(t.catalogCompareSelect);
+              }
+            }}
+            className={`flex items-center gap-3 px-6 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 shadow-2xl ${
+              isCompareActive
+                ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-[0_0_40px_rgba(99,102,241,0.4)] hover:shadow-[0_0_50px_rgba(139,92,246,0.5)] hover:from-indigo-500 hover:to-violet-500"
+                : "bg-zinc-900/90 backdrop-blur-xl border border-white/10 text-slate-300 hover:text-white"
+            }`}
+          >
+            <GitCompareArrows size={18} className={isCompareActive ? "animate-bounce" : ""} />
+            {t.catalogCompareBtn.replace("{count}", String(compareCount))}
+            {isCompareActive && (
+              <span className="flex items-center gap-1 text-[10px] font-medium bg-white/20 px-2 py-0.5 rounded-full">
+                <ChevronRight size={10} />
+              </span>
+            )}
+          </button>
+        </div>
       )}
     </div>
   );
