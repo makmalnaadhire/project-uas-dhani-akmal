@@ -1,23 +1,54 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { useTranslation } from "@/components/providers/LanguageProvider";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [error, setError] = useState("");
   const { t } = useTranslation();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: "", email: "", message: "" });
+    setIsSending(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Gagal mengirim pesan");
+      }
+
+      setFormData({ name: "", email: "", message: "" });
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 5000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Terjadi kesalahan");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
     <div className="pt-24 pb-20 max-w-6xl mx-auto px-4 sm:px-6 min-h-screen">
+      {/* Success Toast */}
+      {showSuccess && (
+        <div className="fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 backdrop-blur-md shadow-2xl shadow-emerald-500/10 animate-in slide-in-from-right-5 fade-in duration-300">
+          <CheckCircle2 size={18} className="text-emerald-400 flex-shrink-0" />
+          <p className="text-sm text-emerald-300 font-medium">{t.contactSent}</p>
+        </div>
+      )}
+
       <div className="text-center mb-12">
         <h1 className="text-3xl font-bold font-[family-name:var(--font-display)] mb-2">
           <span className="text-gradient-cyan">{t.contactTitle}</span> {t.contactSubtitle}
@@ -26,15 +57,16 @@ export default function ContactPage() {
       </div>
 
       <div className="grid lg:grid-cols-5 gap-8">
-        <div className="lg:col-span-2 space-y-6">
-          <div className="glass rounded-xl p-6">
+        {/* Left Column — Contact Info */}
+        <div className="lg:col-span-2">
+          <div className="glass rounded-2xl p-6 sm:p-8 border border-white/5 h-full">
             <h2 className="text-lg font-bold font-[family-name:var(--font-display)] text-white mb-6">
               {t.contactInfo}
             </h2>
 
             <div className="space-y-5">
               <a href="mailto:laptoppintar.id@gmail.com" className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-[#06b6d4]/10 text-[#06b6d4] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <div className="w-11 h-11 rounded-xl bg-[#06b6d4]/10 text-[#06b6d4] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                   <Mail size={18} />
                 </div>
                 <div>
@@ -46,7 +78,7 @@ export default function ContactPage() {
               </a>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-[#2dd4bf]/10 text-[#2dd4bf] flex items-center justify-center flex-shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-[#2dd4bf]/10 text-[#2dd4bf] flex items-center justify-center flex-shrink-0">
                   <MapPin size={18} />
                 </div>
                 <div>
@@ -56,7 +88,7 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-[#d946ef]/10 text-[#d946ef] flex items-center justify-center flex-shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-[#d946ef]/10 text-[#d946ef] flex items-center justify-center flex-shrink-0">
                   <Phone size={18} />
                 </div>
                 <div>
@@ -66,86 +98,78 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-
-          <div className="glass rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-white mb-3">{t.contactHours}</h3>
-            <div className="space-y-2 text-xs text-slate-400">
-              <div className="flex justify-between">
-                <span>{t.contactMonFri}</span>
-                <span className="text-white">09:00 — 17:00</span>
-              </div>
-              <div className="flex justify-between">
-                <span>{t.contactSat}</span>
-                <span className="text-white">09:00 — 14:00</span>
-              </div>
-              <div className="flex justify-between">
-                <span>{t.contactSun}</span>
-                <span className="text-slate-500">{t.contactClosed}</span>
-              </div>
-            </div>
-          </div>
         </div>
 
+        {/* Right Column — Contact Form */}
         <div className="lg:col-span-3">
-          <div className="glass rounded-xl p-8">
+          <div className="glass rounded-2xl p-6 sm:p-8 border border-white/5">
             <h2 className="text-lg font-bold font-[family-name:var(--font-display)] text-white mb-6">
               {t.contactForm}
             </h2>
 
-            {submitted ? (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 rounded-full bg-[#06b6d4]/10 flex items-center justify-center mx-auto mb-4">
-                  <Send size={28} className="text-[#06b6d4]" />
-                </div>
-                <p className="text-white font-semibold text-lg mb-1">{t.contactSent}</p>
-                <p className="text-sm text-slate-400">{t.contactSentDesc}</p>
+            {error && (
+              <div className="mb-4 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/30 text-sm text-red-400">
+                {error}
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="text-xs text-slate-500 mb-1.5 block font-medium">{t.contactName}</label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0f172a] border border-white/10 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#06b6d4]/50 input-glow transition-all"
-                      placeholder={t.contactNamePlaceholder}
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs text-slate-500 mb-1.5 block font-medium">{t.contactEmail}</label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0f172a] border border-white/10 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#06b6d4]/50 input-glow transition-all"
-                      placeholder={t.contactEmailPlaceholder}
-                    />
-                  </div>
-                </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="text-xs text-slate-500 mb-1.5 block font-medium">{t.contactMessage}</label>
-                  <textarea
+                  <label className="text-xs text-slate-500 mb-1.5 block font-medium">{t.contactName}</label>
+                  <input
+                    type="text"
                     required
-                    rows={6}
-                    value={formData.message}
-                    onChange={(e) => setFormData((p) => ({ ...p, message: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl bg-[#0f172a] border border-white/10 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#06b6d4]/50 input-glow transition-all resize-none"
-                    placeholder={t.contactMessagePlaceholder}
+                    value={formData.name}
+                    onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
+                    className="w-full px-4 py-3 rounded-xl bg-[#0f172a] border border-white/10 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#06b6d4]/50 input-glow transition-all"
+                    placeholder={t.contactNamePlaceholder}
+                    disabled={isSending}
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] text-white text-sm font-semibold hover:shadow-[0_0_25px_rgba(6,182,212,0.3)] transition-all active:scale-[0.98]"
-                >
-                  <Send size={16} />
-                  {t.contactForm}
-                </button>
-              </form>
-            )}
+                <div>
+                  <label className="text-xs text-slate-500 mb-1.5 block font-medium">{t.contactEmail}</label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
+                    className="w-full px-4 py-3 rounded-xl bg-[#0f172a] border border-white/10 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#06b6d4]/50 input-glow transition-all"
+                    placeholder={t.contactEmailPlaceholder}
+                    disabled={isSending}
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="text-xs text-slate-500 mb-1.5 block font-medium">{t.contactMessage}</label>
+                <textarea
+                  required
+                  rows={6}
+                  value={formData.message}
+                  onChange={(e) => setFormData((p) => ({ ...p, message: e.target.value }))}
+                  className="w-full px-4 py-3 rounded-xl bg-[#0f172a] border border-white/10 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#06b6d4]/50 input-glow transition-all resize-none"
+                  placeholder={t.contactMessagePlaceholder}
+                  disabled={isSending}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={isSending}
+                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] text-white text-sm font-semibold hover:shadow-[0_0_25px_rgba(6,182,212,0.3)] transition-all active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {isSending ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    {t.contactForm}...
+                  </>
+                ) : (
+                  <>
+                    <Send size={16} />
+                    {t.contactForm}
+                  </>
+                )}
+              </button>
+            </form>
           </div>
         </div>
       </div>

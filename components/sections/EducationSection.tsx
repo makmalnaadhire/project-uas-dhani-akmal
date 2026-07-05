@@ -19,6 +19,8 @@ import {
   Battery,
   Wifi,
   ArrowRight,
+  CheckCircle2,
+  ShieldCheck,
 } from "lucide-react";
 
 interface Props {
@@ -90,6 +92,15 @@ export default function EducationSection({ laptops }: Props) {
     { label: t.eduRet5Label, retention: 15, desc: t.eduRet5Desc },
   ];
 
+  const tips = [
+    t.eduTip1,
+    t.eduTip2,
+    t.eduTip3,
+    t.eduTip4,
+    t.eduTip5,
+    t.eduTip6,
+  ];
+
   const estimateValue = () => {
     const age = 2025 - estYear;
     let retention = 100;
@@ -103,7 +114,7 @@ export default function EducationSection({ laptops }: Props) {
   const brands = [...new Set(laptops.map(l => l.merek))].sort();
 
   return (
-    <div className="pt-24 pb-20 max-w-5xl mx-auto px-4 sm:px-6 min-h-screen">
+    <div className="pt-24 pb-20 max-w-6xl mx-auto px-4 sm:px-6 min-h-screen">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold font-[family-name:var(--font-display)] mb-2">
           <span className="text-gradient-fuchsia">{t.eduTitle}</span> {t.eduSubtitle}
@@ -163,53 +174,128 @@ export default function EducationSection({ laptops }: Props) {
       )}
 
       {activeSubTab === "estimasi" && (
-        <div className="max-w-lg mx-auto">
-          <div className="glass rounded-xl p-6 mb-6">
-            <h3 className="text-lg font-semibold font-[family-name:var(--font-display)] mb-4 text-[#d946ef]">{t.eduEstTitle}</h3>
-            <div className="space-y-4">
-              <div>
-                <label className="text-xs text-slate-500 mb-1 block">{t.eduEstBrand}</label>
-                <select value={estBrand} onChange={e => setEstBrand(e.target.value)} className="w-full px-3 py-2.5 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#d946ef]/50">
-                  {brands.map(b => <option key={b} value={b}>{b}</option>)}
-                </select>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Left Column — Calculator Input Form */}
+          <div className="bg-zinc-900/40 backdrop-blur-md border border-slate-800/60 p-6 rounded-2xl">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-[#d946ef]/15 flex items-center justify-center">
+                <Calculator size={20} className="text-[#d946ef]" />
               </div>
               <div>
-                <label className="text-xs text-slate-500 mb-1 block">{t.eduEstYear}</label>
-                <input type="range" min={2017} max={2025} value={estYear} onChange={e => setEstYear(Number(e.target.value))} className="w-full" style={{ accentColor: "#d946ef" }} />
-                <div className="text-center text-sm text-[#d946ef] font-medium mt-1">{estYear}</div>
+                <h3 className="text-lg font-bold font-[family-name:var(--font-display)] text-white">{t.eduEstTitle}</h3>
+                <p className="text-[11px] text-slate-500">{t.eduTabEstimate}</p>
               </div>
+            </div>
+
+            <div className="space-y-5">
+              {/* Brand Dropdown */}
               <div>
-                <label className="text-xs text-slate-500 mb-1 block">{t.eduEstPrice}</label>
-                <input type="number" value={estOrigPrice} onChange={e => setEstOrigPrice(Number(e.target.value))} className="w-full px-3 py-2.5 rounded-lg bg-[#0f172a] border border-white/10 text-sm text-white focus:outline-none focus:border-[#d946ef]/50" />
+                <label className="text-xs text-slate-400 mb-2 block font-medium uppercase tracking-wider">{t.eduEstBrand}</label>
+                <div className="relative">
+                  <select
+                    value={estBrand}
+                    onChange={e => setEstBrand(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl bg-[#0f172a]/80 border border-slate-700/60 text-sm text-white focus:outline-none focus:border-[#d946ef]/50 focus:ring-1 focus:ring-[#d946ef]/20 transition-all appearance-none cursor-pointer"
+                  >
+                    {brands.map(b => <option key={b} value={b}>{b}</option>)}
+                  </select>
+                  <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Purchase Year Slider */}
+              <div>
+                <label className="text-xs text-slate-400 mb-2 block font-medium uppercase tracking-wider">{t.eduEstYear}</label>
+                <input
+                  type="range"
+                  min={2017}
+                  max={2025}
+                  value={estYear}
+                  onChange={e => setEstYear(Number(e.target.value))}
+                  className="w-full h-2 rounded-full appearance-none cursor-pointer bg-gradient-to-r from-[#d946ef]/30 to-[#ec4899]/30"
+                  style={{ accentColor: "#d946ef" }}
+                />
+                <div className="flex justify-between items-center mt-2">
+                  <span className="text-[10px] text-slate-600 font-mono">2017</span>
+                  <span className="text-sm text-[#d946ef] font-bold font-[family-name:var(--font-display)] bg-[#d946ef]/10 px-3 py-0.5 rounded-full">{estYear}</span>
+                  <span className="text-[10px] text-slate-600 font-mono">2025</span>
+                </div>
+              </div>
+
+              {/* Original Price Input */}
+              <div>
+                <label className="text-xs text-slate-400 mb-2 block font-medium uppercase tracking-wider">{t.eduEstPrice}</label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-slate-500 font-medium">Rp</span>
+                  <input
+                    type="number"
+                    value={estOrigPrice}
+                    onChange={e => setEstOrigPrice(Number(e.target.value))}
+                    className="w-full pl-12 pr-4 py-3 rounded-xl bg-[#0f172a]/80 border border-slate-700/60 text-sm text-white focus:outline-none focus:border-[#d946ef]/50 focus:ring-1 focus:ring-[#d946ef]/20 transition-all"
+                  />
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="glass rounded-xl p-6 border-[#d946ef]/20 text-center">
-            <p className="text-xs text-slate-500 mb-1">{t.eduEstResult}</p>
-            <p className="text-3xl font-bold font-[family-name:var(--font-display)] text-gradient-fuchsia">Rp {estimateValue().toLocaleString("id-ID")}</p>
-            <p className="text-xs text-slate-500 mt-2">
-              {estYear >= 2023 ? t.eduEstNew :
-               estYear >= 2021 ? t.eduEstRecent :
-               estYear >= 2019 ? t.eduEstMid :
-               t.eduEstOld}
-            </p>
-          </div>
-
-          <div className="mt-6 space-y-3">
-            <h4 className="text-sm font-semibold text-white font-[family-name:var(--font-display)]">{t.eduRetGuide}</h4>
-            {yearThresholds.map((th, i) => (
-              <div key={i} className="glass rounded-lg p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-medium text-white">{th.label}</span>
-                  <span className="text-xs text-[#d946ef] font-medium">{th.retention}% retensi</span>
+          {/* Right Column — Result + Tips */}
+          <div className="space-y-6 flex flex-col">
+            {/* Price Result Card */}
+            <div className="bg-zinc-900/40 backdrop-blur-md border border-[#d946ef]/20 p-6 rounded-2xl text-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#d946ef]/8 via-transparent to-[#ec4899]/5 pointer-events-none" />
+              <div className="relative">
+                <p className="text-[11px] text-slate-400 mb-3 uppercase tracking-widest font-medium">{t.eduEstResult}</p>
+                <p className="text-4xl sm:text-5xl font-black font-[family-name:var(--font-display)] text-gradient-fuchsia leading-none mb-3">
+                  Rp {estimateValue().toLocaleString("id-ID")}
+                </p>
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#d946ef]/10 border border-[#d946ef]/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d946ef] animate-pulse" />
+                  <span className="text-xs text-[#d946ef] font-medium">
+                    {estYear >= 2023 ? t.eduEstNew :
+                     estYear >= 2021 ? t.eduEstRecent :
+                     estYear >= 2019 ? t.eduEstMid :
+                     t.eduEstOld}
+                  </span>
                 </div>
-                <div className="h-1.5 bg-white/5 rounded-full mb-2">
-                  <div className="h-full bg-gradient-to-r from-[#d946ef] to-[#ec4899] rounded-full" style={{ width: `${th.retention}%` }} />
-                </div>
-                <p className="text-[11px] text-slate-500">{th.desc}</p>
               </div>
-            ))}
+            </div>
+
+            {/* Tips Card */}
+            <div className="bg-zinc-900/40 backdrop-blur-md border border-slate-800/60 p-6 rounded-2xl flex-1">
+              <h4 className="text-sm font-bold text-white font-[family-name:var(--font-display)] mb-4 flex items-center gap-2">
+                <ShieldCheck size={16} className="text-[#d946ef]" />
+                {t.eduTipsTitle}
+              </h4>
+              <ul className="space-y-3">
+                {tips.map((tip, i) => (
+                  <li key={i} className="flex items-start gap-3 group">
+                    <div className="w-5 h-5 rounded-full bg-[#d946ef]/15 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#d946ef]/25 transition-colors">
+                      <CheckCircle2 size={11} className="text-[#d946ef]" />
+                    </div>
+                    <span className="text-sm text-slate-300 leading-relaxed">{tip}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Price Retention Guide */}
+            <div className="bg-zinc-900/40 backdrop-blur-md border border-slate-800/60 p-6 rounded-2xl">
+              <h4 className="text-sm font-bold text-white font-[family-name:var(--font-display)] mb-4">{t.eduRetGuide}</h4>
+              <div className="space-y-3">
+                {yearThresholds.map((th, i) => (
+                  <div key={i} className="bg-white/5 rounded-xl p-3.5">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-medium text-white">{th.label}</span>
+                      <span className="text-xs text-[#d946ef] font-bold">{th.retention}%</span>
+                    </div>
+                    <div className="h-1.5 bg-white/5 rounded-full mb-2">
+                      <div className="h-full bg-gradient-to-r from-[#d946ef] to-[#ec4899] rounded-full transition-all duration-500" style={{ width: `${th.retention}%` }} />
+                    </div>
+                    <p className="text-[11px] text-slate-500 leading-relaxed">{th.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       )}

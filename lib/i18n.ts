@@ -229,6 +229,13 @@ const translations = {
     eduRet4Desc: "Hanya untuk kebutuhan sangat ringan. Harga jual menurun drastis.",
     eduRet5Label: "Sebelum 2017",
     eduRet5Desc: "Sudah sangat tua. Harga jual sangat rendah.",
+    eduTipsTitle: "Tips Meningkatkan Harga Jual Laptop Bekas",
+    eduTip1: "Bersihkan laptop secara menyeluruh sebelum dijual",
+    eduTip2: "Sertakan kotak asli, charger, dan aksesoris lengkap",
+    eduTip3: "Pastikan semua fungsi hardware berjalan normal",
+    eduTip4: "Reset ke pengaturan pabrik dan hapus data pribadi",
+    eduTip5: "Ambil foto berkualitas tinggi dari semua sudut",
+    eduTip6: "Tulis deskripsi jujur tentang kondisi laptop",
 
     // About page
     aboutBody1: "LaptopPintar adalah platform pencarian, perbandingan, dan rekomendasi laptop yang dikembangkan sebagai proyek akhir kuliah. Platform ini menyediakan katalog lengkap dengan 30 laptop dari berbagai brand, fitur perbandingan side-by-side, wizard rekomendasi cerdas, serta edukasi seputar hardware laptop.",
@@ -489,6 +496,13 @@ const translations = {
     eduRet4Desc: "Only for very light tasks. Resale value drops significantly.",
     eduRet5Label: "Before 2017",
     eduRet5Desc: "Very old. Resale value is very low.",
+    eduTipsTitle: "Tips to Increase Your Used Laptop's Resale Value",
+    eduTip1: "Clean the laptop thoroughly before selling",
+    eduTip2: "Include the original box, charger, and all accessories",
+    eduTip3: "Ensure all hardware functions are working properly",
+    eduTip4: "Factory reset and remove all personal data",
+    eduTip5: "Take high-quality photos from every angle",
+    eduTip6: "Write an honest description of the laptop's condition",
 
     // About page
     aboutBody1: "LaptopPintar is a laptop search, comparison, and recommendation platform developed as a final year project. The platform provides a complete catalog of 30 laptops from various brands, side-by-side comparison features, a smart recommendation wizard, and laptop hardware education.",
