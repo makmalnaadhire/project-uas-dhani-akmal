@@ -527,12 +527,12 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {[
-            { name: "asus",   label: "ASUS" },
-            { name: "lenovo", label: "Lenovo" },
-            { name: "hp",      label: "HP" },
-            { name: "acer",    label: "Acer" },
-            { name: "msi",     label: "MSI" },
-            { name: "apple",   label: "Apple" },
+            { name: "asus",   label: "ASUS",   scale: "scale-100" },
+            { name: "lenovo", label: "Lenovo", scale: "scale-105" },
+            { name: "hp",      label: "HP",     scale: "scale-140" },
+            { name: "acer",    label: "Acer",   scale: "scale-100" },
+            { name: "msi",     label: "MSI",    scale: "scale-105" },
+            { name: "apple",   label: "Apple",  scale: "scale-135" },
           ].map((brand) => (
             <div
               key={brand.name}
@@ -542,7 +542,7 @@ export default function HomePage() {
               <img
                 src={`/${brand.name}.png`}
                 alt={`${brand.label} logo`}
-                className="w-auto h-12 max-w-full object-contain"
+                className="w-auto h-18 max-w-full object-contain"
                 draggable={false}
               />
             </div>
