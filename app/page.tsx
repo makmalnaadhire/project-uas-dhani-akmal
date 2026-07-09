@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslation } from "@/components/providers/LanguageProvider";
 import ScrollReveal from "@/components/ScrollReveal";
 import {
@@ -174,13 +175,13 @@ function FeatureCard({
           </h3>
           <p className="text-sm text-slate-400 leading-relaxed mb-4">{desc}</p>
           <div
-            className="inline-flex items-center gap-1.5 text-xs font-semibold transition-all duration-300 group-hover:gap-2.5"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold opacity-70 group-hover:opacity-100 transition-all duration-300 group-hover:gap-2.5"
             style={{ color }}
           >
             Explore
             <ChevronRight
               size={14}
-              className="transition-transform duration-300 group-hover:translate-x-1"
+              className="transition-transform duration-200 group-hover:translate-x-1"
             />
           </div>
         </div>
@@ -375,14 +376,19 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════
           FEATURES SECTION — 3D Tilt + Neon Glow Cards
          ════════════════════════════════════════════════════ */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Tech grid background overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+
         <ScrollReveal direction="up">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold font-[family-name:var(--font-display)] mb-3">
+          <div className="relative text-center mb-14">
+            {/* Ambient glow behind title */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[120px] bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 blur-[120px] rounded-full pointer-events-none" />
+            <h2 className="relative text-3xl font-bold font-[family-name:var(--font-display)] mb-3">
               {t.featureTitle}{" "}
               <span className="text-gradient-hero">LaptopPintar</span>?
             </h2>
-            <p className="text-slate-400 max-w-md mx-auto">{t.featureDesc}</p>
+            <p className="relative text-slate-400 max-w-md mx-auto">{t.featureDesc}</p>
           </div>
         </ScrollReveal>
 
@@ -508,6 +514,40 @@ export default function HomePage() {
             </div>
           </div>
         </ScrollReveal>
+      </section>
+
+      {/* ════════════════════════════════════════════════════
+          BRAND LOGO SHOWCASE — 3x2 Balanced Grid
+         ════════════════════════════════════════════════════ */}
+      <section className="py-8 max-w-4xl mx-auto px-4">
+        <div className="text-center mb-6">
+          <span className="text-xs font-medium tracking-widest text-slate-500 uppercase">
+            Mendukung Komparasi Berbagai Brand Global
+          </span>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          {[
+            { name: "asus",   label: "ASUS" },
+            { name: "lenovo", label: "Lenovo" },
+            { name: "hp",      label: "HP" },
+            { name: "acer",    label: "Acer" },
+            { name: "msi",     label: "MSI" },
+            { name: "apple",   label: "Apple" },
+          ].map((brand) => (
+            <div
+              key={brand.name}
+              className="flex items-center justify-center p-8 bg-zinc-900/40 border border-slate-800/80 rounded-2xl aspect-[16/9] transition-all duration-300 transform hover:-translate-y-1 hover:border-slate-700/80 hover:bg-zinc-900/70"
+            >
+              {/* Menggunakan tag img standar tanpa optimasi cache Next.js yang mengunci warna hitam */}
+              <img
+                src={`/${brand.name}.png`}
+                alt={`${brand.label} logo`}
+                className="w-auto h-12 max-w-full object-contain"
+                draggable={false}
+              />
+            </div>
+          ))}
+        </div>
       </section>
     </div>
   );

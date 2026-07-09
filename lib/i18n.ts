@@ -133,6 +133,10 @@ const translations = {
     compareAiDesc: "Ringkasan perbandingan objektif berdasarkan data spesifikasi.",
     compareDisclaimer: "Harga dapat berubah tergantung wilayah geografis dan kondisi fisik riil.",
     catalogDisclaimer: "*Harga dapat berubah tergantung wilayah geografis dan kondisi fisik riil laptop.*",
+    catalogShowing: "Menampilkan",
+    catalogOf: "dari",
+    catalogPrev: "Sebelumnya",
+    catalogNext: "Selanjutnya",
 
     // Recommendations
     recTitle: "Rekomendasi",
@@ -467,6 +471,10 @@ const translations = {
     compareAiDesc: "Objective comparison summary based on specification data.",
     compareDisclaimer: "Prices may vary depending on geographic location and actual physical condition.",
     catalogDisclaimer: "*Prices may vary depending on geographic location and the actual physical condition of the laptop.*",
+    catalogShowing: "Showing",
+    catalogOf: "of",
+    catalogPrev: "Previous",
+    catalogNext: "Next",
 
     // Recommendations
     recTitle: "Smart",

@@ -18,7 +18,6 @@ import {
   GitCompareArrows,
   Menu,
   X,
-  LogIn,
   LogOut,
   Globe,
   ChevronDown,
@@ -84,7 +83,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass">
+    <nav className="sticky top-0 z-50 backdrop-blur-md bg-zinc-950/70 border-b border-slate-800/50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 group">
@@ -151,10 +150,21 @@ export default function Navbar() {
               ) : (
                 <Link
                   href="/login"
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gradient-to-r from-[#2dd4bf] to-[#3b82f6] text-white text-sm font-semibold hover:shadow-[0_0_20px_rgba(45,212,191,0.3)] transition-all duration-200 active:scale-95"
+                  className="group flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gradient-to-r from-[#2dd4bf] to-[#3b82f6] text-white text-sm font-semibold hover:shadow-[0_0_15px_rgba(6,182,212,0.55)] transition-all duration-300 active:scale-95"
                 >
-                  <LogIn size={16} />
                   <span className="hidden sm:inline">{t.navLogin}</span>
+                  <svg
+                    className="hidden sm:inline-block w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-200"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
                 </Link>
               )}
 
@@ -221,7 +231,7 @@ export default function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden glass border-t border-white/5">
+        <div className="md:hidden backdrop-blur-md bg-zinc-950/70 border-t border-slate-800/50">
           <div className="px-4 py-3 space-y-1">
             {navItems.map((item) => (
               <Link

@@ -20,6 +20,7 @@ import {
   AlertTriangle,
   StickyNote,
   ChevronDown,
+  ChevronLeft,
   ChevronRight,
   Laptop as LaptopIcon,
   GitCompareArrows,
@@ -50,8 +51,7 @@ const statusBadge: Record<string, { label: string; className: string }> = {
   },
 };
 
-const INITIAL_LOAD = 12;
-const LOAD_MORE_STEP = 12;
+const ITEMS_PER_PAGE = 15;
 
 const quickFilters = [
   { label: "Semua", value: "semua" },
@@ -304,7 +304,7 @@ export default function CatalogPage() {
   const [showFilters, setShowFilters] = useState(false);
   const [activeBadge, setActiveBadge] = useState("semua");
   const [toast, setToast] = useState<string | null>(null);
-  const [visibleCount, setVisibleCount] = useState(INITIAL_LOAD);
+  const [currentPage, setCurrentPage] = useState(1);
   const [selectedLaptop, setSelectedLaptop] = useState<Laptop | null>(null);
 
   const compareCount = compareList.length;
@@ -359,20 +359,21 @@ export default function CatalogPage() {
     return list;
   }, [laptops, search, brandFilter, conditionFilter, categoryFilter, sortBy, activeBadge]);
 
-  /* Reset visible count when filters change */
+  /* Reset page when filters change */
   useEffect(() => {
-    setVisibleCount(INITIAL_LOAD);
+    setCurrentPage(1);
   }, [search, brandFilter, conditionFilter, categoryFilter, sortBy, activeBadge]);
 
-  const visibleItems = useMemo(
-    () => filtered.slice(0, visibleCount),
-    [filtered, visibleCount]
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+
+  const displayedLaptops = useMemo(
+    () => filtered.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE),
+    [filtered, currentPage]
   );
 
-  const hasMore = visibleCount < filtered.length;
-
-  const handleLoadMore = useCallback(() => {
-    setVisibleCount((prev) => prev + LOAD_MORE_STEP);
+  const handlePageChange = useCallback((page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   const handleBadgeClick = useCallback((value: string) => {
@@ -574,7 +575,7 @@ export default function CatalogPage() {
         <>
           {/* Card Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {visibleItems.map((laptop) => {
+            {displayedLaptops.map((laptop) => {
               const isWished = wishlist.includes(laptop.id);
               const isCompared = compareList.some((c) => c.id === laptop.id);
               const st = statusBadge[laptop.status] || statusBadge.Active;
@@ -714,21 +715,71 @@ export default function CatalogPage() {
             })}
           </div>
 
-          {/* Load More Button */}
-          {hasMore && (
-            <div className="flex justify-center mt-10">
-              <button
-                onClick={handleLoadMore}
-                className="px-8 py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all active:scale-[0.98]"
-              >
-                Muat Lebih Banyak ({filtered.length - visibleCount} tersisa)
-              </button>
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="flex flex-col items-center gap-4 mt-10">
+              <nav className="flex items-center gap-2">
+                {/* Previous Button */}
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-zinc-900 border border-slate-800 text-sm font-medium text-slate-400 hover:text-white hover:border-slate-600 transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:text-slate-400 disabled:hover:border-slate-800"
+                >
+                  <ChevronLeft size={16} />
+                  {t.catalogPrev}
+                </button>
+
+                {/* Page Number Buttons */}
+                {Array.from({ length: totalPages }, (_, i) => i + 1)
+                  .filter((page) => {
+                    if (totalPages <= 7) return true;
+                    if (page === 1 || page === totalPages) return true;
+                    if (Math.abs(page - currentPage) <= 1) return true;
+                    return false;
+                  })
+                  .reduce<(number | "...")[]>((acc, page, idx, arr) => {
+                    if (idx > 0 && page - (arr[idx - 1] as number) > 1) {
+                      acc.push("...");
+                    }
+                    acc.push(page);
+                    return acc;
+                  }, [])
+                  .map((page, idx) =>
+                    page === "..." ? (
+                      <span key={`ellipsis-${idx}`} className="px-2 text-slate-600 select-none">
+                        ...
+                      </span>
+                    ) : (
+                      <button
+                        key={page}
+                        onClick={() => handlePageChange(page as number)}
+                        className={`min-w-[40px] h-10 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                          currentPage === page
+                            ? "bg-indigo-600 text-white shadow-[0_0_20px_rgba(99,102,241,0.35)]"
+                            : "bg-zinc-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-600"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    )
+                  )}
+
+                {/* Next Button */}
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-zinc-900 border border-slate-800 text-sm font-medium text-slate-400 hover:text-white hover:border-slate-600 transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:text-slate-400 disabled:hover:border-slate-800"
+                >
+                  {t.catalogNext}
+                  <ChevronRight size={16} />
+                </button>
+              </nav>
             </div>
           )}
 
-          {/* Count */}
+          {/* Showing X of Y laptops */}
           <p className="text-center text-[11px] text-slate-600 mt-4">
-            Menampilkan {visibleItems.length} dari {filtered.length} laptop
+            {t.catalogShowing} {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, filtered.length)} {t.catalogOf} {filtered.length} laptop
           </p>
         </>
       )}

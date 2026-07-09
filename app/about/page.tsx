@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useTranslation } from "@/components/providers/LanguageProvider";
 
 const teamMembers = [
-  { name: "Dhani", role: "Anggota 1", desc: "Ramadhani Reyhan Dwi Syahputra 2413037..", image: "/PP-Dhani.png" },
-  { name: "Akmal", role: "Anggota 2", desc: "Muhammad Akmal Naadhir Efriandi 2413045.", image: "/avatar1.jpg" },
+  { name: "Dhani", role: "Anggota 1", desc: "Ramadhani Reyhan Dwi Syahputra 2413037.", image: "/PP-Dhani.png" },
+  { name: "Akmal", role: "Anggota 2", desc: "Muhammad Akmal Naadhir Efriandi 2413045.", image: "/avatar2.jpg" },
 ];
 
 export default function AboutPage() {
