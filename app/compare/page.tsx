@@ -84,8 +84,18 @@ function CompareContent() {
     setAiLoading(true);
     setAiAnalysis(null);
 
-    const names = comparedLaptops.map((l) => `${l.nama} (${l.spesifikasi.processor})`).join(" vs ");
-    const prompt = `Lakukan analisis komparasi objektif mendalam antara laptop berikut: ${names}. Wajib pisahkan jawaban Anda ke dalam 3 bagian menggunakan heading markdown (###):
+    const laptopDetails = comparedLaptops.map((l) => {
+      const v = l.varian?.[0];
+      const processor = v?.processor ?? l.spesifikasi?.processor ?? "-";
+      const ram = v?.ram ?? l.spesifikasi?.ram ?? "-";
+      const storage = v?.storage ?? l.spesifikasi?.storage ?? "-";
+      const gpu = v?.gpu ?? l.spesifikasi?.gpu ?? "-";
+      const display = v?.display ?? l.spesifikasi?.display ?? "-";
+      const harga = `${formatRupiah(l.harga_min)} - ${formatRupiah(l.harga_max)}`;
+      return `${l.nama} (${l.merek}, ${l.tahun}, ${l.kondisi})\nHarga: ${harga}\nProcessor: ${processor}\nRAM: ${ram}\nStorage: ${storage}\nGPU: ${gpu}\nDisplay: ${display}`;
+    }).join("\n\n");
+
+    const prompt = `Lakukan analisis komparasi objektif mendalam antara laptop berikut:\n\n${laptopDetails}\n\nWajib pisahkan jawaban Anda ke dalam 3 bagian menggunakan heading markdown (###):
 1. Ringkasan Performa Side-by-Side (Gunakan bullet points berjarak)
 2. Kelebihan & Kekurangan Utama masing-masing opsi
 3. Rekomendasi Final (Tipe pengguna mana yang paling cocok membeli masing-masing laptop).
