@@ -309,7 +309,7 @@ const translations = {
     eduSimYear5: "Nilai Tahun 5",
 
     // About page
-    aboutBody1: "LaptopPintar adalah platform pencarian, perbandingan, dan rekomendasi laptop yang dikembangkan sebagai proyek akhir kuliah. Platform ini menyediakan katalog lengkap dengan 30 laptop dari berbagai brand, fitur perbandingan side-by-side, wizard rekomendasi cerdas, serta edukasi seputar hardware laptop.",
+    aboutBody1: "LaptopPintar adalah platform pencarian, perbandingan, dan rekomendasi laptop yang dikembangkan sebagai proyek akhir kuliah. Platform ini menyediakan katalog lengkap dengan 100+ laptop dari berbagai brand, fitur perbandingan side-by-side, wizard rekomendasi cerdas, serta edukasi seputar hardware laptop.",
     aboutBody2: "Dibangun dengan teknologi modern termasuk Next.js, React, dan Tailwind CSS, LaptopPintar menghadirkan pengalaman visual yang premium dengan tema \"Dark Luxe\" yang unik dan berbeda dari platform sejenis.",
     aboutRefTitle: "Data Sources & Referensi",
     aboutRefDesc: "Berikut sumber-sumber yang relevan sebagai referensi data laptop di database ini:",
