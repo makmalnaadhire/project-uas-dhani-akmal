@@ -1,0 +1,116 @@
+[
+  {
+    "id": "",
+    "nama": "",
+    "merek": "",
+    "seri": "",
+    "tahun": 0,
+    "kondisi": "",
+    "harga_min": 0,
+    "harga_max": 0,
+    "kategori": "",
+    "catatan": "",
+    "varian": [
+      {
+        "nama_varian": "",
+        "processor": "",
+        "ram": "",
+        "storage": "",
+        "gpu": "",
+        "display": "",
+        "resolusi": "",
+        "os": "",
+        "harga_min": 0,
+        "harga_max": 0
+      },
+      {
+        "nama_varian": "",
+        "processor": "",
+        "ram": "",
+        "storage": "",
+        "gpu": "",
+        "display": "",
+        "resolusi": "",
+        "os": "",
+        "harga_min": 0,
+        "harga_max": 0
+      }
+    ]
+  },
+  {
+    "id": "",
+    "nama": "",
+    "merek": "",
+    "seri": "",
+    "tahun": 0,
+    "kondisi": "",
+    "harga_min": 0,
+    "harga_max": 0,
+    "kategori": "",
+    "catatan": "",
+    "varian": [
+      {
+        "nama_varian": "",
+        "processor": "",
+        "ram": "",
+        "storage": "",
+        "gpu": "",
+        "display": "",
+        "resolusi": "",
+        "os": "",
+        "harga_min": 0,
+        "harga_max": 0
+      },
+      {
+        "nama_varian": "",
+        "processor": "",
+        "ram": "",
+        "storage": "",
+        "gpu": "",
+        "display": "",
+        "resolusi": "",
+        "os": "",
+        "harga_min": 0,
+        "harga_max": 0
+      },
+      {
+        "nama_varian": "",
+        "processor": "",
+        "ram": "",
+        "storage": "",
+        "gpu": "",
+        "display": "",
+        "resolusi": "",
+        "os": "",
+        "harga_min": 0,
+        "harga_max": 0
+      }
+    ]
+  },
+  {
+    "id": "",
+    "nama": "",
+    "merek": "",
+    "seri": "",
+    "tahun": 0,
+    "kondisi": "",
+    "harga_min": 0,
+    "harga_max": 0,
+    "kategori": "",
+    "catatan": "",
+    "varian": [
+      {
+        "nama_varian": "",
+        "processor": "",
+        "ram": "",
+        "storage": "",
+        "gpu": "",
+        "display": "",
+        "resolusi": "",
+        "os": "",
+        "harga_min": 0,
+        "harga_max": 0
+      }
+    ]
+  }
+]

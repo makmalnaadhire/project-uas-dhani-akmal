@@ -49,7 +49,18 @@ function CompareContent() {
   const [aiAnalysis, setAiAnalysis] = useState<string | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
 
-  const allLaptops = useMemo(() => laptopsData as Laptop[], []);
+  const allLaptops = useMemo(() => (laptopsData as any[]).map((l) => ({
+    ...l,
+    spesifikasi: {
+      processor: l.varian?.[0]?.processor ?? "-",
+      ram: l.varian?.[0]?.ram ?? "-",
+      storage: l.varian?.[0]?.storage ?? "-",
+      gpu: l.varian?.[0]?.gpu ?? "-",
+      display: l.varian?.[0]?.display ?? "-",
+      os: l.varian?.[0]?.os ?? "-",
+      resolusi: l.varian?.[0]?.resolusi ?? "-",
+    },
+  } as Laptop)), []);
 
   const selectedIds = useMemo(() => {
     const raw = searchParams.get("ids");
@@ -117,12 +128,12 @@ Jangan menulis paragraf yang terlalu panjang atau rapat. Gunakan spasi baris bar
   const specRows = [
     { label: t.compareBrand, icon: <Tag size={14} />, getValue: (l: Laptop) => l.merek },
     { label: t.compareYear, icon: null, getValue: (l: Laptop) => String(l.tahun) },
-    { label: t.compareProcessor, icon: <Cpu size={14} />, getValue: (l: Laptop) => l.spesifikasi.processor },
-    { label: t.compareRAM, icon: <MemoryStick size={14} />, getValue: (l: Laptop) => l.spesifikasi.ram },
-    { label: t.compareStorage, icon: <HardDrive size={14} />, getValue: (l: Laptop) => l.spesifikasi.storage },
-    { label: t.compareGPU, icon: <Monitor size={14} />, getValue: (l: Laptop) => l.spesifikasi.gpu },
-    { label: t.compareDisplay, icon: <Monitor size={14} />, getValue: (l: Laptop) => l.spesifikasi.display },
-    { label: t.compareOS, icon: <LaptopIcon size={14} />, getValue: (l: Laptop) => l.spesifikasi.os },
+    { label: t.compareProcessor, icon: <Cpu size="{14}"/>, getValue: (l: Laptop) => l.varian?.[0]?.processor || "-" },
+    { label: t.compareRAM, icon: <MemoryStick size="{16}"/>, getValue: (l: Laptop) => l.varian?.[0]?.ram || "-" },
+    { label: t.compareStorage, icon: <HardDrive size="{14}"/>, getValue: (l: Laptop) => l.varian?.[0]?.storage || "-" },
+    { label: t.compareGPU, icon: <Monitor size="{14}"/>, getValue: (l: Laptop) => l.varian?.[0]?.gpu || "-" },
+    { label: t.compareDisplay, icon: <Monitor size={14} />, getValue: (l: Laptop) => l.varian?.[0]?.display || "-" },
+    { label: t.compareOS, icon: <LaptopIcon size={14} />, getValue: (l: Laptop) => l.varian?.[0]?.os || "-" },
     { label: t.comparePrice, icon: <Tag size={14} />, getValue: (l: Laptop) => `${formatRupiah(l.harga_min)} - ${formatRupiah(l.harga_max)}`, highlight: true },
     { label: t.compareKondisi, icon: null, getValue: (l: Laptop) => l.kondisi },
     { label: t.compareStatus, icon: null, getValue: (l: Laptop) => l.status },

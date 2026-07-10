@@ -21,7 +21,18 @@ const formatRupiah = (n: number) => "Rp " + n.toLocaleString("id-ID");
 
 export default function LaptopDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const laptops = laptopsData as Laptop[];
+  const laptops: Laptop[] = (laptopsData as any[]).map((l) => ({
+    ...l,
+    spesifikasi: {
+      processor: l.varian?.[0]?.processor ?? "-",
+      ram: l.varian?.[0]?.ram ?? "-",
+      storage: l.varian?.[0]?.storage ?? "-",
+      gpu: l.varian?.[0]?.gpu ?? "-",
+      display: l.varian?.[0]?.display ?? "-",
+      os: l.varian?.[0]?.os ?? "-",
+      resolusi: l.varian?.[0]?.resolusi ?? "-",
+    },
+  }));
   const laptop = laptops.find((l) => l.id === id);
 
   if (!laptop) notFound();

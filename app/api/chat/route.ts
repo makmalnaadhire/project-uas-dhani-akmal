@@ -24,7 +24,18 @@ export async function POST(req: Request) {
       );
     }
 
-    const laptops = laptopsData as Laptop[];
+    const laptops: Laptop[] = (laptopsData as any[]).map((l) => ({
+      ...l,
+      spesifikasi: {
+        processor: l.varian?.[0]?.processor ?? "-",
+        ram: l.varian?.[0]?.ram ?? "-",
+        storage: l.varian?.[0]?.storage ?? "-",
+        gpu: l.varian?.[0]?.gpu ?? "-",
+        display: l.varian?.[0]?.display ?? "-",
+        os: l.varian?.[0]?.os ?? "-",
+        resolusi: l.varian?.[0]?.resolusi ?? "-",
+      },
+    }));
 
     const laptopCatalog = laptops.map(l => {
       const isu = l.isu_diketahui ?? "Tidak ada isu yang dilaporkan";

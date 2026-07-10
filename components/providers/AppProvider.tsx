@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
-import type { Laptop } from "@/lib/types";
+import type { Laptop, Spesifikasi } from "@/lib/types";
 import laptopsData from "@/data/laptops.json";
 import LaptopModal from "@/components/LaptopModal";
 
@@ -24,8 +24,24 @@ export function useApp() {
   return ctx;
 }
 
+function extractSpesifikasi(laptop: (typeof laptopsData)[0]): Spesifikasi {
+  const v = laptop.varian?.[0];
+  return {
+    processor: v?.processor ?? "-",
+    ram: v?.ram ?? "-",
+    storage: v?.storage ?? "-",
+    gpu: v?.gpu ?? "-",
+    display: v?.display ?? "-",
+    os: v?.os ?? "-",
+    resolusi: v?.resolusi ?? "-",
+  };
+}
+
 export default function AppProvider({ children }: { children: ReactNode }) {
-  const laptops = laptopsData as Laptop[];
+  const laptops: Laptop[] = (laptopsData as any[]).map((l) => ({
+    ...l,
+    spesifikasi: extractSpesifikasi(l),
+  }));
   const [compareList, setCompareList] = useState<Laptop[]>([]);
   const [wishlist, setWishlist] = useState<string[]>([]);
   const [selectedLaptop, setSelectedLaptop] = useState<Laptop | null>(null);

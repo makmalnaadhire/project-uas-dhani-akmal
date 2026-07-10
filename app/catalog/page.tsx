@@ -338,7 +338,11 @@ export default function CatalogPage() {
       );
     }
     if (brandFilter !== "All") list = list.filter((l) => l.merek === brandFilter);
-    if (conditionFilter !== "All") list = list.filter((l) => l.kondisi === conditionFilter);
+    if (conditionFilter !== "All") {
+      const kondisiMap: Record<string, string> = { Bekas: "Second" };
+      const target = kondisiMap[conditionFilter] ?? conditionFilter;
+      list = list.filter((l) => l.kondisi === target);
+    }
     if (categoryFilter !== "All") list = list.filter((l) => l.kategori.includes(categoryFilter.toLowerCase()));
     if (activeBadge !== "semua") list = list.filter((l) => l.kategori.includes(activeBadge));
 
@@ -438,33 +442,33 @@ export default function CatalogPage() {
 
         {/* Compare Trigger Button */}
         {compareCount > 0 && (
-          <button
-            onClick={() => {
-              if (isCompareActive) {
-                const ids = compareList.map((l) => l.id).join(",");
-                router.push(`/compare?ids=${ids}`);
-              } else {
-                showToast(t.catalogCompareSelect);
-              }
-            }}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 border shrink-0 ${
-              isCompareActive
-                ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white border-transparent shadow-[0_0_25px_rgba(99,102,241,0.4)] hover:from-indigo-500 hover:to-violet-500 hover:shadow-[0_0_35px_rgba(139,92,246,0.5)]"
-                : "bg-white/5 text-slate-400 border-white/10 hover:bg-white/10 hover:text-white"
-            }`}
-          >
-            <GitCompareArrows size={14} />
-            {t.catalogCompareBtn.replace("{count}", String(compareCount))}
+          <div className="flex items-center shrink-0">
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                clearCompare();
+              onClick={() => {
+                if (isCompareActive) {
+                  const ids = compareList.map((l) => l.id).join(",");
+                  router.push(`/compare?ids=${ids}`);
+                } else {
+                  showToast(t.catalogCompareSelect);
+                }
               }}
-              className="ml-1 p-0.5 rounded-full hover:bg-white/20 transition-colors"
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 border ${
+                isCompareActive
+                  ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white border-transparent shadow-[0_0_25px_rgba(99,102,241,0.4)] hover:from-indigo-500 hover:to-violet-500 hover:shadow-[0_0_35px_rgba(139,92,246,0.5)]"
+                  : "bg-white/5 text-slate-400 border-white/10 hover:bg-white/10 hover:text-white"
+              }`}
+            >
+              <GitCompareArrows size={14} />
+              {t.catalogCompareBtn.replace("{count}", String(compareCount))}
+            </button>
+            <button
+              onClick={() => clearCompare()}
+              className="ml-1 p-1 rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+              title="Hapus perbandingan"
             >
               <X size={10} />
             </button>
-          </button>
+          </div>
         )}
       </div>
 
@@ -639,10 +643,10 @@ export default function CatalogPage() {
                     {/* Spec Grid */}
                     <div className="grid grid-cols-2 gap-2 mb-4">
                       {[
-                        { label: "Processor", value: laptop.spesifikasi.processor, color: "text-[#2dd4bf]" },
-                        { label: "RAM", value: laptop.spesifikasi.ram, color: "text-[#d946ef]" },
-                        { label: "Storage", value: laptop.spesifikasi.storage, color: "text-[#f97316]" },
-                        { label: "GPU", value: laptop.spesifikasi.gpu, color: "text-[#06b6d4]" },
+                        { label: "Processor", value: laptop.spesifikasi?.processor || "-", color: "text-[#2dd4bf]" },
+                        { label:"RAM", value: laptop.spesifikasi?.ram || "-", color: "text-[#d946ef]" },
+                        { label: "Storage", value: laptop.spesifikasi?.storage || "-", color: "text-[#f97316]" },
+                        { label: "GPU", value: laptop.spesifikasi?.gpu || "-", color: "text-[#06b6d4]" },
                       ].map((spec, i) => (
                         <div key={i} className="p-2.5 rounded-lg bg-slate-50 dark:bg-white/[0.03] border border-slate-100 dark:border-white/5">
                           <p className={`text-[10px] font-medium ${spec.color} uppercase tracking-wider mb-0.5`}>{spec.label}</p>
