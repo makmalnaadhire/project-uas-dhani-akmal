@@ -72,7 +72,8 @@ export default function RecommendSection({ laptops, setSelectedLaptop }: Props) 
     return laptops.filter(l => {
       const matchN = matchCategory(selectedNeed, l);
       const matchB = l.harga_max >= budget.min && l.harga_min <= budget.max;
-      const matchC = selectedCondition === "All" || l.kondisi === selectedCondition;
+      const kondisiTarget = selectedCondition === "Bekas" ? "Second" : selectedCondition;
+      const matchC = selectedCondition === "All" || l.kondisi === kondisiTarget;
       return matchN && matchB && matchC;
     }).sort((a, b) => {
       let sa = 0, sb = 0;

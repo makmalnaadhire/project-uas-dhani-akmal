@@ -156,132 +156,147 @@ function LaptopDetailModal({
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
       <div
-        className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.5)]"
+        className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-2xl border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.5)] flex flex-col"
         style={{ background: "linear-gradient(180deg, #111827 0%, #0b1120 100%)" }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top gradient bar */}
-        <div className="h-1.5 bg-gradient-to-r from-[#2dd4bf] via-[#d946ef] to-[#f97316] rounded-t-2xl" />
+        <div className="h-1.5 bg-gradient-to-r from-[#2dd4bf] via-[#d946ef] to-[#f97316] rounded-t-2xl shrink-0" />
 
-        {/* Header */}
-        <div className="px-6 pt-5 pb-0">
-          <div className="flex items-start justify-between">
-            <div className="flex-1 min-w-0 pr-4">
-              <div className="flex items-center gap-2 mb-2 flex-wrap">
-                <span className={`inline-block text-[10px] font-medium px-2.5 py-0.5 rounded-full border ${st.className}`}>
-                  {st.label}
-                </span>
-                <span className={`inline-block text-[10px] font-medium px-2.5 py-0.5 rounded-full border ${
-                  laptop.kondisi === "Baru"
-                    ? "text-[#2dd4bf] bg-[#2dd4bf]/10 border-[#2dd4bf]/20"
-                    : "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/20"
-                }`}>
-                  {laptop.kondisi}
-                </span>
-              </div>
-              <h2 className="text-xl font-bold text-white font-[family-name:var(--font-display)] leading-tight">
+        {/* Scrollable body — two-column on md+, stacked on mobile */}
+        <div className="overflow-y-auto flex-1 flex flex-col md:flex-row">
+          {/* ── Left Column: Header + Price + Actions ── */}
+          <div className="md:w-[2/5] p-6 md:border-r md:border-white/5 flex flex-col gap-4 shrink-0">
+            {/* Close button (mobile only) */}
+            <div className="flex justify-end md:hidden">
+              <button onClick={onClose} className="p-2 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 transition-all">
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Badges */}
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className={`inline-block text-[10px] font-medium px-2.5 py-0.5 rounded-full border ${st.className}`}>
+                {st.label}
+              </span>
+              <span className={`inline-block text-[10px] font-medium px-2.5 py-0.5 rounded-full border ${
+                laptop.kondisi === "Baru"
+                  ? "text-[#2dd4bf] bg-[#2dd4bf]/10 border-[#2dd4bf]/20"
+                  : "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/20"
+              }`}>
+                {laptop.kondisi === "Baru" ? "Baru" : "Second"}
+              </span>
+            </div>
+
+            {/* Name + Brand */}
+            <div>
+              <h2 className="text-xl md:text-2xl font-bold text-white font-[family-name:var(--font-display)] leading-tight">
                 {laptop.nama}
               </h2>
               <p className="text-sm text-slate-400 mt-1">
                 {laptop.merek} &middot; {laptop.seri} &middot; {laptop.tahun}
               </p>
             </div>
-            <button
-              onClick={onClose}
-              className="p-2 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 transition-all shrink-0"
-            >
-              <X size={18} />
-            </button>
-          </div>
 
-          {/* Category badges */}
-          <div className="flex flex-wrap gap-1.5 mt-3">
-            {laptop.kategori.map((kat) => (
-              <span
-                key={kat}
-                className={`text-[10px] font-medium px-2 py-0.5 rounded-md border ${
-                  kategoriColors[kat] || "text-slate-400 bg-white/5 border-white/10"
+            {/* Price card */}
+            <div className="p-4 rounded-xl bg-gradient-to-r from-[#2dd4bf]/5 to-[#d946ef]/5 border border-white/5">
+              <div className="flex items-center gap-2 mb-1">
+                <Tag size={14} className="text-[#2dd4bf]" />
+                <span className="text-[11px] text-slate-500 uppercase tracking-wider font-medium">Harga Estimasi</span>
+              </div>
+              <p className="text-xl md:text-2xl font-bold font-[family-name:var(--font-display)] text-white">
+                {formatRupiah(laptop.harga_min)}{" "}
+                <span className="text-slate-500 text-base font-normal mx-1">-</span>{" "}
+                {formatRupiah(laptop.harga_max)}
+              </p>
+            </div>
+
+            {/* Spacer */}
+            <div className="flex-1" />
+
+            {/* Action buttons */}
+            <div className="flex gap-3">
+              <button
+                onClick={() => onToggleWishlist(laptop.id)}
+                className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                  isWished
+                    ? "bg-[#ec4899]/15 text-[#ec4899] border border-[#ec4899]/30"
+                    : "bg-white/5 text-slate-400 border border-white/10 hover:text-[#ec4899] hover:border-[#ec4899]/30"
                 }`}
               >
-                {kat.replace("_", " ")}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Body */}
-        <div className="px-6 py-5 space-y-5">
-          {/* Price */}
-          <div className="p-4 rounded-xl bg-gradient-to-r from-[#2dd4bf]/5 to-[#d946ef]/5 border border-white/5">
-            <div className="flex items-center gap-2 mb-1">
-              <Tag size={14} className="text-[#2dd4bf]" />
-              <span className="text-[11px] text-slate-500 uppercase tracking-wider font-medium">Harga Estimasi</span>
+                <Heart size={15} fill={isWished ? "currentColor" : "none"} />
+                {isWished ? "Tersimpan" : "Wishlist"}
+              </button>
+              <button
+                onClick={() => exportLaptopPDF(laptop)}
+                className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-white/5 text-slate-400 border border-white/10 hover:text-[#2dd4bf] hover:border-[#2dd4bf]/30 transition-all"
+              >
+                <FileDown size={15} />
+                PDF
+              </button>
             </div>
-            <p className="text-2xl font-bold font-[family-name:var(--font-display)] text-white">
-              {formatRupiah(laptop.harga_min)}{" "}
-              <span className="text-slate-500 text-base font-normal mx-1">-</span>{" "}
-              {formatRupiah(laptop.harga_max)}
-            </p>
           </div>
 
-          {/* Specs grid */}
-          <div>
-            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Spesifikasi</h3>
-            <div className="grid grid-cols-2 gap-2.5">
-              {specs.map((s, i) => (
-                <div key={i} className="p-3 rounded-xl bg-white/[0.03] border border-white/5">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className={s.color}>{s.icon}</span>
-                    <span className="text-[10px] text-slate-500 uppercase tracking-wider">{s.label}</span>
-                  </div>
-                  <p className="text-[13px] font-medium text-white leading-snug">{s.value}</p>
-                </div>
+          {/* ── Right Column: Specs + Notes + Issues ── */}
+          <div className="md:w-[3/5] p-6">
+            {/* Close button (desktop) */}
+            <div className="hidden md:flex justify-end mb-4">
+              <button onClick={onClose} className="p-2 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 transition-all">
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Category tags */}
+            <div className="flex flex-wrap gap-1.5 mb-5">
+              {laptop.kategori.map((kat) => (
+                <span
+                  key={kat}
+                  className={`text-[10px] font-medium px-2 py-0.5 rounded-md border ${
+                    kategoriColors[kat] || "text-slate-400 bg-white/5 border-white/10"
+                  }`}
+                >
+                  {kat.replace("_", " ")}
+                </span>
               ))}
             </div>
-          </div>
 
-          {/* Catatan */}
-          {laptop.catatan && (
-            <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
-              <div className="flex items-center gap-2 mb-2">
-                <StickyNote size={14} className="text-[#eab308]" />
-                <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Catatan</span>
+            {/* Specs grid — full width, 2 columns on md */}
+            <div className="mb-5">
+              <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Spesifikasi</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                {specs.map((s, i) => (
+                  <div key={i} className="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className={s.color}>{s.icon}</span>
+                      <span className="text-[10px] text-slate-500 uppercase tracking-wider">{s.label}</span>
+                    </div>
+                    <p className="text-[13px] font-medium text-white leading-snug">{s.value}</p>
+                  </div>
+                ))}
               </div>
-              <p className="text-[13px] text-slate-300 leading-relaxed">{laptop.catatan}</p>
             </div>
-          )}
 
-          {/* Isu Diketahui */}
-          {laptop.isu_diketahui && (
-            <div className="p-4 rounded-xl bg-amber-500/[0.06] border border-amber-500/15">
-              <div className="flex items-center gap-2 mb-2">
-                <AlertTriangle size={14} className="text-amber-400" />
-                <span className="text-xs font-semibold text-amber-400/80 uppercase tracking-wider">Isu Diketahui</span>
+            {/* Catatan */}
+            {laptop.catatan && (
+              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <StickyNote size={14} className="text-[#eab308]" />
+                  <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Catatan</span>
+                </div>
+                <p className="text-[13px] text-slate-300 leading-relaxed">{laptop.catatan}</p>
               </div>
-              <p className="text-[13px] text-amber-200/70 leading-relaxed">{laptop.isu_diketahui}</p>
-            </div>
-          )}
+            )}
 
-          {/* Actions */}
-          <div className="flex gap-3 pt-1">
-            <button
-              onClick={() => onToggleWishlist(laptop.id)}
-              className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                isWished
-                  ? "bg-[#ec4899]/15 text-[#ec4899] border border-[#ec4899]/30"
-                  : "bg-white/5 text-slate-400 border border-white/10 hover:text-[#ec4899] hover:border-[#ec4899]/30"
-              }`}
-            >
-              <Heart size={15} fill={isWished ? "currentColor" : "none"} />
-              {isWished ? "Tersimpan" : "Wishlist"}
-            </button>
-            <button
-              onClick={() => exportLaptopPDF(laptop)}
-              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-white/5 text-slate-400 border border-white/10 hover:text-[#2dd4bf] hover:border-[#2dd4bf]/30 transition-all"
-            >
-              <FileDown size={15} />
-              PDF
-            </button>
+            {/* Isu Diketahui */}
+            {laptop.isu_diketahui && (
+              <div className="p-4 rounded-xl bg-amber-500/[0.06] border border-amber-500/15">
+                <div className="flex items-center gap-2 mb-2">
+                  <AlertTriangle size={14} className="text-amber-400" />
+                  <span className="text-xs font-semibold text-amber-400/80 uppercase tracking-wider">Isu Diketahui</span>
+                </div>
+                <p className="text-[13px] text-amber-200/70 leading-relaxed">{laptop.isu_diketahui}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -610,6 +625,13 @@ export default function CatalogPage() {
                         </span>
                       </div>
                       <div className="flex items-center gap-2 shrink-0">
+                        <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${
+                          laptop.kondisi === "Baru"
+                            ? "text-[#2dd4bf] bg-[#2dd4bf]/10 border-[#2dd4bf]/20"
+                            : "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/20"
+                        }`}>
+                          {laptop.kondisi === "Baru" ? "Baru" : "Second"}
+                        </span>
                         <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${st.className}`}>
                           {st.label}
                         </span>
